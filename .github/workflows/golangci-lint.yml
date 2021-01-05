@@ -1,0 +1,17 @@
+name: golangci-lint
+on:
+  push:
+    branches:
+    - "*"
+  pull_request:
+jobs:
+  golangci:
+    name: lint
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v2
+      with:
+        version: v1.34.1
+        args: --out-format github-actions

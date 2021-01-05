@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubelet-serving-cert-approver
+spec:
+  replicas: 2
+  template:
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/instance: kubelet-serving-cert-approver
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - name: cert-approver
+        args:
+        - serve
+        - --enable-leader-election

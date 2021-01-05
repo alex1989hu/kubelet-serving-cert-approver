@@ -1,0 +1,130 @@
+run:
+  concurrency: 4
+  timeout: 10m
+  issues-exit-code: 1
+  tests: true
+
+output:
+  format: line-number
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  govet:
+    check-shadowing: true
+  golint:
+    min-confidence: 0.8
+  gofmt:
+    simplify: true
+  gocyclo:
+    min-complexity: 10
+  maligned:
+    suggest-new: true
+  dupl:
+    threshold: 100
+  gci:
+    local-prefixes: github.com/alex1989hu/kubelet-serving-cert-approver
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+  goheader:
+    template-path: ./hack/LICENSE.header
+  makezero:
+    always: true
+  misspell:
+    locale: US
+  lll:
+    line-length: 120
+    tab-width: 1
+  unused:
+    check-exported: false
+  unparam:
+    check-exported: false
+  nakedret:
+    max-func-lines: 30
+  prealloc:
+    simple: true
+    range-loops: true
+    for-loops: true
+  thelper:
+    test:
+      first: true
+      name: true
+      begin: true
+
+linters:
+  enable:
+    - asciicheck
+    - bodyclose
+    - deadcode
+    - depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - errorlint
+    - exhaustive
+    - exportloopref
+    - gci
+    - gochecknoglobals
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - godox
+    - goerr113
+    - gofmt
+    - gofumpt
+    - goheader
+    - goimports
+    - golint
+    - gomnd
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - interfacer
+    - lll
+    - makezero
+    - maligned
+    - megacheck
+    - misspell
+    - nakedret
+    - nestif
+    - nlreturn
+    - noctx
+    - nolintlint
+    - paralleltest
+    - prealloc
+    - scopelint
+    - staticcheck
+    - structcheck
+    - stylecheck
+    - testpackage
+    - thelper
+    - tparallel
+    - typecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+    - whitespace
+    - wrapcheck
+    - wsl
+  disable:
+    - exhaustivestruct
+    - funlen
+    - gochecknoinits
+    - gocognit
+    - gomodguard
+    - rowserrcheck
+    - sqlclosecheck
+  disable-all: false
+  fast: false
+
+issues:
+  max-per-linter: 0
+  max-same: 0
+  new: false

@@ -1,0 +1,6 @@
+**/.idea
+**/.vscode
+Dockerfile
+bin/
+coverage.out
+kubelet-serving-cert-approver*

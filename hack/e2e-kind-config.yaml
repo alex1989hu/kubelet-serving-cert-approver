@@ -1,0 +1,17 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  kubeadmConfigPatches:
+  - |-
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        "rotate-server-certificates": "true"
+- role: worker
+  kubeadmConfigPatches:
+  - |-
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        "rotate-server-certificates": "true"
