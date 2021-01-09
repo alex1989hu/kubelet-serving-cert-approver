@@ -97,6 +97,7 @@ linters:
     - nolintlint
     - paralleltest
     - prealloc
+    - predeclared
     - scopelint
     - staticcheck
     - structcheck

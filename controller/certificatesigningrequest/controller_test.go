@@ -304,7 +304,7 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 	for _, table := range tables { //nolint: paralleltest // Disable false-positive finding due to linter bug.
 		table := table // scopelint, pin!
 
-		t.Run(fmt.Sprint(table.goal), func(t *testing.T) {
+		t.Run(fmt.Sprint(table.goal), func(t *testing.T) { //nolint: thelper,lll // Disable false-positive finding due to thelper linter bug.
 			t.Parallel()
 
 			fakeClient := ctrlfake.NewClientBuilder().WithRuntimeObjects([]runtime.Object{&table.csr}...).Build()

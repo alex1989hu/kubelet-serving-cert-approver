@@ -13,5 +13,5 @@ jobs:
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v2
       with:
-        version: v1.34.1
+        version: v1.35.0
         args: --out-format github-actions

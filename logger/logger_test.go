@@ -49,7 +49,7 @@ func TestLoggingConfiguration(t *testing.T) {
 	for _, table := range tables { //nolint: paralleltest // Disable due to linter bug.
 		table := table // scopelint, pin!
 
-		t.Run(fmt.Sprintf("Debug level enabled: (%t)", table.debugEnabled), func(t *testing.T) {
+		t.Run(fmt.Sprintf("Debug level enabled: (%t)", table.debugEnabled), func(t *testing.T) { //nolint: thelper,lll // Disable false-positive finding due to thelper linter bug.
 			t.Parallel()
 
 			viperLock.Lock()
