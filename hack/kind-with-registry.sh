@@ -79,6 +79,17 @@ nodes:
     nodeRegistration:
       kubeletExtraArgs:
         "rotate-server-certificates": "true"
+kubeadmConfigPatches:
+- |-
+  kind: ClusterConfiguration
+  apiServer:
+    extraArgs:
+      # Increase duration of Event Time To Leave (TTL)
+      "event-ttl": "8h0m0s"
+  controllerManager:
+    extraArgs:
+      # Disable csrcleaner contoller to avoid removal of Certificate Signing Request; keep default KiND options
+      "controllers": "*,bootstrapsigner,tokencleaner,-csrcleaner"
 EOF
 
 cat <<EOF | kubectl apply -f -

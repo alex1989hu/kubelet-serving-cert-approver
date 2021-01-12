@@ -3,6 +3,8 @@ run:
   timeout: 10m
   issues-exit-code: 1
   tests: true
+  build-tags:
+    - e2e
 
 output:
   format: line-number
@@ -105,7 +107,6 @@ linters:
     - testpackage
     - thelper
     - tparallel
-    - typecheck
     - typecheck
     - unconvert
     - unparam
