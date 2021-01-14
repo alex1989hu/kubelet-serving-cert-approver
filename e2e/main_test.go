@@ -18,12 +18,12 @@
 package e2e_test
 
 import (
-	"flag"
 	"os"
 	"testing"
 
 	"github.com/cucumber/godog"
 	"github.com/cucumber/godog/colors"
+	"github.com/spf13/pflag"
 )
 
 // opts holds configuration for godog.
@@ -36,12 +36,12 @@ var opts = godog.Options{
 }
 
 func init() {
-	godog.BindFlags("godog.", flag.CommandLine, &opts)
+	godog.BindCommandLineFlags("godog.", &opts)
 }
 
 func TestMain(m *testing.M) {
-	flag.Parse()
-	opts.Paths = flag.Args()
+	pflag.Parse()
+	opts.Paths = pflag.Args()
 
 	status := godog.TestSuite{
 		Name:                "certificatesigningrequest",
