@@ -322,7 +322,11 @@ func TestConformantKubeletServingCertificateSigningRequest(t *testing.T) {
 
 // TestMain is needed due to t.Parallel() incompatibility of goleak.
 // https://github.com/uber-go/goleak/issues/16
-func TestMain(m *testing.M) { //nolint: interfacer
-	// flushDaemon leaks: https://github.com/kubernetes/client-go/issues/900
-	goleak.VerifyTestMain(m, goleak.IgnoreTopFunction("k8s.io/klog/v2.(*loggingT).flushDaemon"))
+func TestMain(m *testing.M) { // nolint: interfacer
+	goleak.VerifyTestMain(m,
+		// controller-runtime's log.init intentionally waits: https://github.com/kubernetes-sigs/controller-runtime/pull/1309
+		goleak.IgnoreTopFunction("time.Sleep"),
+		// flushDaemon leaks: https://github.com/kubernetes/client-go/issues/900
+		goleak.IgnoreTopFunction("k8s.io/klog/v2.(*loggingT).flushDaemon"),
+	)
 }
