@@ -10,8 +10,8 @@ jobs:
     strategy:
       matrix:
         node:
-        - v1.19.4
-        - v1.20.0
+        - v1.19.7
+        - v1.20.2
     steps:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
