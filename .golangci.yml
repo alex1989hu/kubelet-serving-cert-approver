@@ -32,6 +32,9 @@ linters-settings:
     min-occurrences: 3
   goheader:
     template-path: ./hack/LICENSE.header
+  ifshort:
+    max-decl-chars: 30
+    max-decl-lines: 1
   makezero:
     always: true
   misspell:
@@ -85,6 +88,7 @@ linters:
     - gosec
     - gosimple
     - govet
+    - ifshort
     - ineffassign
     - interfacer
     - lll
