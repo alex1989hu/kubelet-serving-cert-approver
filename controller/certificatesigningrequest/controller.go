@@ -186,9 +186,9 @@ func (r *SigningReconciler) authorize(csr *certificatesv1.CertificateSigningRequ
 
 // SetupWithManager configures controller for manager to handle CertificateSigningRequest.
 func (r *SigningReconciler) SetupWithManager(mgr ctrl.Manager) error {
-	return ctrl.NewControllerManagedBy(mgr).
-		For(&certificatesv1.CertificateSigningRequest{}).
-		Complete(r)
+	return ctrl.NewControllerManagedBy(mgr). //nolint:wrapcheck
+							For(&certificatesv1.CertificateSigningRequest{}).
+							Complete(r)
 }
 
 // appendApprovalCondition sets fields for audit purpose.

@@ -15,6 +15,7 @@
 
 // +build e2e
 
+//nolint: wrapcheck
 package e2e_test
 
 import (
@@ -50,8 +51,8 @@ type ApproverInstance struct {
 	CertificateSigningRequestList []certificatesv1.CertificateSigningRequest
 	Events                        []eventsv1.Event
 	Metrics                       []string
-	Pod                           corev1.Pod
 	RestConfig                    *rest.Config
+	Pod                           corev1.Pod
 }
 
 // InitializeScenario sets context and defines steps being used in scenarios.

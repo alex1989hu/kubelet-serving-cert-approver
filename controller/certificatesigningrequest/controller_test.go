@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-//nolint: testpackage // Need to reach functions.
+//nolint: testpackage,wrapcheck // Need to reach functions.
 package certificatesigningrequest
 
 import (
@@ -68,10 +68,10 @@ var (
 
 // Client is a mock for the controller-runtime dynamic client interface.
 type Client struct {
-	mock.Mock
-	StatusMock *StatusClient
-	scheme     *runtime.Scheme
 	mapper     meta.RESTMapper
+	scheme     *runtime.Scheme
+	StatusMock *StatusClient
+	mock.Mock
 }
 
 // NewMockClient creates a new mock controller-runtime client.

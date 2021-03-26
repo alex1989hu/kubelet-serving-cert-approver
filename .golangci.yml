@@ -15,14 +15,14 @@ linters-settings:
     check-blank: true
   govet:
     check-shadowing: true
+    enable:
+      - fieldalignment
   golint:
     min-confidence: 0.8
   gofmt:
     simplify: true
   gocyclo:
     min-complexity: 10
-  maligned:
-    suggest-new: true
   dupl:
     threshold: 100
   gci:
@@ -90,10 +90,8 @@ linters:
     - govet
     - ifshort
     - ineffassign
-    - interfacer
     - lll
     - makezero
-    - maligned
     - megacheck
     - misspell
     - nakedret
@@ -104,7 +102,6 @@ linters:
     - paralleltest
     - prealloc
     - predeclared
-    - scopelint
     - staticcheck
     - structcheck
     - stylecheck

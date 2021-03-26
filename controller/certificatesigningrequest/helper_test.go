@@ -83,9 +83,9 @@ func TestIsRequestConformInvalidSigningRequest(t *testing.T) {
 	t.Parallel()
 
 	tables := []struct {
-		csr           certificatesv1.CertificateSigningRequest
-		x509cr        x509.CertificateRequest
 		expectedError error
+		x509cr        x509.CertificateRequest
+		csr           certificatesv1.CertificateSigningRequest
 	}{
 		{
 			csr: certificatesv1.CertificateSigningRequest{
