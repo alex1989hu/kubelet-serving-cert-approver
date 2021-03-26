@@ -35,7 +35,7 @@ import (
 	"github.com/alex1989hu/kubelet-serving-cert-approver/metrics"
 )
 
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var (
 	scheme = runtime.NewScheme()
 

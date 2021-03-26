@@ -27,7 +27,7 @@ import (
 
 const defaultNamespace = "kubelet-serving-cert-approver"
 
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var (
 	// namespace represents where to record Kubernetes Events.
 	namespace string
@@ -40,7 +40,7 @@ var (
 )
 
 // rootCmd represents the base command when called without any subcommands.
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var rootCmd = &cobra.Command{
 	Use:     "kubelet-serving-cert-approver",
 	Version: fmt.Sprintf("(%s/%s)", build.GitBranch, build.GitCommit),

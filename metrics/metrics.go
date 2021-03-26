@@ -19,7 +19,7 @@ import (
 	prom "github.com/prometheus/client_golang/prometheus"
 )
 
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var (
 	NumberOfApprovedCertificateRequests = prom.NewCounter(prom.CounterOpts{
 		Name: "kubelet_serving_cert_approver_approved_certificate_signing_request_count",

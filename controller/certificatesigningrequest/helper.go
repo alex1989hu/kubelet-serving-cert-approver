@@ -27,7 +27,7 @@ import (
 	certificatesv1 "k8s.io/api/certificates/v1"
 )
 
-//nolint: lll
+//nolint:lll
 var (
 	errDNSOrIPMissing               = errors.New("either DNS Names or IP Addresses is missing")
 	errExtraExtensionsPresent       = errors.New("EmailAddress and URI subjectAltName extensions are forbidden")

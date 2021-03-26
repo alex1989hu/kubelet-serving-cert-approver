@@ -29,7 +29,7 @@ import (
 )
 
 // viperLock helps viper to avoid viper.Set() concurrency issues - only used in test code.
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var viperLock sync.Mutex
 
 func TestLoggingConfiguration(t *testing.T) {
@@ -46,8 +46,8 @@ func TestLoggingConfiguration(t *testing.T) {
 		},
 	}
 
-	for _, table := range tables { //nolint: paralleltest // Disable due to linter bug.
-		table := table // scopelint, pin!
+	for _, table := range tables { //nolint:paralleltest // Disable due to linter bug.
+		table := table // pin!
 
 		t.Run(fmt.Sprintf("Debug level enabled: (%t)", table.debugEnabled), func(t *testing.T) {
 			t.Parallel()
@@ -66,7 +66,7 @@ func TestLoggingConfiguration(t *testing.T) {
 
 // TestMain is needed due to t.Parallel() incompatibility of goleak.
 // https://github.com/uber-go/goleak/issues/16
-func TestMain(m *testing.M) { //nolint: interfacer
+func TestMain(m *testing.M) {
 	// flushDaemon leaks: https://github.com/kubernetes/client-go/issues/900
 	goleak.VerifyTestMain(m, goleak.IgnoreTopFunction("k8s.io/klog/v2.(*loggingT).flushDaemon"))
 }

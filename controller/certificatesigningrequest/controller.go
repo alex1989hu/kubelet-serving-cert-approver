@@ -48,7 +48,7 @@ type SigningReconciler struct {
 }
 
 // Reconcile processes request and returns the result.
-//nolint: gocyclo
+//nolint:gocyclo
 func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	var csr certificatesv1.CertificateSigningRequest
 

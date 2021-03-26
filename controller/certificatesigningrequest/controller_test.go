@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-//nolint: testpackage,wrapcheck // Need to reach functions.
+//nolint:testpackage,wrapcheck // Need to reach functions.
 package certificatesigningrequest
 
 import (
@@ -51,7 +51,7 @@ const (
 	namespace = "test-namespace"
 )
 
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var (
 	// rsaPrivateKey provides RSA private key for Certificate Signing Request generation.
 	rsaPrivateKey *rsa.PrivateKey
@@ -301,8 +301,8 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 		},
 	}
 
-	for _, table := range tables { //nolint: paralleltest // Disable false-positive finding due to linter bug.
-		table := table // scopelint, pin!
+	for _, table := range tables { //nolint:paralleltest // Disable false-positive finding due to linter bug.
+		table := table // pin!
 
 		t.Run(fmt.Sprint(table.goal), func(t *testing.T) {
 			t.Parallel()

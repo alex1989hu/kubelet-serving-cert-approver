@@ -27,7 +27,7 @@ import (
 )
 
 // opts holds configuration for godog.
-// nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var opts = godog.Options{
 	Format:        "pretty",
 	StopOnFailure: true,

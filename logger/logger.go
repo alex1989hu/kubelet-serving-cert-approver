@@ -56,7 +56,7 @@ func CreateLogger() *zap.Logger {
 		log.Fatalf("error creating zap logger parent %v", err)
 	}
 
-	defer zapLogger.Sync() //nolint: errcheck
+	defer zapLogger.Sync() //nolint:errcheck
 
 	return zapLogger
 }

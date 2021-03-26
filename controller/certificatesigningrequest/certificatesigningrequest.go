@@ -21,5 +21,5 @@ import (
 	"github.com/alex1989hu/kubelet-serving-cert-approver/logger"
 )
 
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var log = logger.CreateLogger().With(zap.String("controller", "certificatesigningrequest"))

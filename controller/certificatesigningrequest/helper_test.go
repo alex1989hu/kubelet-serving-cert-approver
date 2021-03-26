@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-//nolint: testpackage // Need to reach functions.
+//nolint:testpackage // Need to reach functions.
 package certificatesigningrequest
 
 import (
@@ -35,7 +35,7 @@ const (
 	validUsername     = "system:node:node-01"
 )
 
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var (
 	validDNSNames   = []string{"foo.bar"}
 	valdIPAddresses = []net.IP{net.ParseIP("1.2.3.4")}
@@ -256,8 +256,8 @@ func TestIsRequestConformInvalidSigningRequest(t *testing.T) {
 		},
 	}
 
-	for _, table := range tables { //nolint: paralleltest // Disable false-positive finding due to linter bug.
-		table := table // scopelint, pin!
+	for _, table := range tables { //nolint:paralleltest // Disable false-positive finding due to linter bug.
+		table := table // pin!
 
 		t.Run(fmt.Sprint(table.expectedError), func(t *testing.T) {
 			t.Parallel()
@@ -310,8 +310,8 @@ func TestConformantKubeletServingCertificateSigningRequest(t *testing.T) {
 		},
 	}
 
-	for _, table := range tables { //nolint: paralleltest // Disable false-positive finding due to linter bug.
-		table := table // scopelint, pin!
+	for _, table := range tables { //nolint:paralleltest // Disable false-positive finding due to linter bug.
+		table := table // pin!
 
 		t.Run(fmt.Sprint(table.goal), func(t *testing.T) {
 			t.Parallel()
@@ -322,7 +322,7 @@ func TestConformantKubeletServingCertificateSigningRequest(t *testing.T) {
 
 // TestMain is needed due to t.Parallel() incompatibility of goleak.
 // https://github.com/uber-go/goleak/issues/16
-func TestMain(m *testing.M) { // nolint: interfacer
+func TestMain(m *testing.M) {
 	goleak.VerifyTestMain(m,
 		// controller-runtime's log.init intentionally waits: https://github.com/kubernetes-sigs/controller-runtime/pull/1309
 		goleak.IgnoreTopFunction("time.Sleep"),

@@ -15,7 +15,7 @@
 
 // +build e2e
 
-//nolint: wrapcheck
+//nolint:wrapcheck
 package e2e_test
 
 import (

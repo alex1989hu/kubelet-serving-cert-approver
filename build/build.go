@@ -15,7 +15,7 @@
 
 package build
 
-//nolint: gochecknoglobals
+//nolint:gochecknoglobals
 var (
 	// GitBranch overridden during build time.
 	GitBranch = "dev"
