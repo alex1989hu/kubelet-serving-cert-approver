@@ -39,6 +39,12 @@ linters-settings:
     always: true
   misspell:
     locale: US
+  nolintlint:
+    allow-unused: false
+    allow-leading-space: false
+    allow-no-explanation: []
+    require-explanation: false
+    require-specific: true
   lll:
     line-length: 120
     tab-width: 1
