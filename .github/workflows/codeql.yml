@@ -1,6 +1,8 @@
 name: codeql
 on:
   push:
+    branches-ignore:
+      - 'dependabot/**'
   pull_request:
   schedule:
     - cron: '0 12 * * 6'
@@ -10,12 +12,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-        fetch-depth: 2
-    - name: Checkout HEAD on PR
-      if: ${{ github.event_name == 'pull_request' }}
-      run: |
-        git checkout HEAD^2
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
