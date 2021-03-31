@@ -10,6 +10,10 @@ output:
   format: line-number
 
 linters-settings:
+  depguard:
+    include-go-root: true
+    packages-with-error-message:
+      - "io/ioutil": "ioutil is deprecated in Go 1.16"
   errcheck:
     check-type-assertions: true
     check-blank: true
