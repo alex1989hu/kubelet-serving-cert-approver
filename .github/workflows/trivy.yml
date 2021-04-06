@@ -1,6 +1,8 @@
 name: trivy
 on:
   push:
+    branches-ignore:
+      - 'dependabot/**'
   pull_request:
   schedule:
     - cron: '0 12 * * 6'
