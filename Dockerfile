@@ -47,7 +47,7 @@ RUN GIT_COMMIT=$(git rev-parse --short=8 HEAD || echo "dev" ) && \
     if [ "$GOARCH" = "amd64" ]; then CGO_ENABLED=1 go test -race ./... -v ; else go test ./... -v ; fi;
 
 # Production image
-FROM gcr.io/distroless/static@sha256:04c5f0473b7ebba65bfdd4125fe81fac1701783549f9b98fd96e3566f6035fa7
+FROM gcr.io/distroless/static@sha256:cd784033c94dd30546456f35de8e128390ae15c48cbee5eb7e3306857ec17631
 
 COPY --from=builder /app/kubelet-serving-cert-approver /app/kubelet-serving-cert-approver
 
