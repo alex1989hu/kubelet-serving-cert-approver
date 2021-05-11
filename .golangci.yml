@@ -52,6 +52,8 @@ linters-settings:
   lll:
     line-length: 120
     tab-width: 1
+  promlinter:
+    strict: true
   unused:
     check-exported: false
   unparam:
