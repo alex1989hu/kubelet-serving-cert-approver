@@ -10,8 +10,8 @@ jobs:
     strategy:
       matrix:
         node:
-        - v1.19.7
-        - v1.20.2
+        - v1.19.11
+        - v1.20.7
     steps:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2.3.4
@@ -39,7 +39,7 @@ jobs:
       with:
         config: ./hack/e2e-kind-config.yaml
         image: kindest/node:${{ matrix.node }}
-        version: "v0.10.0"
+        version: "v0.11.0"
     - name: Wait for KiND readiness
       run: |
           kubectl --namespace kube-system wait --for=condition=ready pod -l tier=control-plane --timeout=300s

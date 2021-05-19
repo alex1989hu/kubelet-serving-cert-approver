@@ -5,7 +5,6 @@ go 1.16
 require (
 	github.com/cucumber/godog v0.11.0
 	github.com/go-logr/zapr v0.2.0
-	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/google/go-cmp v0.5.5 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/google/uuid v1.2.0 // indirect
@@ -30,10 +29,10 @@ require (
 	google.golang.org/appengine v1.6.7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
-	k8s.io/api v0.20.4
-	k8s.io/apiextensions-apiserver v0.20.4 // indirect
-	k8s.io/apimachinery v0.20.4
-	k8s.io/client-go v0.20.4
+	k8s.io/api v0.20.7
+	k8s.io/apiextensions-apiserver v0.20.7 // indirect
+	k8s.io/apimachinery v0.20.7
+	k8s.io/client-go v0.20.7
 	k8s.io/klog/v2 v2.6.0
 	k8s.io/kube-openapi v0.0.0-20210305164622-f622666832c1 // indirect
 	k8s.io/utils v0.0.0-20210305010621-2afb4311ab10 // indirect
