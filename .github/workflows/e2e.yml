@@ -8,10 +8,14 @@ jobs:
   e2e-test:
     runs-on: ubuntu-20.04
     strategy:
+      fail-fast: false
       matrix:
         node:
         - v1.19.11
         - v1.20.7
+        install-mode:
+        - ha
+        - standalone
     steps:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2.3.4
@@ -49,12 +53,12 @@ jobs:
           kind load docker-image ghcr.io/${{ github.repository }}:ci
     - name: Patch Install Manifests
       run: |
-          sed -i -e 's@imagePullPolicy: Always@imagePullPolicy: IfNotPresent@g' ./deploy/ha-install.yaml
-          sed -i -e 's@image: .*@image: ghcr.io/${{ github.repository }}:ci@g' ./deploy/ha-install.yaml
+          sed -i -e 's@imagePullPolicy: Always@imagePullPolicy: IfNotPresent@g' ./deploy/${{ matrix.install-mode }}-install.yaml
+          sed -i -e 's@image: .*@image: ghcr.io/${{ github.repository }}:ci@g' ./deploy/${{ matrix.install-mode }}-install.yaml
     - name: Deploy Application
       id: deployment
       run: |
-        kubectl apply -f ./deploy/ha-install.yaml
+        kubectl apply -f ./deploy/${{ matrix.install-mode }}-install.yaml
         kubectl --namespace kubelet-serving-cert-approver wait --for=condition=ready pod --selector app.kubernetes.io/name=kubelet-serving-cert-approver --timeout=300s
     - name: Get deployment failure logs
       if: steps.deployment.outputs.exit_code != 0
