@@ -61,20 +61,36 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 
 	switch {
 	case csr.Spec.SignerName != certificatesv1.KubeletServingSignerName:
-		log.Debug("Certificate Signing Request is not Kubelet serving Certificate",
-			zap.String("signer", csr.Spec.SignerName))
+		if ce := log.Check(zap.DebugLevel,
+			"Certificate Signing Request is not Kubelet serving Certificate"); ce != nil {
+			ce.Write(
+				zap.String("signer", csr.Spec.SignerName),
+			)
+		}
 	case !csr.DeletionTimestamp.IsZero():
-		log.Debug("Certificate Signing Request has been deleted",
-			zap.String("csr", csr.Name),
-			zap.Time("deleted", csr.DeletionTimestamp.Time))
+		if ce := log.Check(zap.DebugLevel,
+			"Certificate Signing Request has been deleted"); ce != nil {
+			ce.Write(
+				zap.String("csr", csr.Name),
+				zap.Time("deleted", csr.DeletionTimestamp.Time),
+			)
+		}
 	case csr.Status.Certificate != nil:
-		log.Debug("Certificate Signing Request is already signed",
-			zap.String("csr", csr.Name),
-			zap.String("signer", csr.Spec.SignerName))
+		if ce := log.Check(zap.DebugLevel,
+			"Certificate Signing Request is already signed"); ce != nil {
+			ce.Write(
+				zap.String("csr", csr.Name),
+				zap.String("signer", csr.Spec.SignerName),
+			)
+		}
 	case len(csr.Status.Conditions) != 0:
-		log.Debug("Certificate Signing Request already has approval condition",
-			zap.String("csr", csr.Name),
-			zap.Any("conditions", csr.Status.Conditions))
+		if ce := log.Check(zap.DebugLevel,
+			"Certificate Signing Request already has approval condition"); ce != nil {
+			ce.Write(
+				zap.String("csr", csr.Name),
+				zap.Any("conditions", csr.Status.Conditions),
+			)
+		}
 	default:
 		x509cr, err := parseCSR(csr.Spec.Request)
 		if err != nil {
