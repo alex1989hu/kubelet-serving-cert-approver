@@ -1,3 +1,23 @@
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/0.1.0...v0.1.1) (2021-05-30)
+
+### Chore
+
+* optimize debug logging with zap checkedentry
+* upgrade golangci-lint v1.40.1
+* upgrade zap v1.17.0
+* upgrade kind v0.11.1
+* generate manifests with v1.20.7 kubectl
+* bump aquasecurity/trivy-action from 0.0.17 to 0.0.18
+* bump docker/setup-qemu-action from 1.1.0 to 1.2.0
+* bump docker/build-push-action from 2.4.0 to 2.5.0
+* bump docker/metadata-action from 3.1.0 to 3.3.0
+
+### Ci
+
+* extend e2e build matrix with ha and standalone install
+
+
 <a name="0.1.0"></a>
 ## 0.1.0 (2021-05-19)
 
