@@ -19,9 +19,11 @@ jobs:
       uses: docker/metadata-action@v3.3.0
       with:
         images: ghcr.io/${{ github.repository }}
-        tag-latest: false
-        tag-semver: |
-          {{version}}
+        flavor: |
+          latest=false
+        tags: |
+          type=ref,event=branch
+          type=semver,pattern={{version}}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1.2.0
     - name: Set up Docker Buildx
