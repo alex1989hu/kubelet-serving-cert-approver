@@ -21,8 +21,6 @@ linters-settings:
     check-shadowing: true
     enable:
       - fieldalignment
-  golint:
-    min-confidence: 0.8
   gofmt:
     simplify: true
   gocyclo:
@@ -94,7 +92,6 @@ linters:
     - gofumpt
     - goheader
     - goimports
-    - golint
     - gomnd
     - goprintffuncname
     - gosec
@@ -114,6 +111,7 @@ linters:
     - paralleltest
     - prealloc
     - predeclared
+    - revive
     - staticcheck
     - structcheck
     - stylecheck
