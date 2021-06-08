@@ -28,3 +28,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: kubelet-serving-cert-approver
+  namespace: default # Workaround: will be replaced by kustomize to actual namespace

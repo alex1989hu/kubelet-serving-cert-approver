@@ -13,6 +13,7 @@ jobs:
         node:
         - v1.19.11
         - v1.20.7
+        - v1.21.1
         install-mode:
         - ha
         - standalone
