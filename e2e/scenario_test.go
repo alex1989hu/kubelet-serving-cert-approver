@@ -37,18 +37,28 @@ import (
 	eventsv1 "k8s.io/api/events/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	clientgokubernetes "k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/tools/portforward"
+	"k8s.io/client-go/tools/remotecommand"
 	"k8s.io/client-go/transport"
 	"k8s.io/client-go/transport/spdy"
 )
 
 const expectationDoesNotMeetMessage = "expectation does not meet"
 
+// commandResult holds command execution result.
+type commandResult struct {
+	Error  error
+	StdOut string
+	StdErr string
+}
+
 type ApproverInstance struct {
 	Clientset                     *clientgokubernetes.Clientset
 	CertificateSigningRequestList []certificatesv1.CertificateSigningRequest
+	CommandResult                 commandResult
 	Events                        []eventsv1.Event
 	Metrics                       []string
 	RestConfig                    *rest.Config
@@ -110,6 +120,23 @@ func InitializeScenario(s *godog.ScenarioContext) {
 	// Steps for testing features related to Health Check
 	s.Step(`^response shall contain "([^"]*)"$`,
 		instance.responseShallContain,
+	)
+
+	// Steps for testing security hardening features
+	s.Step(`^I execute command "([^"]*)" in the running Pod$`,
+		instance.iExecuteCommandInTheRunningPod,
+	)
+
+	s.Step(`^command execution shall report error$`,
+		instance.commandExecutionShallReportError,
+	)
+
+	s.Step(`^command execution shall not report any error$`,
+		instance.commandExecutionShallNotReportAnyError,
+	)
+
+	s.Step(`^command execution error message shall contain:$`,
+		instance.commandExecutionErrorMessageShallContain,
 	)
 }
 
@@ -323,6 +350,106 @@ func (c *ApproverInstance) responseShallContain(expected string) error {
 	return nil
 }
 
+// execOption holds options for command execution.
+//nolint:govet // Ignore pointer bytes in struct alignment tests.
+type execOption struct {
+	Command       []string
+	Namespace     string
+	PodName       string
+	ContainerName string
+	Stdin         io.Reader
+	CaptureStdout bool
+	CaptureStderr bool
+}
+
+// ExecuteCommandInContainer executes command in specified container and return stdout, stderr and error.
+func (c *ApproverInstance) ExecuteCommandInContainer(options execOption) (string, string, error) {
+	const (
+		container   = "container"
+		tty         = false
+		resource    = "pods"
+		subResource = "exec"
+	)
+
+	request := c.Clientset.CoreV1().RESTClient().Post().
+		Resource(resource).
+		Name(options.PodName).
+		Namespace(options.Namespace).
+		SubResource(subResource).
+		Param(container, options.ContainerName)
+
+	request.VersionedParams(&corev1.PodExecOptions{
+		Container: options.ContainerName,
+		Command:   options.Command,
+		Stdin:     options.Stdin != nil,
+		Stdout:    options.CaptureStdout,
+		Stderr:    options.CaptureStderr,
+		TTY:       tty,
+	}, scheme.ParameterCodec)
+
+	var stdout, stderr bytes.Buffer
+
+	err := execute(http.MethodPost, request.URL(), c.RestConfig, options.Stdin, &stdout, &stderr, tty)
+
+	return strings.TrimSpace(stdout.String()), strings.TrimSpace(stderr.String()), err
+}
+
+// iExecuteCommandInTheRunningPod executes given command in existing Pod.
+// feature: security
+func (c *ApproverInstance) iExecuteCommandInTheRunningPod(command string) error {
+	if err := assertExpectedLenAndActual(assert.Len, c.Pod.Spec.Containers, 1); err != nil {
+		return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
+	}
+
+	stdout, stderr, err := c.ExecuteCommandInContainer(execOption{
+		Command:       []string{command},
+		Namespace:     c.Pod.Namespace,
+		PodName:       c.Pod.Name,
+		ContainerName: c.Pod.Spec.Containers[0].Name,
+		Stdin:         nil,
+		CaptureStdout: true,
+		CaptureStderr: true,
+	})
+
+	c.CommandResult = commandResult{
+		StdOut: stdout,
+		StdErr: stderr,
+		Error:  err,
+	}
+
+	return nil
+}
+
+// commandExecutionShallReportError ensures that executed command reported error.
+// feature: security
+func (c *ApproverInstance) commandExecutionShallReportError() error {
+	if err := assertActual(assert.NotNil, c.CommandResult.Error); err != nil {
+		return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
+	}
+
+	return nil
+}
+
+// commandExecutionShallNotReportAnyError ensures that executed command did not report any error.
+// feature: security
+func (c *ApproverInstance) commandExecutionShallNotReportAnyError() error {
+	if err := assertActual(assert.Nil, c.CommandResult.Error); err != nil {
+		return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
+	}
+
+	return nil
+}
+
+// commandExecutionErrorMessageShallContain ensures that executed command error message contains expected string.
+// feature: security
+func (c *ApproverInstance) commandExecutionErrorMessageShallContain(expected *godog.DocString) error {
+	if err := assertExpectedAndActual(assert.Contains, c.CommandResult.Error.Error(), expected.Content); err != nil {
+		return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
+	}
+
+	return nil
+}
+
 func parseMetricNames(data []byte) ([]string, error) {
 	parser := expfmt.TextParser{}
 
@@ -450,6 +577,22 @@ func sendRequest(config *rest.Config, url string) (*http.Response, error) {
 	}
 
 	return client.Do(request)
+}
+
+// execute executes command in given container of a Pod.
+func execute(method string, url *url.URL, config *rest.Config, stdin io.Reader,
+	stdout, stderr io.Writer, tty bool) error {
+	exec, err := remotecommand.NewSPDYExecutor(config, method, url)
+	if err != nil {
+		return err
+	}
+
+	return exec.Stream(remotecommand.StreamOptions{
+		Stdin:  stdin,
+		Stdout: stdout,
+		Stderr: stderr,
+		Tty:    tty,
+	})
 }
 
 // createNewClientSet creates a client to be used to communicate with Kubernetes API Server.
