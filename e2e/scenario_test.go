@@ -52,6 +52,7 @@ type ApproverInstance struct {
 	Events                        []eventsv1.Event
 	Metrics                       []string
 	RestConfig                    *rest.Config
+	Response                      []byte
 	Pod                           corev1.Pod
 }
 
@@ -95,11 +96,21 @@ func InitializeScenario(s *godog.ScenarioContext) {
 	s.Step(`^there is a running Pod in namespace "([^"]*)" with label "([^"]*)"$`,
 		instance.thereIsARunningPodInNamespaceWithLabel)
 
-	s.Step(`^the Pod shall provide Prometheus Metrics at "([^"]*)" endpoint at port (\d+)$`,
-		instance.thePodShallProvidePrometheusMetricsAtEndpointAtPort)
+	s.Step(`^the Pod shall provide "([^"]*)" endpoint at port (\d+)$`,
+		instance.thePodShallProvideEndpointAtPort,
+	)
+
+	s.Step(`^response shall be parseable Prometheus Metrics$`,
+		instance.responseShallBeParseablePrometheusMetrics,
+	)
 
 	s.Step(`^metrics shall contain "([^"]*)" metric$`,
 		instance.metricsShallContainMetric)
+
+	// Steps for testing features related to Health Check
+	s.Step(`^response shall contain "([^"]*)"$`,
+		instance.responseShallContain,
+	)
 }
 
 // thereAreCertificateSigningRequests ensures that there is already existing Certificate Signing Request.
@@ -255,16 +266,34 @@ func (c *ApproverInstance) thereIsARunningPodInNamespaceWithLabel(namespace, lab
 	return nil
 }
 
-// thePodShallProvidePrometheusMetricsAtEndpointAtPort ensures that there is existing Prometheus Metrics endpoint.
-// feature: metrics
-func (c *ApproverInstance) thePodShallProvidePrometheusMetricsAtEndpointAtPort(endpoint string, port int) error {
+// thePodShallProvideEndpointAtPort ensures that there is existing endpoint at given port.
+// feature: healthcheck, metrics
+func (c *ApproverInstance) thePodShallProvideEndpointAtPort(endpoint string, port int) error {
 	resp, errRequest := proxyRequestToPod(c.RestConfig, c.Pod.Namespace, c.Pod.Name, "http", endpoint, port)
 
 	if err := assertActual(assert.Nil, errRequest); err != nil {
 		return fmt.Errorf("can not list pods in %s namespace: %w", c.Pod.Namespace, err)
 	}
 
-	metrics, errParse := parseMetricNames(resp)
+	c.Response = resp
+
+	return nil
+}
+
+// metricsShallContainMetric ensures that the given Prometheus Metric exist.
+// feature: metrics
+func (c *ApproverInstance) metricsShallContainMetric(metric string) error {
+	if err := assertExpectedAndActual(assert.Contains, c.Metrics, metric); err != nil {
+		return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
+	}
+
+	return nil
+}
+
+// responseShallBeParseablePrometheusMetrics ensures that the response is parseable Prometheus Metrics.
+// feature: metrics
+func (c *ApproverInstance) responseShallBeParseablePrometheusMetrics() error {
+	metrics, errParse := parseMetricNames(c.Response)
 	if err := assertActual(assert.Nil, errParse); err != nil {
 		return fmt.Errorf("can not parse Prometheus metrics: %w", errParse)
 	}
@@ -274,10 +303,20 @@ func (c *ApproverInstance) thePodShallProvidePrometheusMetricsAtEndpointAtPort(e
 	return nil
 }
 
-// metricsShallContainMetric ensures that the given Prometheus Metric exist.
-// feature: metrics
-func (c *ApproverInstance) metricsShallContainMetric(metric string) error {
-	if err := assertExpectedAndActual(assert.Contains, c.Metrics, metric); err != nil {
+// responseShallContain ensures that the saved response contains given string.
+// feature: healthcheck
+func (c *ApproverInstance) responseShallContain(expected string) error {
+	if err := assertActual(assert.NotNil, c.Response); err != nil {
+		return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
+	}
+
+	actualResponseText := string(c.Response)
+
+	if err := assertExpectedAndActual(assert.GreaterOrEqual, len(actualResponseText), 1); err != nil {
+		return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
+	}
+
+	if err := assertExpectedAndActual(assert.Contains, actualResponseText, expected); err != nil {
 		return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
 	}
 
