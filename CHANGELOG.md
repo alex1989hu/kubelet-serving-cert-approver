@@ -1,5 +1,18 @@
-<a name="0.1.1"></a>
-## [0.1.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/0.1.0...v0.1.1) (2021-05-30)
+<a name="v0.2.0"></a>
+## [v0.2.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.1.1...v0.2.0) (2021-06-10)
+
+### Chore
+
+* upgrade go v1.16.5
+* upgrade kubernetes dependencies v1.21.1
+
+### Ci
+
+* use v2 input for metadata-action to eliminate warning
+
+
+<a name="v0.1.1"></a>
+## [v0.1.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/0.1.0...v0.1.1) (2021-05-30)
 
 ### Chore
 
