@@ -13,19 +13,17 @@
 # limitations under the License.
 #
 
-@metrics
-@prometheus
+@healthcheck
+@liveness
 
-Feature: Prometheus Metrics
+Feature: Kubernetes Liveness Probe
   As an administrator
-  In order to track Certificate Signing Requests that kubelets use to serve TLS endpoints
-  I need to be able to have metrics of Certificate Signing Request approvals
+  In order to track application liveness
+  I need to be able to have endpoint for liveness probe
 
   Background:
     Given there is a running Pod in namespace "kubelet-serving-cert-approver" with label "app.kubernetes.io/name=kubelet-serving-cert-approver"
-    And the Pod shall provide "/metrics" endpoint at port 9090
+    And the Pod shall provide "/healthz" endpoint at port 8080
 
-  Scenario: Application shall provide metrics related to Certificate Signing Request
-    Then response shall be parseable Prometheus Metrics
-    And metrics shall contain "kubelet_serving_cert_approver_invalid_certificate_signing_request_count" metric
-    And metrics shall contain "kubelet_serving_cert_approver_approved_certificate_signing_request_count" metric
+  Scenario: Application shall provide liveness probe endpoint
+    Then response shall contain "ok"
