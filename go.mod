@@ -17,7 +17,7 @@ require (
 	github.com/stretchr/testify v1.7.0
 	go.uber.org/goleak v1.1.10
 	go.uber.org/multierr v1.7.0 // indirect
-	go.uber.org/zap v1.17.0
+	go.uber.org/zap v1.18.1
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
 	golang.org/x/oauth2 v0.0.0-20210622215436-a8dc77f794b6 // indirect
 	golang.org/x/sys v0.0.0-20210616094352-59db8d763f22 // indirect
