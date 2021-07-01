@@ -53,7 +53,7 @@ func CreateLogger() *zap.Logger {
 		ErrorOutputPaths: []string{"stderr"},
 	}.Build()
 	if err != nil {
-		log.Fatalf("error creating zap logger parent %v", err)
+		log.Fatalf("error creating zap logger parent %v", err) //nolint:revive // We must immediately exit, deep-exit.
 	}
 
 	defer zapLogger.Sync() //nolint:errcheck

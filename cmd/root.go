@@ -54,7 +54,7 @@ that kubelet use to serve TLS endpoints.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		log.Fatalf("Execution failed: %v", err)
+		log.Fatalf("Execution failed: %v", err) //nolint:revive // We must immediately exit, deep-exit.
 	}
 }
 
