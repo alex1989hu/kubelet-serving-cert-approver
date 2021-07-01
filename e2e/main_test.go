@@ -39,7 +39,7 @@ func init() {
 	godog.BindCommandLineFlags("godog.", &opts)
 }
 
-func TestMain(m *testing.M) {
+func TestMain(*testing.M) {
 	pflag.Parse()
 	opts.Paths = pflag.Args()
 
