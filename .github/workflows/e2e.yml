@@ -60,9 +60,18 @@ jobs:
       id: deployment
       run: |
         kubectl apply -f ./deploy/${{ matrix.install-mode }}-install.yaml
+        count=0
+        until [[ $(kubectl --namespace kubelet-serving-cert-approver get pod --selector app.kubernetes.io/name=kubelet-serving-cert-approver 2>/dev/null) ]]; do
+          count=$((count + 1))
+          if [[ "${count}" -eq "150" ]]; then
+            echo 'Wait Timeout exceeded' >&3
+            return 1
+          fi
+            sleep 2
+        done
         kubectl --namespace kubelet-serving-cert-approver wait --for=condition=ready pod --selector app.kubernetes.io/name=kubelet-serving-cert-approver --timeout=300s
     - name: Get deployment failure logs
-      if: steps.deployment.outputs.exit_code != 0
+      if: ${{ failure() && steps.deployment.outputs.exit_code != 0 }}
       run: |
         kubectl --namespace kubelet-serving-cert-approver get events
         kubectl --namespace kubelet-serving-cert-approver describe deployments kubelet-serving-cert-approver
