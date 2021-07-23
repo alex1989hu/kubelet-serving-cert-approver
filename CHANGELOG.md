@@ -1,3 +1,35 @@
+<a name="v0.2.1"></a>
+## [v0.2.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.0...v0.2.1) (2021-07-23)
+
+### Chore
+
+* upgrade go v1.16.6
+* upgrade kubernetes dependencies v1.21.3
+* upgrade controller-runtime v0.9.3
+* bump codecov/codecov-action from 1 to 2.0.1
+* bump docker/metadata-action from 3.4.0 to 3.4.1
+* bump docker/setup-buildx-action from 1.5.0 to 1.5.1
+* bump docker/metadata-action from 3.3.0 to 3.4.0
+* upgrade cobra v1.2.1
+* bump docker/setup-buildx-action from 1.4.1 to 1.5.0
+* upgrade cobra v1.2.0
+* bump docker/build-push-action from 2.5.0 to 2.6.1
+* enhance golangci-lint revive configuration
+* bump docker/setup-buildx-action from 1.3.0 to 1.4.1
+* upgrade golangci-lint v1.41.1
+* upgrade zap v1.18.1
+* upgrade viper v1.8.1
+* upgrade viper v1.8.0
+* upgrade cobra v1.1.3
+* upgrade kubernetes dependencies v1.21.2
+* bump docker/login-action from 1.9.0 to 1.10.0
+* add security hardening related e2e tests
+* add health check e2e tests
+
+### Ci
+
+* add wait script for not yet created k8s resource
+
 <a name="v0.2.0"></a>
 ## [v0.2.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.1.1...v0.2.0) (2021-06-10)
 
