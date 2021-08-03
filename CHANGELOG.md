@@ -1,3 +1,12 @@
+<a name="v0.2.2"></a>
+## [v0.2.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.1...v0.2.2) (2021-08-03)
+
+### Chore
+
+* upgrade controller-runtime v0.9.5
+* bump aquasecurity/trivy-action from 0.0.18 to 0.0.19
+* bump codecov/codecov-action from 2.0.1 to 2.0.2
+
 <a name="v0.2.1"></a>
 ## [v0.2.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.0...v0.2.1) (2021-07-23)
 
