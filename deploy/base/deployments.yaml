@@ -57,7 +57,7 @@ spec:
               memory: 32Mi
             requests:
               cpu: 10m
-              memory: 12Mi
+              memory: 16Mi
           ports:
           - name: health
             containerPort: 8080
