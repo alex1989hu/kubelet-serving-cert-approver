@@ -126,6 +126,7 @@ linters:
     - dupl
     - errcheck
     - errorlint
+    - errname
     - exhaustive
     - exportloopref
     - gci
