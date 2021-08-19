@@ -70,13 +70,15 @@ type ApproverInstance struct {
 func InitializeScenario(s *godog.ScenarioContext) {
 	var instance ApproverInstance
 
-	s.BeforeScenario(func(*godog.Scenario) {
+	s.Before(func(ctx context.Context, sc *godog.Scenario) (context.Context, error) {
 		clientset, restConfig, err := createNewClientSet()
 		if err != nil {
-			panic(err)
+			return ctx, err
 		}
 
 		instance = ApproverInstance{Clientset: clientset, RestConfig: restConfig}
+
+		return ctx, nil
 	})
 
 	// Steps for testing features related to Certificate Signing Request Approval

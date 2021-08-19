@@ -3,12 +3,14 @@ module github.com/alex1989hu/kubelet-serving-cert-approver
 go 1.16
 
 require (
-	github.com/cucumber/godog v0.11.0
+	github.com/cucumber/godog v0.12.0
 	github.com/go-logr/zapr v0.4.0
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/google/uuid v1.2.0 // indirect
+	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
+	github.com/hashicorp/go-memdb v1.3.2 // indirect
 	github.com/prometheus/client_golang v1.11.0
 	github.com/prometheus/common v0.29.0
 	github.com/spf13/cobra v1.2.1
