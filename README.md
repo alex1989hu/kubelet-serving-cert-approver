@@ -31,6 +31,7 @@ To install into your Kubernetes cluster, please navigate to [deploy](deploy) dir
 | `v1.19`        | &check;    |
 | `v1.20`        | &check;    |
 | `v1.21`        | &check;    |
+| `v1.22`        | &check;    |
 
 ## Prometheus Metrics
 
