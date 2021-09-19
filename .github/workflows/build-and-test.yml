@@ -32,7 +32,7 @@ jobs:
         hack/generate-manifests.sh
         git -c color.ui=always diff --exit-code deploy/
     - name: Upload Coverage Report
-      uses: codecov/codecov-action@v2.0.3
+      uses: codecov/codecov-action@v2.1.0
       with:
         file: ./coverage.out
         flags: unittests
