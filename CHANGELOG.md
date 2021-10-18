@@ -1,3 +1,66 @@
+
+<a name="v0.3.0"></a>
+## [v0.3.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.2...v0.3.0) (2021-10-18)
+
+### Chore
+
+* upgrade godog v0.12.2
+* bump actions/checkout from 2.3.4 to 2.3.5
+* upgrade controller-runtime v0.10.2
+* upgrade go v1.17.2
+* upgrade to latest distroless image
+* upgrade viper v1.9.0
+* upgrade controller-runtime v0.10.1
+* upgrade golangci-lint v1.42.1
+* upgrade go v1.17.1
+* upgrade kubernetes dependencies v1.22.2
+* upgrade goleak v1.1.11
+* upgrade zap v1.19.1
+* upgrade controller-runtime v0.10.0
+* bump codecov/codecov-action from 2.0.3 to 2.1.0
+* bump docker/setup-buildx-action from 1.5.1 to 1.6.0
+* bump codecov/codecov-action from 2.0.2 to 2.0.3
+* bump docker/metadata-action from 3.4.1 to 3.5.0
+* bump docker/build-push-action from 2.6.1 to 2.7.0
+* upgrade go v1.17.0
+* upgrade godog v0.12.0
+* bump aquasecurity/trivy-action from 0.0.19 to 0.0.20
+* upgrade controller-runtime v0.9.6
+* upgrade golangci-lint v1.42.0
+* upgrade go v1.16.7
+* increase memory request resource
+* upgrade zap v1.19.0
+* upgrade controller-runtime v0.9.5
+* bump aquasecurity/trivy-action from 0.0.18 to 0.0.19
+* bump codecov/codecov-action from 2.0.1 to 2.0.2
+* upgrade go v1.16.6
+* upgrade kubernetes dependencies v1.21.3
+* upgrade controller-runtime v0.9.3
+* bump codecov/codecov-action from 1 to 2.0.1
+* bump docker/metadata-action from 3.4.0 to 3.4.1
+* bump docker/setup-buildx-action from 1.5.0 to 1.5.1
+* bump docker/metadata-action from 3.3.0 to 3.4.0
+* upgrade cobra v1.2.1
+* bump docker/setup-buildx-action from 1.4.1 to 1.5.0
+* upgrade cobra v1.2.0
+* bump docker/build-push-action from 2.5.0 to 2.6.1
+* enhance golangci-lint revive configuration
+* bump docker/setup-buildx-action from 1.3.0 to 1.4.1
+* upgrade golangci-lint v1.41.1
+* upgrade zap v1.18.1
+* upgrade viper v1.8.1
+* upgrade viper v1.8.0
+* upgrade cobra v1.1.3
+* upgrade kubernetes dependencies v1.21.2
+* bump docker/login-action from 1.9.0 to 1.10.0
+* add security hardening related e2e tests
+* add health check e2e tests
+
+### Ci
+
+* use correct kubectl version
+* add wait script for not yet created k8s resource
+
 <a name="v0.2.2"></a>
 ## [v0.2.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.1...v0.2.2) (2021-08-03)
 
