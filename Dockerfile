@@ -53,7 +53,7 @@ COPY --from=builder /app/kubelet-serving-cert-approver /app/kubelet-serving-cert
 
 WORKDIR /app
 
-USER 65534
+USER 65534:65534
 
 EXPOSE 8080 9090
 
