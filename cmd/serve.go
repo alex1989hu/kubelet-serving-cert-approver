@@ -16,6 +16,7 @@
 package cmd
 
 import (
+	"github.com/go-logr/logr"
 	"github.com/go-logr/zapr"
 	"github.com/spf13/cobra"
 	uberzap "go.uber.org/zap"
@@ -83,7 +84,7 @@ func startServer() {
 		LeaderElectionResourceLock: "leases",
 		LeaderElectionID:           "kubelet-serving-certificate-approver",
 		// Set NullLogger: https://github.com/kubernetes-sigs/controller-runtime/issues/1122
-		Logger: ctrllog.NullLogger{},
+		Logger: logr.New(ctrllog.NewDelegatingLogSink(ctrllog.NullLogSink{})),
 	})
 	if err != nil {
 		setupLog.Fatal("Unable to start manager", uberzap.Error(err))
