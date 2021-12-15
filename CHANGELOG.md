@@ -1,3 +1,10 @@
+<a name="v0.4.1"></a>
+## [v0.4.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.0...v0.4.1) (2021-12-15)
+
+### Chore
+
+* upgrade viper v1.10.1
+
 <a name="v0.4.0"></a>
 ## [v0.4.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.3.0...v0.4.0) (2021-12-15)
 
