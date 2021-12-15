@@ -1,3 +1,33 @@
+<a name="v0.4.0"></a>
+## [v0.4.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.3.0...v0.4.0) (2021-12-15)
+
+### Chore
+
+* upgrade cobra v1.3.0
+* upgrade controller-runtime v0.11.0
+* upgrade go v1.17.4
+* explicitly set user group in Dockerfile
+* bump docker/metadata-action from 3.6.1 to 3.6.2
+* upgrade kubernetes dependencies v1.22.4
+* bump docker/metadata-action from 3.6.0 to 3.6.1
+* bump aquasecurity/trivy-action from 0.1.0 to 0.2.0
+* upgrade golangci-lint v1.43.0
+* bump aquasecurity/trivy-action from 0.0.22 to 0.1.0
+* upgrade kubernetes dependencies v1.22.3
+* upgrade go v1.17.3
+* upgrade controller-runtime v0.10.3
+* bump actions/checkout from 2.3.5 to 2.4.0
+* bump aquasecurity/trivy-action from 0.0.20 to 0.0.22
+* bump docker/metadata-action from 3.5.0 to 3.6.0
+
+### Ci
+
+* add nancy scan action
+* add snyk scan action
+
+### Docs
+
+* add kubernetes 1.23 to compatibility matrix
 
 <a name="v0.3.0"></a>
 ## [v0.3.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.2...v0.3.0) (2021-10-18)
@@ -113,7 +143,7 @@
 ### Ci
 
 * use v2 input for metadata-action to eliminate warning
-
+* extend e2e build matrix with ha and standalone install
 
 <a name="v0.1.1"></a>
 ## [v0.1.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/0.1.0...v0.1.1) (2021-05-30)
