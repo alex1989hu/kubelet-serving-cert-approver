@@ -1,0 +1,7 @@
+# Skip for indirect dependency github.com/coreos/etcd@3.3.13
+CVE-2020-15114
+CVE-2020-15115
+CVE-2020-15136
+
+# Skip for indirect dependency github.com/dgrijalva/jwt-go@3.2.0
+CVE-2020-26160

@@ -1,0 +1,24 @@
+name: nancy
+on:
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+  pull_request:
+  schedule:
+    - cron: '0 12 * * 6'
+jobs:
+  nancy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17.4
+      - name: Create dependency list for Nancy
+        run: go list -json -m all > go.list
+      - name: Run Nancy Vulnerability Scanner
+        uses: sonatype-nexus-community/nancy-github-action@v1.0.2
