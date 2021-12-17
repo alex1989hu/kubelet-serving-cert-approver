@@ -14,9 +14,9 @@ require (
 	github.com/stretchr/testify v1.7.0
 	go.uber.org/goleak v1.1.12
 	go.uber.org/zap v1.19.1
-	k8s.io/api v0.23.0
-	k8s.io/apimachinery v0.23.0
-	k8s.io/client-go v0.23.0
+	k8s.io/api v0.23.1
+	k8s.io/apimachinery v0.23.1
+	k8s.io/client-go v0.23.1
 	k8s.io/klog/v2 v2.30.0
 	sigs.k8s.io/controller-runtime v0.11.0
 )
@@ -62,7 +62,7 @@ require (
 	github.com/subosito/gotenv v1.2.0 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.7.0 // indirect
-	golang.org/x/net v0.0.0-20210825183410-e898025ed96a // indirect
+	golang.org/x/net v0.0.0-20211209124913-491a49abca63 // indirect
 	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8 // indirect
 	golang.org/x/sys v0.0.0-20211210111614-af8b64212486 // indirect
 	golang.org/x/term v0.0.0-20210615171337-6886f2dfbf5b // indirect
