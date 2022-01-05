@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: go test -race ./... -v -coverprofile=coverage.out
     - name: Set up kubectl
-      uses: azure/setup-kubectl@v1
+      uses: azure/setup-kubectl@v2.0
       with:
         version: v1.23.0
     - name: Generate Install Manifests
