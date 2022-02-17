@@ -6,7 +6,7 @@ require (
 	github.com/cucumber/godog v0.12.3
 	github.com/go-logr/logr v1.2.0
 	github.com/go-logr/zapr v1.2.0
-	github.com/prometheus/client_golang v1.11.0
+	github.com/prometheus/client_golang v1.11.1
 	github.com/prometheus/common v0.29.0
 	github.com/spf13/cobra v1.3.0
 	github.com/spf13/pflag v1.0.5
