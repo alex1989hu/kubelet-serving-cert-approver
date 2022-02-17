@@ -483,7 +483,7 @@ func proxyRequestToPod(config *rest.Config, namespace, podname, scheme, path str
 
 	if strings.Contains(path, "?") {
 		elm := strings.SplitN(path, "?", 2)
-		path = elm[0]
+		path = elm[0] //nolint:revive // Intentionally use path.
 		query = elm[1]
 	}
 
