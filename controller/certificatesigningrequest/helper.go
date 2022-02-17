@@ -30,7 +30,7 @@ import (
 //nolint:lll
 var (
 	errDNSOrIPMissing               = errors.New("either DNS Names or IP Addresses is missing")
-	errExtraExtensionsPresent       = errors.New("EmailAddress and URI subjectAltName extensions are forbidden")
+	errExtraExtensionsPresent       = errors.New("emailAddress and URI subjectAltName extensions are forbidden")
 	errKeyUsageMismatch             = errors.New("key usage does not match")
 	errNotCertificateRequest        = errors.New("PEM Block Type must be CERTIFICATE REQUEST")
 	errOrganizationMismatch         = errors.New("organization does not match")

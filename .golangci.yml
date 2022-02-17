@@ -28,7 +28,10 @@ linters-settings:
   dupl:
     threshold: 100
   gci:
-    local-prefixes: github.com/alex1989hu/kubelet-serving-cert-approver
+    sections:
+      - standard
+      - default
+      - prefix(github.com/alex1989hu/kubelet-serving-cert-approver)
   goconst:
     min-len: 3
     min-occurrences: 3
