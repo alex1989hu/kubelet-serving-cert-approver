@@ -15,7 +15,7 @@ jobs:
         - v1.20.7
         - v1.21.2
         - v1.22.4
-        - v1.23.3
+        - v1.23.4
         install-mode:
         - ha
         - standalone
