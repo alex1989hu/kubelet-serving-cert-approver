@@ -1,6 +1,6 @@
 module github.com/alex1989hu/kubelet-serving-cert-approver
 
-go 1.17
+go 1.18
 
 require (
 	github.com/cucumber/godog v0.12.3
