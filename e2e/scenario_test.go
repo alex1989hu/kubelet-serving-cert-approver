@@ -471,7 +471,8 @@ func parseMetricNames(data []byte) ([]string, error) {
 }
 
 func proxyRequestToPod(config *rest.Config, namespace, podname, scheme, path string,
-	port int) ([]byte, error) {
+	port int,
+) ([]byte, error) {
 	cancel, err := setupForwarding(config, namespace, port, podname)
 	if err != nil {
 		return nil, fmt.Errorf("can not setup port forwarding: %w", err)
@@ -483,7 +484,7 @@ func proxyRequestToPod(config *rest.Config, namespace, podname, scheme, path str
 
 	if strings.Contains(path, "?") {
 		elm := strings.SplitN(path, "?", 2)
-		path = elm[0] //nolint:revive // Intentionally use path.
+		path = elm[0]
 		query = elm[1]
 	}
 
@@ -510,7 +511,8 @@ func proxyRequestToPod(config *rest.Config, namespace, podname, scheme, path str
 }
 
 func setupForwarding(config *rest.Config, namespace string, port int,
-	podname string) (cancel func(), err error) {
+	podname string,
+) (cancel func(), err error) {
 	hostIP := strings.TrimPrefix(config.Host, "https://")
 
 	trans, upgrader, err := spdy.RoundTripperFor(config)
@@ -584,7 +586,8 @@ func sendRequest(config *rest.Config, url string) (*http.Response, error) {
 
 // execute executes command in given container of a Pod.
 func execute(method string, url *url.URL, config *rest.Config, stdin io.Reader,
-	stdout, stderr io.Writer, tty bool) error {
+	stdout, stderr io.Writer, tty bool,
+) error {
 	exec, err := remotecommand.NewSPDYExecutor(config, method, url)
 	if err != nil {
 		return err

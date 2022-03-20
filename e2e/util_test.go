@@ -27,7 +27,8 @@ import (
 // assertExpectedAndActual is a helper function to allow the step function to call
 // assertion functions where you want to compare an expected and an actual value.
 func assertExpectedAndActual(a expectedAndActualAssertion,
-	expected, actual interface{}, msgAndArgs ...interface{}) error {
+	expected, actual interface{}, msgAndArgs ...interface{},
+) error {
 	var t asserter
 
 	a(&t, expected, actual, msgAndArgs...)
@@ -53,7 +54,8 @@ func assertActual(a actualAssertion, actual interface{}) error {
 // assertion functions where you want to compare an actual value to a
 // has specific length.
 func assertExpectedLenAndActual(a func(t assert.TestingT, object interface{},
-	length int, msgAndArgs ...interface{}) bool, actual interface{}, length int, msgAndArgs ...interface{}) error {
+	length int, msgAndArgs ...interface{}) bool, actual interface{}, length int, msgAndArgs ...interface{},
+) error {
 	var t asserter
 
 	a(&t, actual, length, msgAndArgs)
