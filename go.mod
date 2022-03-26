@@ -3,7 +3,7 @@ module github.com/alex1989hu/kubelet-serving-cert-approver
 go 1.18
 
 require (
-	github.com/cucumber/godog v0.12.3
+	github.com/cucumber/godog v0.12.5
 	github.com/go-logr/logr v1.2.0
 	github.com/go-logr/zapr v1.2.0
 	github.com/prometheus/client_golang v1.11.1
