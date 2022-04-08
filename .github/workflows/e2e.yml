@@ -78,7 +78,7 @@ jobs:
         kubectl --namespace kubelet-serving-cert-approver get events
         kubectl --namespace kubelet-serving-cert-approver describe deployments kubelet-serving-cert-approver
     - name: Set up Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
         go-version: 1.18.0
     - name: Test Approved Certificate Signing Requests
