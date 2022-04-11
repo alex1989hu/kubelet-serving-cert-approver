@@ -28,7 +28,7 @@ jobs:
         push: false
         tags: ghcr.io/${{ github.repository }}:trivy
     - name: Run Trivy Vulnerability Scanner
-      uses: aquasecurity/trivy-action@0.2.2
+      uses: aquasecurity/trivy-action@0.2.3
       with:
         image-ref: ghcr.io/${{ github.repository }}:trivy
         format: template
