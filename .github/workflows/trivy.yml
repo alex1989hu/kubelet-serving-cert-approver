@@ -35,6 +35,6 @@ jobs:
         template: '@/contrib/sarif.tpl'
         output: ./trivy-results.sarif
     - name: Upload Trivy Scan Results
-      uses: github/codeql-action/upload-sarif@v1
+      uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: ./trivy-results.sarif
