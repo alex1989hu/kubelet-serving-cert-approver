@@ -1,8 +1,42 @@
-<a name="v0.4.3"></a>
-## [v0.4.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.2...v0.4.3) (2022-02-17)
+<a name="v0.4.4"></a>
+## [v0.4.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.3...v0.4.4) (2022-05-06)
 
 ### Chore
 
+* bump docker/build-push-action from 2.10.0 to 3.0.0
+* bump docker/setup-qemu-action from 1.2.0 to 2.0.0
+* bump docker/metadata-action from 3.8.0 to 4.0.1
+* bump docker/setup-buildx-action from 1.7.0 to 2.0.0
+* bump docker/login-action from 1.14.1 to 2.0.0
+* bump docker/metadata-action from 3.7.0 to 3.8.0
+* bump docker/setup-buildx-action from 1.6.0 to 1.7.0
+* bump sigstore/cosign-installer from 2.2.1 to 2.3.0
+* upgrade kubernetes dependencies v1.23.6
+* upgrade go v1.18.1
+* upgrade viper v1.11.0
+* bump github/codeql-action from 1 to 2
+* bump aquasecurity/trivy-action from 0.2.4 to 0.2.5
+* bump aquasecurity/trivy-action from 0.2.3 to 0.2.4
+* bump sigstore/cosign-installer from 2.2.0 to 2.2.1
+* bump aquasecurity/trivy-action from 0.2.2 to 0.2.3
+* upgrade controller-runtime v0.11.2
+* bump sigstore/cosign-installer from 2.1.0 to 2.2.0
+* bump actions/setup-go from 2 to 3
+* bump docker/metadata-action from 3.6.2 to 3.7.0
+* bump codecov/codecov-action from 2.1.0 to 3
+* upgrade godog v0.12.5
+* upgrade golangci-lint v1.45.2
+* upgrade kubernetes dependencies v1.23.5
+* upgrade go v1.18.0
+* bump docker/build-push-action from 2.9.0 to 2.10.0
+* upgrade go v1.17.8
+* upgrade kind v0.12.0
+* upgrade kubernetes dependencies v1.23.4
+* upgrade cobra v1.4.0
+* bump azure/setup-kubectl from 2.0 to 2.1
+* bump docker/login-action from 1.14.0 to 1.14.1
+* bump actions/checkout from 2.4.0 to 3
+* bump docker/login-action from 1.13.0 to 1.14.0
 * upgrade prometheus/client_golang v1.11.1
 * upgrade golangci-lint v1.44.1
 * upgrade go v1.17.7
@@ -23,6 +57,28 @@
 * bump docker/login-action from 1.10.0 to 1.12.0
 * upgrade kubernetes dependencies v1.23.1
 * upgrade go v1.17.5
+* upgrade viper v1.10.1
+
+### Ci
+
+* switch trivy report sarif option
+* upgrade kubernetes image to v1.23.5
+* sign container images with cosign
+* upgrade golangci-lint-action[@v3](https://github.com/v3)
+
+
+<a name="v0.4.3"></a>
+## [v0.4.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.2...v0.4.3) (2022-02-17)
+
+### Chore
+
+* upgrade prometheus/client_golang v1.11.1
+* upgrade golangci-lint v1.44.1
+* upgrade go v1.17.7
+* bump docker/login-action from 1.12.0 to 1.13.0
+* upgrade controller-runtime v0.11.1
+* upgrade zap v1.21.0
+
 
 <a name="v0.4.2"></a>
 ## [v0.4.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.1...v0.4.2) (2022-02-03)
@@ -43,7 +99,6 @@
 * bump docker/login-action from 1.10.0 to 1.12.0
 * upgrade kubernetes dependencies v1.23.1
 * upgrade go v1.17.5
-* upgrade viper v1.10.1
 
 
 <a name="v0.4.1"></a>
