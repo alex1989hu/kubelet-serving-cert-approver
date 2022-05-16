@@ -1,5 +1,5 @@
 <a name="v0.4.4"></a>
-## [v0.4.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.3...v0.4.4) (2022-05-06)
+## [v0.4.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.3...v0.4.4) (2022-05-08)
 
 ### Chore
 
@@ -37,27 +37,6 @@
 * bump docker/login-action from 1.14.0 to 1.14.1
 * bump actions/checkout from 2.4.0 to 3
 * bump docker/login-action from 1.13.0 to 1.14.0
-* upgrade prometheus/client_golang v1.11.1
-* upgrade golangci-lint v1.44.1
-* upgrade go v1.17.7
-* bump docker/login-action from 1.12.0 to 1.13.0
-* upgrade controller-runtime v0.11.1
-* upgrade zap v1.21.0
-* bump aquasecurity/trivy-action from 0.2.1 to 0.2.2
-* upgrade golangci-lint v1.44.0
-* upgrade kubernetes dependencies v1.23.3
-* upgrade go v1.17.6
-* bump docker/build-push-action from 2.8.0 to 2.9.0
-* bump docker/build-push-action from 2.7.0 to 2.8.0
-* upgrade e2e kubernetes version to v1.23.1
-* upgrade godog v0.12.3
-* upgrade zap v1.20.0
-* bump azure/setup-kubectl from 1 to 2.0
-* bump aquasecurity/trivy-action from 0.2.0 to 0.2.1
-* bump docker/login-action from 1.10.0 to 1.12.0
-* upgrade kubernetes dependencies v1.23.1
-* upgrade go v1.17.5
-* upgrade viper v1.10.1
 
 ### Ci
 
@@ -108,6 +87,7 @@
 
 * upgrade viper v1.10.1
 
+
 <a name="v0.4.0"></a>
 ## [v0.4.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.3.0...v0.4.0) (2021-12-15)
 
@@ -138,6 +118,7 @@
 ### Docs
 
 * add kubernetes 1.23 to compatibility matrix
+
 
 <a name="v0.3.0"></a>
 ## [v0.3.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.2...v0.3.0) (2021-10-18)
@@ -201,6 +182,7 @@
 * use correct kubectl version
 * add wait script for not yet created k8s resource
 
+
 <a name="v0.2.2"></a>
 ## [v0.2.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.1...v0.2.2) (2021-08-03)
 
@@ -209,6 +191,7 @@
 * upgrade controller-runtime v0.9.5
 * bump aquasecurity/trivy-action from 0.0.18 to 0.0.19
 * bump codecov/codecov-action from 2.0.1 to 2.0.2
+
 
 <a name="v0.2.1"></a>
 ## [v0.2.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.2.0...v0.2.1) (2021-07-23)
@@ -242,6 +225,7 @@
 
 * add wait script for not yet created k8s resource
 
+
 <a name="v0.2.0"></a>
 ## [v0.2.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.1.1...v0.2.0) (2021-06-10)
 
@@ -249,11 +233,21 @@
 
 * upgrade go v1.16.5
 * upgrade kubernetes dependencies v1.21.1
+* optimize debug logging with zap checkedentry
+* upgrade golangci-lint v1.40.1
+* upgrade zap v1.17.0
+* upgrade kind v0.11.1
+* generate manifests with v1.20.7 kubectl
+* bump aquasecurity/trivy-action from 0.0.17 to 0.0.18
+* bump docker/setup-qemu-action from 1.1.0 to 1.2.0
+* bump docker/build-push-action from 2.4.0 to 2.5.0
+* bump docker/metadata-action from 3.1.0 to 3.3.0
 
 ### Ci
 
 * use v2 input for metadata-action to eliminate warning
 * extend e2e build matrix with ha and standalone install
+
 
 <a name="v0.1.1"></a>
 ## [v0.1.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/0.1.0...v0.1.1) (2021-05-30)
@@ -340,3 +334,4 @@
 
 * add e2e BDD tests
 * add operator to approve kubelet certificate use to serve TLS endpoints
+
