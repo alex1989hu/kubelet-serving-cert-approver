@@ -26,7 +26,7 @@ jobs:
     - name: Set up kubectl
       uses: azure/setup-kubectl@v2.1
       with:
-        version: v1.23.5
+        version: v1.24.1
     - name: Generate Install Manifests
       run: |
         hack/generate-manifests.sh
