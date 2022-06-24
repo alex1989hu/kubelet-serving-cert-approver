@@ -21,8 +21,11 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"go.uber.org/zap"
 
 	"github.com/alex1989hu/kubelet-serving-cert-approver/build"
+	"github.com/alex1989hu/kubelet-serving-cert-approver/controller/certificatesigningrequest"
+	"github.com/alex1989hu/kubelet-serving-cert-approver/logger"
 )
 
 const defaultNamespace = "kubelet-serving-cert-approver"
@@ -73,6 +76,10 @@ func init() {
 	if err := viper.BindPFlags(rootCmd.PersistentFlags()); err != nil {
 		log.Fatalf("Can not bind flags: %v", err)
 	}
+
+	certificatesigningrequest.SetLogger(
+		logger.CreateLogger().With(zap.String("controller", "certificatesigningrequest")),
+	)
 }
 
 // initConfig reads environment variables if set.

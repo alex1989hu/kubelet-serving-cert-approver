@@ -23,3 +23,8 @@ import (
 
 //nolint:gochecknoglobals
 var log = logger.CreateLogger().With(zap.String("controller", "certificatesigningrequest"))
+
+// SetLogger sets the package logger
+func SetLogger(logger *zap.Logger) {
+	log = logger
+}
