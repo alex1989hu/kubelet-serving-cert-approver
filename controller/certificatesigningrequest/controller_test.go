@@ -168,7 +168,7 @@ func TestReconcileClientGetError(t *testing.T) {
 
 	mockClient.On("Get", mock.Anything, types.NamespacedName{}, mock.Anything).Return(errMockGet).Times(1)
 
-	signingReconciler := &SigningReconciler{Client: mockClient, Scheme: runtime.NewScheme()}
+	signingReconciler := &SigningReconciler{Client: mockClient, Scheme: runtime.NewScheme(), Logger: TestLogger}
 	req := reconcile.Request{NamespacedName: types.NamespacedName{}}
 	res, err := signingReconciler.Reconcile(context.TODO(), req)
 
@@ -187,7 +187,7 @@ func TestReconcileClientGetNotFoundError(t *testing.T) {
 
 	mockClient.On("Get", mock.Anything, types.NamespacedName{}, mock.Anything).Return(errNotFound).Times(1)
 
-	signingReconciler := &SigningReconciler{Client: mockClient, Scheme: runtime.NewScheme()}
+	signingReconciler := &SigningReconciler{Client: mockClient, Scheme: runtime.NewScheme(), Logger: TestLogger}
 	req := reconcile.Request{NamespacedName: types.NamespacedName{}}
 	res, err := signingReconciler.Reconcile(context.TODO(), req)
 
@@ -311,6 +311,7 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 			r := &SigningReconciler{
 				Client: fakeClient,
 				Scheme: runtime.NewScheme(),
+				Logger: TestLogger,
 			}
 			req := reconcile.Request{
 				NamespacedName: types.NamespacedName{
@@ -370,6 +371,7 @@ func TestReconcileValidCSR(t *testing.T) {
 		ClientSet:     &fakeClientset,
 		EventRecorder: fakeEventRecorder,
 		Scheme:        runtime.NewScheme(),
+		Logger:        TestLogger,
 	}
 	req := reconcile.Request{
 		NamespacedName: types.NamespacedName{
@@ -424,6 +426,7 @@ func TestReconcileParseCSRError(t *testing.T) {
 		ClientSet:     &fakeClientset,
 		EventRecorder: fakeEventRecorder,
 		Scheme:        runtime.NewScheme(),
+		Logger:        TestLogger,
 	}
 
 	req := reconcile.Request{
@@ -473,6 +476,7 @@ func TestReconcileRecognizeError(t *testing.T) {
 		ClientSet:     &fakeClientset,
 		EventRecorder: fakeEventRecorder,
 		Scheme:        runtime.NewScheme(),
+		Logger:        TestLogger,
 	}
 
 	req := reconcile.Request{
@@ -522,6 +526,7 @@ func TestReconcileAuthorizationError(t *testing.T) {
 		ClientSet:     &fakeClientset,
 		EventRecorder: fakeEventRecorder,
 		Scheme:        runtime.NewScheme(),
+		Logger:        TestLogger,
 	}
 
 	req := reconcile.Request{
@@ -578,6 +583,7 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 		ClientSet:     &fakeClientset,
 		EventRecorder: fakeEventRecorder,
 		Scheme:        runtime.NewScheme(),
+		Logger:        TestLogger,
 	}
 
 	req := reconcile.Request{
@@ -642,6 +648,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 		ClientSet:     &fakeClientset,
 		EventRecorder: fakeEventRecorder,
 		Scheme:        runtime.NewScheme(),
+		Logger:        TestLogger,
 	}
 
 	req := reconcile.Request{

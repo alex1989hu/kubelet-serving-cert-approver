@@ -260,7 +260,7 @@ func TestIsRequestConformInvalidSigningRequest(t *testing.T) {
 
 		t.Run(fmt.Sprint(table.expectedError), func(t *testing.T) {
 			t.Parallel()
-			assert.True(t, errors.Is(isRequestConform(table.csr, &table.x509cr), table.expectedError))
+			assert.True(t, errors.Is(isRequestConform(TestLogger, table.csr, &table.x509cr), table.expectedError))
 		})
 	}
 }
@@ -314,7 +314,7 @@ func TestConformantKubeletServingCertificateSigningRequest(t *testing.T) {
 
 		t.Run(fmt.Sprint(table.goal), func(t *testing.T) {
 			t.Parallel()
-			assert.NoError(t, isRequestConform(table.csr, &table.x509cr))
+			assert.NoError(t, isRequestConform(TestLogger, table.csr, &table.x509cr))
 		})
 	}
 }

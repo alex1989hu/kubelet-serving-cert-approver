@@ -23,9 +23,12 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
+//nolint:gochecknoglobals
+var TestLogger *zap.Logger
+
 func TestMain(m *testing.M) {
-	// Replace package logger with enabled debug logging to reveal any possible issue due to zap CheckedEntry logging
-	log, _ = zap.Config{ //nolint:errcheck
+	// Create logger with enabled debug logging to reveal any possible issue due to zap CheckedEntry logging
+	TestLogger, _ = zap.Config{ //nolint:errcheck
 		Level:       zap.NewAtomicLevelAt(zap.DebugLevel),
 		Development: true,
 		Encoding:    "json",
