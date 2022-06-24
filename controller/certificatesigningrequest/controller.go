@@ -45,49 +45,49 @@ type SigningReconciler struct {
 	ClientSet     k8sclient.Interface
 	Scheme        *runtime.Scheme
 	EventRecorder record.EventRecorder
+	Logger        *zap.Logger
 }
 
 // Reconcile processes request and returns the result.
 //nolint:gocyclo
 func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+	reqLogger := r.Logger.With(zap.String("csr", req.Name))
+
 	var csr certificatesv1.CertificateSigningRequest
 
 	if err := r.Client.Get(ctx, req.NamespacedName, &csr); ctrlclient.IgnoreNotFound(err) != nil {
 		message := "Unable to to get Certificate Signing Requests"
-		log.Error(message, zap.Error(err))
+		reqLogger.Error(message, zap.Error(err))
 
 		return ctrl.Result{}, fmt.Errorf("%s %w", message, err)
 	}
 
 	switch {
 	case csr.Spec.SignerName != certificatesv1.KubeletServingSignerName:
-		if ce := log.Check(zap.DebugLevel,
+		if ce := reqLogger.Check(zap.DebugLevel,
 			"Certificate Signing Request is not Kubelet serving Certificate"); ce != nil {
 			ce.Write(
 				zap.String("signer", csr.Spec.SignerName),
 			)
 		}
 	case !csr.DeletionTimestamp.IsZero():
-		if ce := log.Check(zap.DebugLevel,
+		if ce := reqLogger.Check(zap.DebugLevel,
 			"Certificate Signing Request has been deleted"); ce != nil {
 			ce.Write(
-				zap.String("csr", csr.Name),
 				zap.Time("deleted", csr.DeletionTimestamp.Time),
 			)
 		}
 	case csr.Status.Certificate != nil:
-		if ce := log.Check(zap.DebugLevel,
+		if ce := reqLogger.Check(zap.DebugLevel,
 			"Certificate Signing Request is already signed"); ce != nil {
 			ce.Write(
-				zap.String("csr", csr.Name),
 				zap.String("signer", csr.Spec.SignerName),
 			)
 		}
 	case len(csr.Status.Conditions) != 0:
-		if ce := log.Check(zap.DebugLevel,
+		if ce := reqLogger.Check(zap.DebugLevel,
 			"Certificate Signing Request already has approval condition"); ce != nil {
 			ce.Write(
-				zap.String("csr", csr.Name),
 				zap.Any("conditions", csr.Status.Conditions),
 			)
 		}
@@ -96,7 +96,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		if err != nil {
 			message := "Unable to parse Certificate Signing Request"
 
-			log.Error(message, zap.String("csr", csr.Name), zap.Error(err))
+			reqLogger.Error(message, zap.Error(err))
 			metrics.NumberOfInvalidCertificateSigningRequests.Inc()
 			r.EventRecorder.Event(&csr, corev1.EventTypeWarning, eventWarningReason,
 				message+": "+csr.Name+"): "+err.Error())
@@ -104,10 +104,10 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 			return ctrl.Result{}, err
 		}
 
-		if errIsKubeletServingCert := isRequestConform(csr, x509cr); errIsKubeletServingCert != nil {
+		if errIsKubeletServingCert := isRequestConform(reqLogger, csr, x509cr); errIsKubeletServingCert != nil {
 			message := "Unable to recognize the Certificate Signing Request"
 
-			log.Error(message, zap.String("csr", csr.Name), zap.Error(err))
+			reqLogger.Error(message, zap.Error(err))
 			metrics.NumberOfInvalidCertificateSigningRequests.Inc()
 			r.EventRecorder.Event(&csr, corev1.EventTypeWarning, eventWarningReason,
 				message+": "+csr.Name+"): "+errIsKubeletServingCert.Error())
@@ -120,7 +120,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		if err != nil {
 			message := "Unable to get authorization of Certificate Signing Request"
 
-			log.Error(message, zap.String("csr", csr.Name), zap.Error(err))
+			reqLogger.Error(message, zap.Error(err))
 			metrics.NumberOfInvalidCertificateSigningRequests.Inc()
 			r.EventRecorder.Event(&csr, corev1.EventTypeWarning, eventWarningReason,
 				message+": "+csr.Name+err.Error())
@@ -136,7 +136,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 			if err != nil {
 				message := "Unable to perform UpdateApproval"
 
-				log.Error(message, zap.String("csr", csr.Name), zap.Error(err))
+				reqLogger.Error(message, zap.Error(err))
 				metrics.NumberOfInvalidCertificateSigningRequests.Inc()
 				r.EventRecorder.Event(&csr, corev1.EventTypeWarning, eventWarningReason,
 					message+"("+csr.Name+"): "+err.Error())
@@ -144,8 +144,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 				return ctrl.Result{}, fmt.Errorf("%s: %w", message, err)
 			}
 
-			log.Info("The Certificate Signing Request has been approved",
-				zap.String("csr", csr.Name),
+			reqLogger.Info("The Certificate Signing Request has been approved",
 				zap.Strings("dns", x509cr.DNSNames),
 				zap.Any("ip", x509cr.IPAddresses))
 
@@ -156,7 +155,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		} else {
 			message := "Node is not authorized. Unable to perform Subject Access Review, "
 
-			log.Error(message, zap.String("csr", csr.Name))
+			reqLogger.Error(message)
 			metrics.NumberOfInvalidCertificateSigningRequests.Inc()
 			r.EventRecorder.Event(&csr, corev1.EventTypeWarning, eventWarningReason,
 				message+": "+csr.Name)
@@ -170,6 +169,8 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 
 // Validate that the given node has authorization to actually create CSRs.
 func (r *SigningReconciler) authorize(csr *certificatesv1.CertificateSigningRequest) (bool, error) {
+	log := r.Logger.With(zap.String("csr", csr.Name))
+
 	extra := make(map[string]authorizationv1.ExtraValue, len(csr.Spec.Extra))
 
 	for k, v := range csr.Spec.Extra {

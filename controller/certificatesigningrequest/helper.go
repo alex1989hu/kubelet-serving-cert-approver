@@ -56,7 +56,7 @@ func parseCSR(pemBytes []byte) (*x509.CertificateRequest, error) {
 }
 
 // hasExactUsages check the permitted key usages - exactly ["key encipherment", "digital signature", "server auth"].
-func hasExactUsages(csr certificatesv1.CertificateSigningRequest) bool {
+func hasExactUsages(log *zap.Logger, csr certificatesv1.CertificateSigningRequest) bool {
 	permittedUsages := [3]certificatesv1.KeyUsage{
 		certificatesv1.UsageKeyEncipherment,
 		certificatesv1.UsageDigitalSignature,
@@ -85,7 +85,9 @@ func hasExactUsages(csr certificatesv1.CertificateSigningRequest) bool {
 
 // isRequestConform returns error if the input does not conform with Kubernetes rules.
 // Reference: https://k8s.io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers
-func isRequestConform(csr certificatesv1.CertificateSigningRequest, x509cr *x509.CertificateRequest) error {
+func isRequestConform(log *zap.Logger, csr certificatesv1.CertificateSigningRequest,
+	x509cr *x509.CertificateRequest,
+) error {
 	expectedOrg := "system:nodes"
 	expectedPrefix := "system:node:"
 
@@ -114,23 +116,21 @@ func isRequestConform(csr certificatesv1.CertificateSigningRequest, x509cr *x509
 	}
 
 	if (len(x509cr.EmailAddresses) != 0) || (len(x509cr.URIs) != 0) {
-		log.Warn("Forbidden EmailAddress and URI subjectAltName extensions are found",
-			zap.String("csr", csr.Name))
+		log.Warn("Forbidden EmailAddress and URI subjectAltName extensions are found")
 
 		return errExtraExtensionsPresent
 	}
 
 	if (len(x509cr.DNSNames) < 1) && (len(x509cr.IPAddresses) < 1) {
-		log.Warn("DNSNames or IP Addresses must be present",
-			zap.String("csr", csr.Name))
+		log.Warn("DNSNames or IP Addresses must be present")
 
 		return errDNSOrIPMissing
 	}
 
-	if !hasExactUsages(csr) {
+	if !hasExactUsages(log, csr) {
 		log.Warn("Certificate Signing Request Usages do not match",
-			zap.String("csr", csr.Name),
-			zap.Any("usages", csr.Spec.Usages))
+			zap.Any("usages", csr.Spec.Usages),
+		)
 
 		return errKeyUsageMismatch
 	}
