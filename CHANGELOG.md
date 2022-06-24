@@ -1,4 +1,35 @@
 
+<a name="v0.5.1"></a>
+## [v0.5.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.5.0...v0.5.1) (2022-06-24)
+
+### Chore
+
+* upgrade e2e kubernetes version to v1.24.2
+* upgrade cobra v1.5.0
+* upgrade stretchr/testify v1.7.5
+* upgrade controller-runtime v0.12.2
+* bump aquasecurity/trivy-action from 0.4.0 to 0.5.0
+* bump azure/setup-kubectl from 2.1 to 3.0
+* upgrade kubernetes dependencies v1.24.2
+* upgrade stretchr/testify v1.7.4
+* bump aquasecurity/trivy-action from 0.3.0 to 0.4.0
+* upgrade golangci-lint v1.46.2
+* upgrade kind v0.14.0
+* upgrade kubernetes dependencies v1.24.1
+* upgrade go v1.18.3
+* bump sigstore/cosign-installer from 2.3.0 to 2.4.0
+* upgrade viper v1.12.0
+* upgrade controller-runtime v0.12.1
+
+### Ci
+
+* upgrade kubernetes image to v1.24.2
+* update nancy ignore
+
+### Fix
+
+* logger debug flag not being set
+
 <a name="v0.5.0"></a>
 ## [v0.5.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.4...v0.5.0) (2022-05-16)
 
