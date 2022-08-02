@@ -46,7 +46,7 @@ func TestLoggingConfiguration(t *testing.T) {
 		},
 	}
 
-	for _, table := range tables { //nolint:paralleltest // Disable due to linter bug.
+	for _, table := range tables {
 		table := table // pin!
 
 		t.Run(fmt.Sprintf("Debug level enabled: (%t)", table.debugEnabled), func(t *testing.T) {

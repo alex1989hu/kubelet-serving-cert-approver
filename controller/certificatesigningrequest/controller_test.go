@@ -301,7 +301,7 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 		},
 	}
 
-	for _, table := range tables { //nolint:paralleltest // Disable false-positive finding due to linter bug.
+	for _, table := range tables {
 		table := table // pin!
 
 		t.Run(fmt.Sprint(table.goal), func(t *testing.T) {
