@@ -28,6 +28,7 @@ import (
 )
 
 // opts holds configuration for godog.
+//
 //nolint:gochecknoglobals
 var opts = godog.Options{
 	Format:        "pretty",

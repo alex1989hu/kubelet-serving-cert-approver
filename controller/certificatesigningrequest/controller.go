@@ -49,6 +49,7 @@ type SigningReconciler struct {
 }
 
 // Reconcile processes request and returns the result.
+//
 //nolint:gocyclo
 func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	reqLogger := r.Logger.With(zap.String("csr", req.Name))

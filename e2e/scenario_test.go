@@ -354,6 +354,7 @@ func (c *ApproverInstance) responseShallContain(expected string) error {
 }
 
 // execOption holds options for command execution.
+//
 //nolint:govet // Ignore pointer bytes in struct alignment tests.
 type execOption struct {
 	Command       []string

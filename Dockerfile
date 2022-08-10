@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-FROM golang:1.18.5 as builder
+FROM golang:1.19.0 as builder
 
 # To let GitHub CI driven buildx pass build arguments
 ARG TARGETOS

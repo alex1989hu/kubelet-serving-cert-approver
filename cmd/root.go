@@ -40,6 +40,7 @@ var (
 )
 
 // rootCmd represents the base command when called without any subcommands.
+//
 //nolint:gochecknoglobals
 var rootCmd = &cobra.Command{
 	Use:     "kubelet-serving-cert-approver",

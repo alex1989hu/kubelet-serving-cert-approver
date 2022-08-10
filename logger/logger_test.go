@@ -29,6 +29,7 @@ import (
 )
 
 // viperLock helps viper to avoid viper.Set() concurrency issues - only used in test code.
+//
 //nolint:gochecknoglobals
 var viperLock sync.Mutex
 
