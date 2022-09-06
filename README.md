@@ -26,11 +26,10 @@ To install into your Kubernetes cluster, please navigate to [deploy](deploy) dir
 
 ## Kubernetes Compatibility Matrix
 
+For older Kubernetes versions (`v1.19`, `v1.20`, `v1.21`) please see [older releases](https://github.com/alex1989hu/kubelet-serving-cert-approver/releases).
+
 | Version        | Compatible |
 | -------------- | ---------- |
-| `v1.19`        | &check;    |
-| `v1.20`        | &check;    |
-| `v1.21`        | &check;    |
 | `v1.22`        | &check;    |
 | `v1.23`        | &check;    |
 | `v1.24`        | &check;    |
