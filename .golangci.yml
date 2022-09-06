@@ -124,7 +124,6 @@ linters:
   enable:
     - asciicheck
     - bodyclose
-    - deadcode
     - depguard
     - dogsled
     - dupl
@@ -166,7 +165,6 @@ linters:
     - predeclared
     - revive
     - staticcheck
-    - structcheck
     - stylecheck
     - testpackage
     - thelper
@@ -175,7 +173,6 @@ linters:
     - unconvert
     - unparam
     - unused
-    - varcheck
     - whitespace
     - wrapcheck
     - wsl
