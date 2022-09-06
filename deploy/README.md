@@ -15,9 +15,9 @@ In nutshell:
 * Configured Pod Security Context
   * Runs with non-root user
 * No shell, uses [distroless](https://github.com/GoogleContainerTools/distroless) image
-* Configured Pod Security Policy
-  * Enforces all mentioned configuration and adds addititional contstraints
-  * Only active when your cluster is enabled to use any `PodSecurityPolicy`
+* Configured Pod Security Standards
+  * Applied Pod Security Admission labels onto the namespace with `restristed` Pod Security Standards profile
+  * Only active when `PodSecurity` feature gate is enabled in your cluster
 
 ## High Availability Installation
 

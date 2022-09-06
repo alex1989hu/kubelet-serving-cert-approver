@@ -34,6 +34,7 @@ To install into your Kubernetes cluster, please navigate to [deploy](deploy) dir
 | `v1.22`        | &check;    |
 | `v1.23`        | &check;    |
 | `v1.24`        | &check;    |
+| `v1.25`        | &check;    |
 
 ## Prometheus Metrics
 

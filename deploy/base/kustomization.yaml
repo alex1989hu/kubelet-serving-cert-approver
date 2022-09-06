@@ -5,7 +5,6 @@ resources:
 - clusterroles.yaml
 - deployments.yaml
 - namespaces.yaml
-- podsecuritypolicies.yaml
 - rolebindings.yaml
 - serviceaccounts.yaml
 - services.yaml

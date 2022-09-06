@@ -32,6 +32,8 @@ spec:
         runAsUser: 65534
         runAsGroup: 65534
         fsGroup: 65534
+        seccompProfile:
+          type: RuntimeDefault
       priorityClassName: system-cluster-critical
       tolerations:
       - key: node-role.kubernetes.io/master

@@ -87,8 +87,8 @@ func (c *Client) Status() client.StatusWriter {
 }
 
 // Get fulfills Reader interface.
-func (c *Client) Get(ctx context.Context, key client.ObjectKey, obj client.Object) error {
-	args := c.Called(ctx, key, obj)
+func (c *Client) Get(ctx context.Context, key client.ObjectKey, obj client.Object, opts ...client.GetOption) error {
+	args := c.Called(ctx, key, obj, opts)
 
 	return args.Error(0)
 }
@@ -166,7 +166,8 @@ func TestReconcileClientGetError(t *testing.T) {
 
 	mockClient := NewMockClient()
 
-	mockClient.On("Get", mock.Anything, types.NamespacedName{}, mock.Anything).Return(errMockGet).Times(1)
+	mockClient.On("Get", mock.Anything, types.NamespacedName{},
+		mock.Anything, mock.AnythingOfType("[]client.GetOption")).Return(errMockGet).Times(1)
 
 	signingReconciler := &SigningReconciler{Client: mockClient, Scheme: runtime.NewScheme(), Logger: TestLogger}
 	req := reconcile.Request{NamespacedName: types.NamespacedName{}}
@@ -185,7 +186,8 @@ func TestReconcileClientGetNotFoundError(t *testing.T) {
 	mockClient := NewMockClient()
 	errNotFound := k8serrors.NewNotFound(schema.GroupResource{Group: "group", Resource: "resource"}, "bela")
 
-	mockClient.On("Get", mock.Anything, types.NamespacedName{}, mock.Anything).Return(errNotFound).Times(1)
+	mockClient.On("Get", mock.Anything, types.NamespacedName{},
+		mock.Anything, mock.AnythingOfType("[]client.GetOption")).Return(errNotFound).Times(1)
 
 	signingReconciler := &SigningReconciler{Client: mockClient, Scheme: runtime.NewScheme(), Logger: TestLogger}
 	req := reconcile.Request{NamespacedName: types.NamespacedName{}}

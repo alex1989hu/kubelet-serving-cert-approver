@@ -4,6 +4,9 @@ metadata:
   labels:
     app.kubernetes.io/instance: kubelet-serving-cert-approver
     app.kubernetes.io/name: kubelet-serving-cert-approver
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/warn: restricted
   name: kubelet-serving-cert-approver
 ---
 apiVersion: v1
@@ -14,48 +17,6 @@ metadata:
     app.kubernetes.io/name: kubelet-serving-cert-approver
   name: kubelet-serving-cert-approver
   namespace: kubelet-serving-cert-approver
----
-apiVersion: policy/v1beta1
-kind: PodSecurityPolicy
-metadata:
-  annotations:
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: runtime/default
-    seccomp.security.alpha.kubernetes.io/defaultProfileName: runtime/default
-  labels:
-    app.kubernetes.io/instance: kubelet-serving-cert-approver
-    app.kubernetes.io/name: kubelet-serving-cert-approver
-  name: kubelet-serving-cert-approver
-spec:
-  allowPrivilegeEscalation: false
-  forbiddenSysctls:
-  - '*'
-  fsGroup:
-    ranges:
-    - max: 65534
-      min: 65534
-    rule: MustRunAs
-  hostIPC: false
-  hostNetwork: false
-  hostPID: false
-  privileged: false
-  readOnlyRootFilesystem: true
-  requiredDropCapabilities:
-  - ALL
-  runAsUser:
-    ranges:
-    - max: 65534
-      min: 65534
-    rule: MustRunAs
-  seLinux:
-    rule: RunAsAny
-  supplementalGroups:
-    ranges:
-    - max: 65534
-      min: 65534
-    rule: MustRunAs
-  volumes:
-  - downwardAPI
-  - secret
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -111,23 +72,6 @@ rules:
   - patch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  labels:
-    app.kubernetes.io/instance: kubelet-serving-cert-approver
-    app.kubernetes.io/name: kubelet-serving-cert-approver
-  name: psp:kubelet-serving-cert-approver
-rules:
-- apiGroups:
-  - policy
-  resourceNames:
-  - kubelet-serving-cert-approver
-  resources:
-  - podsecuritypolicies
-  verbs:
-  - use
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   labels:
@@ -139,23 +83,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: events:kubelet-serving-cert-approver
-subjects:
-- kind: ServiceAccount
-  name: kubelet-serving-cert-approver
-  namespace: kubelet-serving-cert-approver
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  labels:
-    app.kubernetes.io/instance: kubelet-serving-cert-approver
-    app.kubernetes.io/name: kubelet-serving-cert-approver
-  name: psp:kubelet-serving-cert-approver
-  namespace: kubelet-serving-cert-approver
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: psp:kubelet-serving-cert-approver
 subjects:
 - kind: ServiceAccount
   name: kubelet-serving-cert-approver
@@ -271,6 +198,8 @@ spec:
         fsGroup: 65534
         runAsGroup: 65534
         runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
       serviceAccountName: kubelet-serving-cert-approver
       tolerations:
       - effect: NoSchedule
