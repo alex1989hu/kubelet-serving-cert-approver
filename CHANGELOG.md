@@ -1,4 +1,39 @@
 
+<a name="v0.6.0"></a>
+## [v0.6.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.5.1...v0.6.0) (2022-09-06)
+
+### Chore
+
+* upgrade golangci-lint v1.49.0
+* upgrade viper v1.13.0
+* upgrade zap v1.23.0
+* upgrade e2e kubernetes versions to recent patch level
+* upgrade kubernetes v1.25.0
+* bump aquasecurity/trivy-action from 0.6.2 to 0.7.1
+* bump sigstore/cosign-installer from 2.5.0 to 2.5.1
+* upgrade prometheus/client_golang v1.13.0
+* upgrade kubernetes dependencies v1.24.3
+* upgrade zap v1.22.0
+* upgrade go v1.19.0
+* bump docker/build-push-action from 3.1.0 to 3.1.1
+* bump aquasecurity/trivy-action from 0.6.1 to 0.6.2
+* upgrade go v1.18.5
+* upgrade golangci-lint v1.47.3
+* bump sigstore/cosign-installer from 2.4.1 to 2.5.0
+* bump aquasecurity/trivy-action from 0.6.0 to 0.6.1
+* bump aquasecurity/trivy-action from 0.5.1 to 0.6.0
+* bump docker/build-push-action from 3.0.0 to 3.1.0
+* upgrade go v1.18.4
+* upgrade stretchr/testify v1.8.0
+* upgrade controller-runtime v0.12.3
+* bump sigstore/cosign-installer from 2.4.0 to 2.4.1
+* bump aquasecurity/trivy-action from 0.5.0 to 0.5.1
+
+### Ci
+
+* remove no longer supported kubernetes versions
+
+
 <a name="v0.5.1"></a>
 ## [v0.5.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.5.0...v0.5.1) (2022-06-24)
 
@@ -29,6 +64,7 @@
 ### Fix
 
 * logger debug flag not being set
+
 
 <a name="v0.5.0"></a>
 ## [v0.5.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.4.4...v0.5.0) (2022-05-16)
