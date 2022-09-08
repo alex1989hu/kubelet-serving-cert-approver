@@ -1,4 +1,12 @@
 
+<a name="v0.6.1"></a>
+## [v0.6.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.0...v0.6.1) (2022-09-08)
+
+### Chore
+
+* upgrade go v1.19.1
+
+
 <a name="v0.6.0"></a>
 ## [v0.6.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.5.1...v0.6.0) (2022-09-06)
 
