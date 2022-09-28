@@ -11,10 +11,10 @@ jobs:
       fail-fast: false
       matrix:
         node:
-        - v1.22.13
-        - v1.23.10
-        - v1.24.4
-        - v1.25.0
+        - v1.22.15
+        - v1.23.12
+        - v1.24.6
+        - v1.25.2
         install-mode:
         - ha
         - standalone
@@ -45,7 +45,7 @@ jobs:
       with:
         config: ./hack/e2e-kind-config.yaml
         image: kindest/node:${{ matrix.node }}
-        version: "v0.15.0"
+        version: "v0.16.0"
     - name: Wait for KiND readiness
       run: |
           kubectl --namespace kube-system wait --for=condition=ready pod -l tier=control-plane --timeout=300s
