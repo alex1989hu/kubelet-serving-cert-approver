@@ -1,4 +1,20 @@
 
+<a name="v0.6.2"></a>
+## [v0.6.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.1...v0.6.2) (2022-09-28)
+
+### Chore
+
+* upgrade golang.org/x/net/http2
+* upgrade goleak v1.2.0
+* upgrade kubernetes v1.25.2
+* upgrade kind v0.16.0
+* bump sigstore/cosign-installer from 2.6.0 to 2.7.0
+* bump sigstore/cosign-installer from 2.5.1 to 2.6.0
+
+### Ci
+
+* add govulncheck
+
 <a name="v0.6.1"></a>
 ## [v0.6.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.0...v0.6.1) (2022-09-08)
 
