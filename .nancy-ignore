@@ -1,6 +1,7 @@
 # Skip for indirect dependency github.com/hashicorp/consul/api@v1.12.0
 CVE-2022-24687
 CVE-2022-29153
+CVE-2021-41803
 
 # Skip for indirect dependency github.com/miekg/dns@v1.0.14
 sonatype-2021-1401
