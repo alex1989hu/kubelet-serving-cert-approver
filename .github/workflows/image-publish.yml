@@ -6,6 +6,8 @@ on:
   release:
     types:
     - published
+permissions:
+  contents: read
 jobs:
   push-to-registry:
     runs-on: ubuntu-20.04
