@@ -48,7 +48,7 @@ jobs:
       with:
         config: ./hack/e2e-kind-config.yaml
         image: kindest/node:${{ matrix.node }}
-        version: "v0.16.0"
+        version: "v0.17.0"
     - name: Wait for KiND readiness
       run: |
           kubectl --namespace kube-system wait --for=condition=ready pod -l tier=control-plane --timeout=300s
