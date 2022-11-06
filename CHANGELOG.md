@@ -1,3 +1,48 @@
+<a name="v0.6.3"></a>
+## [v0.6.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.2...v0.6.3) (2022-11-06)
+
+### Chore
+
+* bump aquasecurity/trivy-action from 0.7.1 to 0.8.0
+* upgrade prometheus/client_golang v1.13.1
+* upgrade controller-runtime v0.13.1
+* upgrade viper v1.14.0
+* upgrade cobra v1.6.1
+* upgrade go v1.19.3
+* upgrade golangci-lint v1.50.1
+* bump docker/setup-buildx-action from 2.2.0 to 2.2.1
+* bump docker/metadata-action from 4.1.0 to 4.1.1
+* bump sigstore/cosign-installer from 2.8.0 to 2.8.1
+* bump docker/setup-buildx-action from 2.1.0 to 2.2.0
+* upgrade golang.org/x/text
+* upgrade kubernetes v1.25.3
+* upgrade cobra v1.6.0
+* bump docker/setup-buildx-action from 2.0.0 to 2.1.0
+* bump docker/login-action from 2.0.0 to 2.1.0
+* bump docker/metadata-action from 4.0.1 to 4.1.0
+* bump docker/build-push-action from 3.1.1 to 3.2.0
+* bump docker/setup-qemu-action from 2.0.0 to 2.1.0
+* bump sigstore/cosign-installer from 2.7.0 to 2.8.0
+* upgrade to latest distroless image
+* upgrade golangci-lint v1.50.0
+* upgrade go v1.19.2
+
+### Ci
+
+* update nancy ignore
+* limit image-publish token scope
+* limit build-and-test token scope
+* upgrade kind v0.17.0
+* limit e2e token scope
+* limit snyk token scope
+* limit govulncheck token scope
+* limit codeql token scope
+* limit trivy token scope
+* limit nancy token scope
+* limit golangci-lint token scope
+* enable cache for setup-go
+* update nancy ignore
+
 
 <a name="v0.6.2"></a>
 ## [v0.6.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.1...v0.6.2) (2022-09-28)
@@ -14,6 +59,7 @@
 ### Ci
 
 * add govulncheck
+
 
 <a name="v0.6.1"></a>
 ## [v0.6.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.0...v0.6.1) (2022-09-08)
