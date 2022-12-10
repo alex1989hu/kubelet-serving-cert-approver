@@ -1,3 +1,17 @@
+<a name="v0.6.4"></a>
+## [v0.6.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.3...v0.6.4) (2022-12-10)
+
+### Chore
+
+* upgrade golang.org/x/net
+* upgrade go v1.19.4
+* bump azure/setup-kubectl from 3.0 to 3.1
+
+### Ci
+
+* upgrade github runner to ubuntu-22.04
+
+
 <a name="v0.6.3"></a>
 ## [v0.6.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.2...v0.6.3) (2022-11-06)
 
