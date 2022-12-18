@@ -74,6 +74,12 @@ type Client struct {
 	mock.Mock
 }
 
+func (c *Client) SubResource(subResource string) client.SubResourceClient {
+	args := c.Called(subResource)
+
+	return args.Get(0).(client.SubResourceClient)
+}
+
 // NewMockClient creates a new mock controller-runtime client.
 func NewMockClient() *Client {
 	return &Client{
@@ -147,16 +153,27 @@ type StatusClient struct {
 	mock.Mock
 }
 
-// Update fulfills StatusWriter interfaces.
-func (c *StatusClient) Update(context.Context, client.Object, ...client.UpdateOption) error {
-	args := c.Called()
+// Update fulfills SubResourceWriter interfaces.
+func (c *StatusClient) Create(ctx context.Context, obj client.Object, subResource client.Object,
+	opts ...client.SubResourceCreateOption,
+) error {
+	args := c.Called(ctx, obj, subResource, opts)
 
 	return args.Error(0)
 }
 
-// Patch fulfills StatusWriter interfaces.
-func (c *StatusClient) Patch(context.Context, client.Object, client.Patch, ...client.PatchOption) error {
-	args := c.Called()
+// Update fulfills SubResourceWriter interfaces.
+func (c *StatusClient) Update(ctx context.Context, obj client.Object, opts ...client.SubResourceUpdateOption) error {
+	args := c.Called(ctx, obj, opts)
+
+	return args.Error(0)
+}
+
+// Patch fulfills SubResourceWriter interfaces.
+func (c *StatusClient) Patch(ctx context.Context, obj client.Object, patch client.Patch,
+	opts ...client.SubResourcePatchOption,
+) error {
+	args := c.Called(ctx, obj, patch, opts)
 
 	return args.Error(0)
 }

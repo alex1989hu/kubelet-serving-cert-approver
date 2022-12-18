@@ -15,9 +15,10 @@ jobs:
       matrix:
         node:
         - v1.22.15
-        - v1.23.12
-        - v1.24.6
-        - v1.25.2
+        - v1.23.13
+        - v1.24.7
+        - v1.25.3
+        - v1.26.0
         install-mode:
         - ha
         - standalone
