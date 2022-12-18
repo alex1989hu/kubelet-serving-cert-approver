@@ -153,7 +153,7 @@ type StatusClient struct {
 	mock.Mock
 }
 
-// Update fulfills SubResourceWriter interfaces.
+// Create fulfills SubResourceWriter interface.
 func (c *StatusClient) Create(ctx context.Context, obj client.Object, subResource client.Object,
 	opts ...client.SubResourceCreateOption,
 ) error {
@@ -162,14 +162,14 @@ func (c *StatusClient) Create(ctx context.Context, obj client.Object, subResourc
 	return args.Error(0)
 }
 
-// Update fulfills SubResourceWriter interfaces.
+// Update fulfills SubResourceWriter interface.
 func (c *StatusClient) Update(ctx context.Context, obj client.Object, opts ...client.SubResourceUpdateOption) error {
 	args := c.Called(ctx, obj, opts)
 
 	return args.Error(0)
 }
 
-// Patch fulfills SubResourceWriter interfaces.
+// Patch fulfills SubResourceWriter interface.
 func (c *StatusClient) Patch(ctx context.Context, obj client.Object, patch client.Patch,
 	opts ...client.SubResourcePatchOption,
 ) error {
