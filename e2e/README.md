@@ -1,6 +1,6 @@
 # End-to-End (E2E)
 
-The tests are bounded to `// +build e2e` [build tag](https://golang.org/cmd/go/#hdr-Build_constraints) which is not activated by default.
+The tests are bounded to `//go:build e2e` [build tag](https://golang.org/cmd/go/#hdr-Build_constraints) which is not activated by default.
 
 ## Which technology is being used?
 

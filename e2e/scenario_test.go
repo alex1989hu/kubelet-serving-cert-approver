@@ -14,7 +14,6 @@
 //
 
 //go:build e2e
-// +build e2e
 
 //nolint:wrapcheck
 package e2e_test
@@ -29,6 +28,7 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/cucumber/godog"
 	"github.com/prometheus/common/expfmt"
@@ -367,7 +367,9 @@ type execOption struct {
 }
 
 // ExecuteCommandInContainer executes command in specified container and return stdout, stderr and error.
-func (c *ApproverInstance) ExecuteCommandInContainer(options execOption) (string, string, error) {
+func (c *ApproverInstance) ExecuteCommandInContainer(options execOption,
+	timeout time.Duration,
+) (string, string, error) {
 	const (
 		container   = "container"
 		tty         = false
@@ -393,7 +395,11 @@ func (c *ApproverInstance) ExecuteCommandInContainer(options execOption) (string
 
 	var stdout, stderr bytes.Buffer
 
-	err := execute(http.MethodPost, request.URL(), c.RestConfig, options.Stdin, &stdout, &stderr, tty)
+	ctx, cancel := context.WithTimeout(context.TODO(), timeout)
+
+	defer cancel()
+
+	err := execute(ctx, http.MethodPost, request.URL(), c.RestConfig, options.Stdin, &stdout, &stderr, tty)
 
 	return strings.TrimSpace(stdout.String()), strings.TrimSpace(stderr.String()), err
 }
@@ -413,7 +419,7 @@ func (c *ApproverInstance) iExecuteCommandInTheRunningPod(command string) error 
 		Stdin:         nil,
 		CaptureStdout: true,
 		CaptureStderr: true,
-	})
+	}, 30*time.Second)
 
 	c.CommandResult = commandResult{
 		StdOut: stdout,
@@ -586,7 +592,7 @@ func sendRequest(config *rest.Config, url string) (*http.Response, error) {
 }
 
 // execute executes command in given container of a Pod.
-func execute(method string, url *url.URL, config *rest.Config, stdin io.Reader,
+func execute(ctx context.Context, method string, url *url.URL, config *rest.Config, stdin io.Reader,
 	stdout, stderr io.Writer, tty bool,
 ) error {
 	exec, err := remotecommand.NewSPDYExecutor(config, method, url)
@@ -594,7 +600,7 @@ func execute(method string, url *url.URL, config *rest.Config, stdin io.Reader,
 		return err
 	}
 
-	return exec.Stream(remotecommand.StreamOptions{
+	return exec.StreamWithContext(ctx, remotecommand.StreamOptions{
 		Stdin:  stdin,
 		Stdout: stdout,
 		Stderr: stderr,

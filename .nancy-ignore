@@ -6,3 +6,6 @@ CVE-2022-29153
 
 # Skip for indirect dependency github.com/miekg/dns@v1.0.14
 sonatype-2021-1401
+
+# Skip for indirect dependency k8s.io/apiserver@v0.26.0
+sonatype-2022-6522

@@ -1,3 +1,18 @@
+
+<a name="v0.6.5"></a>
+## [v0.6.5](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.4...v0.6.5) (2022-12-18)
+
+### Chore
+
+* godocs typo in new mocked function
+* drop old build tag format in e2e tests
+* upgrade kubernetes v1.26.0
+
+### Ci
+
+* update nancy ignore
+
+
 <a name="v0.6.4"></a>
 ## [v0.6.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.3...v0.6.4) (2022-12-10)
 
