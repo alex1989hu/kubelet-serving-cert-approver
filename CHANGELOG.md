@@ -1,4 +1,12 @@
 
+<a name="v0.6.6"></a>
+## [v0.6.6](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.5...v0.6.6) (2022-12-20)
+
+### Chore
+
+* upgrade controller-runtime v0.14.1
+
+
 <a name="v0.6.5"></a>
 ## [v0.6.5](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.4...v0.6.5) (2022-12-18)
 
