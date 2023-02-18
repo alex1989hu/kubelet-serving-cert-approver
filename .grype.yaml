@@ -1,0 +1,11 @@
+ignore:
+- vulnerability: CVE-2015-5237 # Skip for indirect dependency google.golang.org/protobuf@v1.28.1
+  package:
+    name: google.golang.org/protobuf
+    version: v1.28.1
+    type: go-module
+- vulnerability: CVE-2021-22570 # Skip for indirect dependency google.golang.org/protobuf@v1.28.1
+  package:
+    name: google.golang.org/protobuf
+    version: v1.28.1
+    type: go-module

@@ -1,6 +1,6 @@
 run:
   concurrency: 4
-  go: '1.19'
+  go: '1.20'
   timeout: 10m
   issues-exit-code: 1
   tests: true
@@ -38,9 +38,6 @@ linters-settings:
     min-occurrences: 3
   goheader:
     template-path: ./hack/LICENSE.header
-  ifshort:
-    max-decl-chars: 30
-    max-decl-lines: 1
   makezero:
     always: true
   misspell:
@@ -149,7 +146,6 @@ linters:
     - gosec
     - gosimple
     - govet
-    - ifshort
     - ineffassign
     - lll
     - makezero

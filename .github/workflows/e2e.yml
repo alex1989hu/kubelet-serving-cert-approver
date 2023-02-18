@@ -28,20 +28,21 @@ jobs:
       with:
         fetch-depth: 0
     - name: Set up kubectl
-      uses: azure/setup-kubectl@v3.1
+      uses: azure/setup-kubectl@v3.2
       with:
         version: ${{ matrix.node }}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2.1.0
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2.2.1
+      uses: docker/setup-buildx-action@v2.4.1
     - name: Build Container Image
-      uses: docker/build-push-action@v3.2.0
+      uses: docker/build-push-action@v4.0.0
       with:
         context: .
         file: ./Dockerfile
         load: true
         platforms: linux/amd64
+        provenance: false
         push: false
         tags: ghcr.io/${{ github.repository }}:ci
     - name: Set up KinD
@@ -84,7 +85,7 @@ jobs:
       uses: actions/setup-go@v3
       with:
         cache: true
-        go-version: 1.19.4
+        go-version: 1.20.1
     - name: Test Approved Certificate Signing Requests
       run: go test -tags=e2e -v ./e2e
     - name: Get Application logs

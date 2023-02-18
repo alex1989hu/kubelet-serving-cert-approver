@@ -12,7 +12,7 @@ permissions:
 jobs:
   codeql:
     permissions:
-      contents: read # for docker/build-push-action to read repo content
+      contents: read
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
     runs-on: ubuntu-22.04
     steps:
