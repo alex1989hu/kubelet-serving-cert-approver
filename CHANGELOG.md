@@ -1,4 +1,39 @@
 
+<a name="v0.6.7"></a>
+## [v0.6.7](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.6...v0.6.7) (2023-02-18)
+
+### Chore
+
+* upgrade golang.org/x/net v0.7.0
+* upgrade go v1.20.1
+* set project to go1.20
+* upgrade viper v1.15.0
+* upgrade go v1.20.0
+* bump aquasecurity/trivy-action from 0.9.0 to 0.9.1
+* upgrade golangci-lint v1.51.1
+* upgrade controller-runtime v0.14.4
+* bump docker/setup-buildx-action from 2.4.0 to 2.4.1
+* upgrade golangci-lint v1.51.0
+* upgrade controller-runtime v0.14.3
+* bump aquasecurity/trivy-action from 0.8.0 to 0.9.0
+* upgrade controller-runtime v0.14.2
+* bump docker/setup-buildx-action from 2.2.1 to 2.4.0
+* bump docker/build-push-action from 3.2.0 to 3.3.0
+* bump docker/metadata-action from 4.2.0 to 4.3.0
+* bump docker/metadata-action from 4.1.1 to 4.2.0
+* upgrade godog v0.12.6
+* upgrade go v1.19.5
+* bump azure/setup-kubectl from 3.1 to 3.2
+
+### Ci
+
+* add buildcsv buildflag for snyk job
+* upgra build-push-action v4.0.0
+* add grype ignore
+* do not use fail-build with grype
+* add grype
+
+
 <a name="v0.6.6"></a>
 ## [v0.6.6](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.5...v0.6.6) (2022-12-20)
 
@@ -135,10 +170,32 @@
 * upgrade controller-runtime v0.12.3
 * bump sigstore/cosign-installer from 2.4.0 to 2.4.1
 * bump aquasecurity/trivy-action from 0.5.0 to 0.5.1
+* upgrade e2e kubernetes version to v1.24.2
+* upgrade cobra v1.5.0
+* upgrade stretchr/testify v1.7.5
+* upgrade controller-runtime v0.12.2
+* bump aquasecurity/trivy-action from 0.4.0 to 0.5.0
+* bump azure/setup-kubectl from 2.1 to 3.0
+* upgrade kubernetes dependencies v1.24.2
+* upgrade stretchr/testify v1.7.4
+* bump aquasecurity/trivy-action from 0.3.0 to 0.4.0
+* upgrade golangci-lint v1.46.2
+* upgrade kind v0.14.0
+* upgrade kubernetes dependencies v1.24.1
+* upgrade go v1.18.3
+* bump sigstore/cosign-installer from 2.3.0 to 2.4.0
+* upgrade viper v1.12.0
+* upgrade controller-runtime v0.12.1
 
 ### Ci
 
 * remove no longer supported kubernetes versions
+* upgrade kubernetes image to v1.24.2
+* update nancy ignore
+
+### Fix
+
+* logger debug flag not being set
 
 
 <a name="v0.5.1"></a>
