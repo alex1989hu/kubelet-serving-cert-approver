@@ -26,4 +26,4 @@ jobs:
       - name: Create dependency list for Nancy
         run: go list -json -m all > go.list
       - name: Run Nancy Vulnerability Scanner
-        uses: sonatype-nexus-community/nancy-github-action@v1.0.2
+        uses: sonatype-nexus-community/nancy-github-action@v1.0.3
