@@ -54,7 +54,7 @@ jobs:
         push: true
         tags: ${{ steps.docker_meta.outputs.tags }}
     - name: Sign the container images
-      run: cosign sign ${TAGS}
+      run: cosign sign --yes ${TAGS}
       env:
         TAGS: ${{ steps.docker_meta.outputs.tags }}
         COSIGN_EXPERIMENTAL: 1
