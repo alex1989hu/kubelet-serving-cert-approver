@@ -1,4 +1,21 @@
 
+<a name="v0.6.8"></a>
+## [v0.6.8](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.7...v0.6.8) (2023-03-16)
+
+### Chore
+
+* bump sigstore/cosign-installer from 2.8.1 to 3.0.1
+* bump actions/setup-go from 3 to 4
+* bump docker/setup-buildx-action from 2.4.1 to 2.5.0
+* upgrade go 1.20.2
+* bump aquasecurity/trivy-action from 0.9.1 to 0.9.2
+* bump sonatype-nexus-community/nancy-github-action
+
+### Ci
+
+* set GitHub token for nancy-github-action
+
+
 <a name="v0.6.7"></a>
 ## [v0.6.7](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.6...v0.6.7) (2023-02-18)
 
