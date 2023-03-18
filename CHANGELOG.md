@@ -1,6 +1,14 @@
 
+<a name="v0.6.9"></a>
+## [v0.6.9](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.8...v0.6.9) (2023-03-18)
+
+### Ci
+
+* add yes argument to cosign call
+
+
 <a name="v0.6.8"></a>
-## [v0.6.8](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.7...v0.6.8) (2023-03-16)
+## [v0.6.8](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.7...v0.6.8) (2023-03-18)
 
 ### Chore
 
