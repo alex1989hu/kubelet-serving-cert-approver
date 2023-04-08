@@ -1,11 +1,6 @@
-# Skip for indirect dependency github.com/hashicorp/consul/api@v1.15.3
-CVE-2022-24687
-
-# Skip for indirect dependency github.com/hashicorp/consul/sdk@v0.1.1
+# Skip for indirect dependency github.com/hashicorp/consul/api@v1.18.0
 CVE-2022-29153
 
-# Skip for indirect dependency github.com/miekg/dns@v1.0.14
-sonatype-2021-1401
-
-# Skip for indirect dependency k8s.io/apiserver@v0.26.0
+# Skip for indirect dependency k8s.io/apiserver@v0.26.3
 sonatype-2022-6522
+CVE-2020-8561
