@@ -1,4 +1,21 @@
 
+<a name="v0.6.10"></a>
+## [v0.6.10](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.9...v0.6.10) (2023-04-08)
+
+### Chore
+
+* bump sigstore/cosign-installer from 3.0.1 to 3.0.2
+* upgrade golangci-lint v1.52.2
+* upgrade go 1.20.3
+* upgrade kubernetes v1.26.3
+* upgrade controller-runtime v0.14.6
+
+### Ci
+
+* upgrade kind v0.18.0
+* update nancy ignore
+
+
 <a name="v0.6.9"></a>
 ## [v0.6.9](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.8...v0.6.9) (2023-03-18)
 
