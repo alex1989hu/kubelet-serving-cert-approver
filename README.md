@@ -35,6 +35,7 @@ For older Kubernetes versions (`v1.19`, `v1.20`, `v1.21`) please see [older rele
 | `v1.24`        | &check;    |
 | `v1.25`        | &check;    |
 | `v1.26`        | &check;    |
+| `v1.27`        | &check;    |
 
 ## Prometheus Metrics
 

@@ -214,6 +214,27 @@ func TestIsRequestConformInvalidSigningRequest(t *testing.T) {
 					Username: validUsername,
 					Usages: []certificatesv1.KeyUsage{
 						certificatesv1.UsageServerAuth,
+						certificatesv1.UsageKeyEncipherment,
+					},
+					SignerName: certificatesv1.KubeletServingSignerName,
+				},
+			},
+			x509cr: x509.CertificateRequest{
+				Subject: pkix.Name{
+					CommonName:   validUsername,
+					Organization: []string{validOrganization},
+				},
+				DNSNames:    validDNSNames,
+				IPAddresses: valdIPAddresses,
+			},
+			expectedError: errKeyUsageMismatch,
+		},
+		{
+			csr: certificatesv1.CertificateSigningRequest{
+				Spec: certificatesv1.CertificateSigningRequestSpec{
+					Username: validUsername,
+					Usages: []certificatesv1.KeyUsage{
+						certificatesv1.UsageServerAuth,
 						certificatesv1.UsageDigitalSignature,
 						certificatesv1.UsageKeyEncipherment,
 						certificatesv1.UsageCodeSigning,
@@ -295,6 +316,26 @@ func TestConformantKubeletServingCertificateSigningRequest(t *testing.T) {
 			csr: certificatesv1.CertificateSigningRequest{
 				Spec: certificatesv1.CertificateSigningRequestSpec{
 					Usages:     validUsages,
+					Username:   validUsername,
+					SignerName: certificatesv1.KubeletServingSignerName,
+				},
+			},
+			x509cr: x509.CertificateRequest{
+				Subject: pkix.Name{
+					CommonName:   validUsername,
+					Organization: []string{validOrganization},
+				},
+				IPAddresses: valdIPAddresses,
+			},
+		},
+		{
+			goal: "1.27+ compatible usages",
+			csr: certificatesv1.CertificateSigningRequest{
+				Spec: certificatesv1.CertificateSigningRequestSpec{
+					Usages: []certificatesv1.KeyUsage{
+						certificatesv1.UsageServerAuth,
+						certificatesv1.UsageDigitalSignature,
+					},
 					Username:   validUsername,
 					SignerName: certificatesv1.KubeletServingSignerName,
 				},

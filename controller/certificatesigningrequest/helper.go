@@ -55,29 +55,37 @@ func parseCSR(pemBytes []byte) (*x509.CertificateRequest, error) {
 	return csr, nil
 }
 
-// hasExactUsages check the permitted key usages - exactly ["key encipherment", "digital signature", "server auth"].
+// hasExactUsages check the permitted key usages - exactly ["digital signature", "server auth"], and optional ["key encipherment"]
 func hasExactUsages(log *zap.Logger, csr certificatesv1.CertificateSigningRequest) bool {
-	permittedUsages := [3]certificatesv1.KeyUsage{
-		certificatesv1.UsageKeyEncipherment,
-		certificatesv1.UsageDigitalSignature,
-		certificatesv1.UsageServerAuth,
+	var foundMandatoryUsages int
+
+	mandatoryUsagesMap := map[certificatesv1.KeyUsage]struct{}{
+		certificatesv1.UsageDigitalSignature: {},
+		certificatesv1.UsageServerAuth:       {},
 	}
 
-	if len(permittedUsages) != len(csr.Spec.Usages) {
-		return false
-	}
-
-	permittedUsagesMap := map[certificatesv1.KeyUsage]struct{}{}
-	for _, u := range permittedUsages {
-		permittedUsagesMap[u] = struct{}{}
+	// key encipherment is not present in k8s v1.27
+	optionalUsagesMap := map[certificatesv1.KeyUsage]struct{}{
+		certificatesv1.UsageKeyEncipherment: {},
 	}
 
 	for _, u := range csr.Spec.Usages {
-		if _, ok := permittedUsagesMap[u]; !ok {
-			log.Warn("Found disallowed certificate usage(s)", zap.String("usage", string(u)))
+		if _, ok := mandatoryUsagesMap[u]; ok {
+			foundMandatoryUsages++
 
-			return false
+			continue
 		}
+
+		if _, ok := optionalUsagesMap[u]; ok {
+			continue
+		}
+
+		log.Warn("Found disallowed certificate usage(s)", zap.String("usage", string(u)))
+		return false
+	}
+
+	if foundMandatoryUsages < len(mandatoryUsagesMap) {
+		return false
 	}
 
 	return true
