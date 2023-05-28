@@ -55,16 +55,14 @@ func parseCSR(pemBytes []byte) (*x509.CertificateRequest, error) {
 	return csr, nil
 }
 
-// hasExactUsages check the permitted key usages - exactly ["key encipherment", "digital signature", "server auth"].
+// hasExactUsages check the permitted key usages - exactly ["key encipherment", "digital signature", "server auth"]
+// for RSA and ["digital signature", "server auth"] for non-RSA certificates.
 func hasExactUsages(log *zap.Logger, csr certificatesv1.CertificateSigningRequest) bool {
 	permittedUsages := [3]certificatesv1.KeyUsage{
-		certificatesv1.UsageKeyEncipherment,
 		certificatesv1.UsageDigitalSignature,
 		certificatesv1.UsageServerAuth,
-	}
-
-	if len(permittedUsages) != len(csr.Spec.Usages) {
-		return false
+		// Optional since Kubernetes v1.27 https://github.com/kubernetes/kubernetes/pull/111660
+		certificatesv1.UsageKeyEncipherment,
 	}
 
 	permittedUsagesMap := map[certificatesv1.KeyUsage]struct{}{}

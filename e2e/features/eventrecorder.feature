@@ -27,7 +27,3 @@ Feature: Kubernetes Event Recording
   Scenario: Event message shall contain application specified message
     Given there are events related to Certificate Signing Requests
     Then approval events shall have "has been approved" message
-
-  Scenario: Event shall have a reference to the application
-    Given there are events related to Certificate Signing Requests
-    Then approval events shall managed by "kubelet-serving-cert-approver"

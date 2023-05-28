@@ -76,15 +76,13 @@ func startServer() {
 	mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
 		Scheme:                     scheme,
 		MetricsBindAddress:         ":9090",
-		Port:                       0,
 		HealthProbeBindAddress:     ":8080",
-		Namespace:                  namespace,
 		LeaderElection:             enableLeaderElection,
 		LeaderElectionNamespace:    namespace,
 		LeaderElectionResourceLock: "leases",
 		LeaderElectionID:           "kubelet-serving-certificate-approver",
 		// Set NullLogger: https://github.com/kubernetes-sigs/controller-runtime/issues/1122
-		Logger: logr.New(ctrllog.NewDelegatingLogSink(ctrllog.NullLogSink{})),
+		Logger: logr.New(ctrllog.NullLogSink{}),
 	})
 	if err != nil {
 		setupLog.Fatal("Unable to start manager", uberzap.Error(err))

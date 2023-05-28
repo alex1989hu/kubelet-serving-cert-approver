@@ -74,6 +74,18 @@ type Client struct {
 	mock.Mock
 }
 
+func (c *Client) IsObjectNamespaced(obj runtime.Object) (bool, error) {
+	args := c.Called(obj)
+
+	return args.Get(0).(bool), args.Error(1)
+}
+
+func (c *Client) GroupVersionKindFor(obj runtime.Object) (schema.GroupVersionKind, error) {
+	args := c.Called(obj)
+
+	return args.Get(0).(schema.GroupVersionKind), args.Error(1)
+}
+
 func (c *Client) SubResource(subResource string) client.SubResourceClient {
 	args := c.Called(subResource)
 
@@ -238,8 +250,9 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 					DeletionTimestamp: &metav1.Time{
 						Time: time.Now().UTC(),
 					},
-					Name:      name,
-					Namespace: namespace,
+					Finalizers: []string{"delete"},
+					Name:       name,
+					Namespace:  namespace,
 				},
 				Spec: certificatesv1.CertificateSigningRequestSpec{
 					SignerName: certificatesv1.KubeletServingSignerName,

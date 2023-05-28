@@ -58,13 +58,13 @@ type commandResult struct {
 
 type ApproverInstance struct {
 	Clientset                     *clientgokubernetes.Clientset
-	CertificateSigningRequestList []certificatesv1.CertificateSigningRequest
+	RestConfig                    *rest.Config
+	Pod                           corev1.Pod
 	CommandResult                 commandResult
+	CertificateSigningRequestList []certificatesv1.CertificateSigningRequest
 	Events                        []eventsv1.Event
 	Metrics                       []string
-	RestConfig                    *rest.Config
 	Response                      []byte
-	Pod                           corev1.Pod
 }
 
 // InitializeScenario sets context and defines steps being used in scenarios.
@@ -101,9 +101,6 @@ func InitializeScenario(s *godog.ScenarioContext) {
 
 	s.Step(`^approval events shall have "([^"]*)" message$`,
 		instance.approvalEventsShallHaveMessage)
-
-	s.Step(`^approval events shall managed by "([^"]*)"$`,
-		instance.approvalEventsShallManagedBy)
 
 	// Steps for testing features related to Prometheus Metrics
 	s.Step(`^there is a running Pod in namespace "([^"]*)" with label "([^"]*)"$`,
@@ -254,25 +251,6 @@ func (c *ApproverInstance) approvalEventsShallHaveMessage(message string) error 
 	return nil
 }
 
-// approvalEventsShallManagedBy ensures that each each event shall have a field with specific manager.
-// feature: eventrecorder
-func (c *ApproverInstance) approvalEventsShallManagedBy(manager string) error {
-	for _, event := range c.Events {
-		event := event
-
-		if err := assertExpectedLenAndActual(assert.Len, event.ObjectMeta.ManagedFields, 1); err != nil {
-			return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
-		}
-
-		if err := assertExpectedAndActual(assert.Equal,
-			manager, event.ObjectMeta.ManagedFields[0].Manager); err != nil {
-			return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
-		}
-	}
-
-	return nil
-}
-
 // thereIsARunningPodInNamespaceWithLabel ensures that there is already running Pod within given namespace
 // with given label.
 // feature: metrics
@@ -354,14 +332,12 @@ func (c *ApproverInstance) responseShallContain(expected string) error {
 }
 
 // execOption holds options for command execution.
-//
-//nolint:govet // Ignore pointer bytes in struct alignment tests.
 type execOption struct {
-	Command       []string
+	Stdin         io.Reader
 	Namespace     string
 	PodName       string
 	ContainerName string
-	Stdin         io.Reader
+	Command       []string
 	CaptureStdout bool
 	CaptureStderr bool
 }

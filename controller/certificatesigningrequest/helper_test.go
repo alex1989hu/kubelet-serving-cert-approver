@@ -307,6 +307,48 @@ func TestConformantKubeletServingCertificateSigningRequest(t *testing.T) {
 				IPAddresses: valdIPAddresses,
 			},
 		},
+		{
+			goal: "All 3 allowed key usages present",
+			csr: certificatesv1.CertificateSigningRequest{
+				Spec: certificatesv1.CertificateSigningRequestSpec{
+					Usages: []certificatesv1.KeyUsage{
+						certificatesv1.UsageKeyEncipherment,
+						certificatesv1.UsageDigitalSignature,
+						certificatesv1.UsageServerAuth,
+					},
+					Username:   validUsername,
+					SignerName: certificatesv1.KubeletServingSignerName,
+				},
+			},
+			x509cr: x509.CertificateRequest{
+				Subject: pkix.Name{
+					CommonName:   validUsername,
+					Organization: []string{validOrganization},
+				},
+				DNSNames: validDNSNames,
+			},
+		},
+		{
+			goal: "Only digital signature and server auth key usages present",
+			csr: certificatesv1.CertificateSigningRequest{
+				Spec: certificatesv1.CertificateSigningRequestSpec{
+					Usages: []certificatesv1.KeyUsage{
+						certificatesv1.UsageKeyEncipherment,
+						certificatesv1.UsageDigitalSignature,
+						certificatesv1.UsageServerAuth,
+					},
+					Username:   validUsername,
+					SignerName: certificatesv1.KubeletServingSignerName,
+				},
+			},
+			x509cr: x509.CertificateRequest{
+				Subject: pkix.Name{
+					CommonName:   validUsername,
+					Organization: []string{validOrganization},
+				},
+				DNSNames: validDNSNames,
+			},
+		},
 	}
 
 	for _, table := range tables {
