@@ -1,6 +1,20 @@
 
+<a name="v0.7.0"></a>
+## [v0.7.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.10...v0.7.0) (2023-05-28)
+
+### Chore
+
+* upgrade kubernetes v1.27.2
+* bump sigstore/cosign-installer from 3.0.4 to 3.0.5
+* bump sigstore/cosign-installer from 3.0.3 to 3.0.4
+* upgrade go 1.20.4
+* bump sigstore/cosign-installer from 3.0.2 to 3.0.3
+* bump aquasecurity/trivy-action from 0.9.2 to 0.10.0
+* bump docker/metadata-action from 4.3.0 to 4.4.0
+
+
 <a name="v0.6.10"></a>
-## [v0.6.10](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.9...v0.6.10) (2023-04-08)
+## [v0.6.10](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.9...v0.6.10) (2023-04-10)
 
 ### Chore
 
