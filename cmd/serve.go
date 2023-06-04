@@ -73,6 +73,14 @@ func startServer() {
 
 	setupLog.Info("Try to talk to Kubernetes API Server, will exit in case of failure")
 
+	pProfBindAddress := "0"
+
+	if isDebug {
+		pProfBindAddress = ":8081"
+
+		setupLog.Info("pprof will be enabled", uberzap.String("port", pProfBindAddress))
+	}
+
 	mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
 		Scheme:                     scheme,
 		MetricsBindAddress:         ":9090",
@@ -82,7 +90,8 @@ func startServer() {
 		LeaderElectionResourceLock: "leases",
 		LeaderElectionID:           "kubelet-serving-certificate-approver",
 		// Set NullLogger: https://github.com/kubernetes-sigs/controller-runtime/issues/1122
-		Logger: logr.New(ctrllog.NullLogSink{}),
+		Logger:           logr.New(ctrllog.NullLogSink{}),
+		PprofBindAddress: pProfBindAddress,
 	})
 	if err != nil {
 		setupLog.Fatal("Unable to start manager", uberzap.Error(err))
