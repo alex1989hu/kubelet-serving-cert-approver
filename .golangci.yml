@@ -12,9 +12,12 @@ output:
 
 linters-settings:
   depguard:
+    rules:
+      ioutil:
+        deny:
+          - pkg: "io/ioutil"
+            desc: ioutil is deprecated in Go 1.16"
     include-go-root: true
-    packages-with-error-message:
-      - "io/ioutil": "ioutil is deprecated in Go 1.16"
   errcheck:
     check-type-assertions: true
     check-blank: true
