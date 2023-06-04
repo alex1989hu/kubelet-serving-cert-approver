@@ -1,4 +1,16 @@
 
+<a name="v0.7.1"></a>
+## [v0.7.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.0...v0.7.1) (2023-06-04)
+
+### Chore
+
+* upgrade cobra v1.7.0
+* upgrade viper v1.16.0
+* upgrade golangci-lint v1.53.2
+* disable caching of CertificateSigningRequest
+* enable pprof in debug mode
+
+
 <a name="v0.7.0"></a>
 ## [v0.7.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.6.10...v0.7.0) (2023-05-28)
 
