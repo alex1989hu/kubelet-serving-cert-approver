@@ -20,12 +20,14 @@ import (
 	"github.com/go-logr/zapr"
 	"github.com/spf13/cobra"
 	uberzap "go.uber.org/zap"
+	certificatesv1 "k8s.io/api/certificates/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	clientgokubernetes "k8s.io/client-go/kubernetes"
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/klog/v2"
 	ctrl "sigs.k8s.io/controller-runtime"
+	ctrlclient "sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	ctrllog "sigs.k8s.io/controller-runtime/pkg/log"
 	ctrlmetrics "sigs.k8s.io/controller-runtime/pkg/metrics"
@@ -73,7 +75,22 @@ func startServer() {
 
 	setupLog.Info("Try to talk to Kubernetes API Server, will exit in case of failure")
 
+	pProfBindAddress := "0"
+
+	if isDebug {
+		pProfBindAddress = ":8081"
+
+		setupLog.Info("pprof will be enabled", uberzap.String("port", pProfBindAddress))
+	}
+
 	mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
+		Client: ctrlclient.Options{
+			Cache: &ctrlclient.CacheOptions{
+				DisableFor: []ctrlclient.Object{
+					&certificatesv1.CertificateSigningRequest{},
+				},
+			},
+		},
 		Scheme:                     scheme,
 		MetricsBindAddress:         ":9090",
 		HealthProbeBindAddress:     ":8080",
@@ -82,7 +99,8 @@ func startServer() {
 		LeaderElectionResourceLock: "leases",
 		LeaderElectionID:           "kubelet-serving-certificate-approver",
 		// Set NullLogger: https://github.com/kubernetes-sigs/controller-runtime/issues/1122
-		Logger: logr.New(ctrllog.NullLogSink{}),
+		Logger:           logr.New(ctrllog.NullLogSink{}),
+		PprofBindAddress: pProfBindAddress,
 	})
 	if err != nil {
 		setupLog.Fatal("Unable to start manager", uberzap.Error(err))
