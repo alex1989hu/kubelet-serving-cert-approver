@@ -1,4 +1,34 @@
 
+<a name="v0.7.2"></a>
+## [v0.7.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.1...v0.7.2) (2023-08-02)
+
+### Chore
+
+* upgrade go 1.20.7
+* upgrade zap v1.25.0
+* bump docker/setup-buildx-action from 2.9.0 to 2.9.1
+* upgrade go v1.20.6
+* bump docker/setup-buildx-action from 2.8.0 to 2.9.0
+* bump docker/setup-buildx-action from 2.7.0 to 2.8.0
+* bump sigstore/cosign-installer from 3.1.0 to 3.1.1
+* bump docker/build-push-action from 4.1.0 to 4.1.1
+* bump docker/setup-buildx-action from 2.6.0 to 2.7.0
+* bump sigstore/cosign-installer from 3.0.5 to 3.1.0
+* bump docker/metadata-action from 4.5.0 to 4.6.0
+* bump aquasecurity/trivy-action from 0.11.0 to 0.11.2
+* bump docker/login-action from 2.1.0 to 2.2.0
+* bump docker/build-push-action from 4.0.0 to 4.1.0
+* bump docker/setup-qemu-action from 2.1.0 to 2.2.0
+* upgrade go 1.20.5
+* bump docker/metadata-action from 4.4.0 to 4.5.0
+* bump docker/setup-buildx-action from 2.5.0 to 2.6.0
+* bump aquasecurity/trivy-action from 0.10.0 to 0.11.0
+
+### Ci
+
+* update govulncheck call
+
+
 <a name="v0.7.1"></a>
 ## [v0.7.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.0...v0.7.1) (2023-06-04)
 
