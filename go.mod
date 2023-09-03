@@ -2,8 +2,6 @@ module github.com/alex1989hu/kubelet-serving-cert-approver
 
 go 1.21
 
-toolchain go1.21.0
-
 require (
 	github.com/cucumber/godog v0.13.0
 	github.com/go-logr/logr v1.2.4
