@@ -1,4 +1,25 @@
 
+<a name="v0.7.3"></a>
+## [v0.7.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.2...v0.7.3) (2023-09-03)
+
+### Chore
+
+* upgrade to latest distroless image
+* remove toolchain constraint due to codeql limitation
+* upgrade controller-runtime v0.15.2
+* upgrade stretchr/testify v1.8.4
+* upgrade godog v0.13.0
+* upgrade go 1.21.0
+* bump docker/setup-buildx-action from 2.9.1 to 2.10.0
+* upgrade golang.org/x/net v0.14.0
+* upgrade controller-runtime v0.15.1
+
+### Ci
+
+* upgrade kind v0.20.0
+* update nancy ignore
+
+
 <a name="v0.7.2"></a>
 ## [v0.7.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.1...v0.7.2) (2023-08-02)
 
