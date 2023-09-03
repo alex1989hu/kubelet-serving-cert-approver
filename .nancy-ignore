@@ -2,5 +2,4 @@
 CVE-2022-29153
 
 # Skip for indirect dependency k8s.io/apiserver@v0.26.3
-sonatype-2022-6522
 CVE-2020-8561

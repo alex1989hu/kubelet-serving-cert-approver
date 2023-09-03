@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-FROM golang:1.20.7 as builder
+FROM golang:1.21.0 as builder
 
 # To let GitHub CI driven buildx pass build arguments
 ARG TARGETOS
@@ -47,7 +47,7 @@ RUN GIT_COMMIT=$(git rev-parse --short=8 HEAD || echo "dev" ) && \
     if [ "$GOARCH" = "amd64" ]; then CGO_ENABLED=1 go test -race ./... -v ; else go test ./... -v ; fi;
 
 # Production image
-FROM gcr.io/distroless/static@sha256:380318dd91fd3bea73ae5fe1eb4d795ef7923f576e6f5f8d4de6ef1ea18ed540
+FROM gcr.io/distroless/static-debian12@sha256:16f75ae7665b13825daffba81f12d6b1a16d0e1217c562fadfce0ba77ca7b891
 
 COPY --from=builder /app/kubelet-serving-cert-approver /app/kubelet-serving-cert-approver
 
