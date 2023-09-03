@@ -1,6 +1,6 @@
 run:
   concurrency: 4
-  go: '1.20'
+  go: '1.21'
   timeout: 10m
   issues-exit-code: 1
   tests: true
