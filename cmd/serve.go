@@ -31,6 +31,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	ctrllog "sigs.k8s.io/controller-runtime/pkg/log"
 	ctrlmetrics "sigs.k8s.io/controller-runtime/pkg/metrics"
+	ctrlmetricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 
 	"github.com/alex1989hu/kubelet-serving-cert-approver/build"
 	"github.com/alex1989hu/kubelet-serving-cert-approver/controller/certificatesigningrequest"
@@ -92,7 +93,7 @@ func startServer() {
 			},
 		},
 		Scheme:                     scheme,
-		MetricsBindAddress:         ":9090",
+		Metrics:                    ctrlmetricsserver.Options{BindAddress: ":9090"},
 		HealthProbeBindAddress:     ":8080",
 		LeaderElection:             enableLeaderElection,
 		LeaderElectionNamespace:    namespace,

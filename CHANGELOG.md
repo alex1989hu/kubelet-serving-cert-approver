@@ -1,4 +1,29 @@
 
+<a name="v0.7.4"></a>
+## [v0.7.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.3...v0.7.4) (2023-09-20)
+
+### Chore
+
+* upgrade controller-runtime v0.16.2
+* bump codecov/codecov-action from 3 to 4
+* upgrade zap v1.26.0
+* bump docker/setup-qemu-action from 2.2.0 to 3.0.0
+* bump docker/setup-buildx-action from 2.10.0 to 3.0.0
+* bump docker/login-action from 2.2.0 to 3.0.0
+* bump docker/metadata-action from 4.6.0 to 5.0.0
+* bump docker/build-push-action from 4.2.1 to 5.0.0
+* upgrade go 1.21.1
+* bump docker/build-push-action from 4.1.1 to 4.2.1
+* bump sigstore/cosign-installer from 3.1.1 to 3.1.2
+* bump actions/checkout from 3 to 4
+* bump aquasecurity/trivy-action from 0.11.2 to 0.12.0
+* upgrade kubernetes v1.28.1
+
+### Reverts
+
+* chore: bump codecov/codecov-action from 3 to 4
+
+
 <a name="v0.7.3"></a>
 ## [v0.7.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.2...v0.7.3) (2023-09-03)
 
