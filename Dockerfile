@@ -25,7 +25,6 @@ ENV CGO_ENABLED=0 \
     GOARCH=$TARGETARCH
 
 # All these steps will be cached
-RUN mkdir /build
 WORKDIR /build
 COPY go.mod .
 COPY go.sum .
