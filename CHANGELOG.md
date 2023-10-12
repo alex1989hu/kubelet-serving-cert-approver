@@ -1,4 +1,21 @@
 
+<a name="v0.7.5"></a>
+## [v0.7.5](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.4...v0.7.5) (2023-10-12)
+
+### Chore
+
+* upgrade golang.org/x/net v0.17.0
+* upgrade go 1.21.3
+* remove mkdir step from dockerfile
+* upgrade kubernetes v1.28.2
+* upgrade viper v1.17.0
+* upgrade go 1.21.2
+
+### Docs
+
+* fix tls bootstrapping url in reference section
+
+
 <a name="v0.7.4"></a>
 ## [v0.7.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.3...v0.7.4) (2023-09-20)
 
