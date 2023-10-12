@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-FROM golang:1.21.1 as builder
+FROM golang:1.21.3 as builder
 
 # To let GitHub CI driven buildx pass build arguments
 ARG TARGETOS
@@ -25,7 +25,6 @@ ENV CGO_ENABLED=0 \
     GOARCH=$TARGETARCH
 
 # All these steps will be cached
-RUN mkdir /build
 WORKDIR /build
 COPY go.mod .
 COPY go.sum .

@@ -52,7 +52,7 @@ You can download Prometheus metrics `/metrics` endpoint.
 ## Reference
 
 * Original idea: <https://github.com/kontena/kubelet-rubber-stamp> which is unfortunately not maintained.
-* Kubernetes TLS bootstrapping: <https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/>
+* Kubernetes TLS bootstrapping: <https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/>
 * Conformant Rules: <https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#kubernetes-signers>
 
 ## License
