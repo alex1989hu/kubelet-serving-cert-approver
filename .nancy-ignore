@@ -1,5 +1,8 @@
-# Skip for indirect dependency github.com/hashicorp/consul/api@v1.18.0
+# Skip for indirect dependency github.com/hashicorp/consul/api@v1.25.1
 CVE-2022-29153
 
-# Skip for indirect dependency k8s.io/apiserver@v0.26.3
+# Skip for indirect dependency github.com/nats-io/nkeys@v0.4.5
+CVE-2023-46129
+
+# Skip for indirect dependency k8s.io/apiserver@v0.28.3
 CVE-2020-8561
