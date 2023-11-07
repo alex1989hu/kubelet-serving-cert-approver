@@ -1,4 +1,25 @@
 
+<a name="v0.7.6"></a>
+## [v0.7.6](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.5...v0.7.6) (2023-11-07)
+
+### Chore
+
+* bump aquasecurity/trivy-action from 0.13.1 to 0.14.0
+* upgrade go 1.21.4
+* bump sigstore/cosign-installer from 3.1.2 to 3.2.0
+* bump aquasecurity/trivy-action from 0.13.0 to 0.13.1
+* upgrade golangci-lint v1.55.2
+* upgrade cobra v1.8.0
+* upgrade goleak v1.3.0
+* upgrade golangci-lint v1.55.1
+* bump aquasecurity/trivy-action from 0.12.0 to 0.13.0
+* upgrade controller-runtime v0.16.3
+
+### Ci
+
+* update nancy ignore
+
+
 <a name="v0.7.5"></a>
 ## [v0.7.5](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.4...v0.7.5) (2023-10-12)
 
