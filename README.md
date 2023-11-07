@@ -10,7 +10,7 @@ Kubelet Serving Certificate Approver is a custom approving controller which appr
 
 * You want to securely - in terms of trusted Certificate Authoritity (CA) - reach kubelet endpoint
 
-* Signed serving certificates are honored as a valid kubelet serving certificate by the API server.
+* Signed serving certificates are honored as a valid kubelet serving certificate by the API server
 
 * Don't want to use `--kubelet-insecure-tls` flag during installation of [metrics-server](https://github.com/kubernetes-sigs/metrics-server/)
 
