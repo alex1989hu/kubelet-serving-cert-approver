@@ -1,4 +1,28 @@
 
+<a name="v0.7.7"></a>
+## [v0.7.7](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.6...v0.7.7) (2023-12-06)
+
+### Chore
+
+* bump actions/setup-go from 4 to 5
+* upgrade viper v1.18.0
+* upgrade go 1.21.5
+* bump aquasecurity/trivy-action from 0.14.0 to 0.15.0
+* bump docker/metadata-action from 5.2.0 to 5.3.0
+* bump docker/metadata-action from 5.1.0 to 5.2.0
+* bump docker/metadata-action from 5.0.0 to 5.1.0
+* bump docker/build-push-action from 5.0.0 to 5.1.0
+* upgrade kubernetes v1.28.4
+
+### Ci
+
+* update nancy ignore
+
+### Docs
+
+* remove trailing dot
+
+
 <a name="v0.7.6"></a>
 ## [v0.7.6](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.5...v0.7.6) (2023-11-07)
 
