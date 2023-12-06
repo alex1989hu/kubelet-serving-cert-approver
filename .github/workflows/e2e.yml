@@ -38,7 +38,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3.0.0
     - name: Build Container Image
-      uses: docker/build-push-action@v5.0.0
+      uses: docker/build-push-action@v5.1.0
       with:
         context: .
         file: ./Dockerfile
@@ -84,10 +84,10 @@ jobs:
         kubectl --namespace kubelet-serving-cert-approver get events
         kubectl --namespace kubelet-serving-cert-approver describe deployments kubelet-serving-cert-approver
     - name: Set up Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         cache: true
-        go-version: 1.21.4
+        go-version: 1.21.5
     - name: Test Approved Certificate Signing Requests
       run: go test -tags=e2e -v ./e2e
     - name: Get Application logs

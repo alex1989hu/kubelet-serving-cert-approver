@@ -1,8 +1,9 @@
 # Skip for indirect dependency github.com/hashicorp/consul/api@v1.25.1
 CVE-2022-29153
 
-# Skip for indirect dependency github.com/nats-io/nkeys@v0.4.5
-CVE-2023-46129
+
+# Skip for indirect dependency go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc@v0.35.0
+CVE-2023-47108
 
 # Skip for indirect dependency k8s.io/apiserver@v0.28.3
 CVE-2020-8561

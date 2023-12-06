@@ -22,7 +22,7 @@ jobs:
         fetch-depth: 0
     - name: Docker meta
       id: docker_meta
-      uses: docker/metadata-action@v5.0.0
+      uses: docker/metadata-action@v5.3.0
       with:
         images: ghcr.io/${{ github.repository }}
         flavor: |
@@ -44,7 +44,7 @@ jobs:
         password: ${{ secrets.GHCR_TOKEN }}
     - name: Build and push
       id: docker_build
-      uses: docker/build-push-action@v5.0.0
+      uses: docker/build-push-action@v5.1.0
       with:
         context: .
         file: ./Dockerfile
