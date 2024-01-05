@@ -1,4 +1,26 @@
 
+<a name="v0.8.0"></a>
+## [v0.8.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.7...v0.8.0) (2024-01-05)
+
+### Chore
+
+* upgrade prometheus/client_golang v1.18.0
+* bump docker/metadata-action from 5.4.0 to 5.5.0
+* bump aquasecurity/trivy-action from 0.16.0 to 0.16.1
+* upgrade viper v1.18.2
+* upgrade kubernetes v1.29.0
+* bump github/codeql-action from 2 to 3
+* bump docker/metadata-action from 5.3.0 to 5.4.0
+* bump aquasecurity/trivy-action from 0.15.0 to 0.16.0
+* bump sigstore/cosign-installer from 3.2.0 to 3.3.0
+* upgrade viper v1.18.1
+
+### Ci
+
+* update nancy ignore
+* add setup-go to codeql scan
+
+
 <a name="v0.7.7"></a>
 ## [v0.7.7](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.6...v0.7.7) (2023-12-06)
 
