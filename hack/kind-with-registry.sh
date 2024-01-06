@@ -72,7 +72,7 @@ nodes:
       kubeletExtraArgs:
         "rotate-server-certificates": "true"
 - role: worker
-  image: kindest/node:v1.27.2
+  image: kindest/node:v1.29.0
   kubeadmConfigPatches:
   - |-
     kind: JoinConfiguration
