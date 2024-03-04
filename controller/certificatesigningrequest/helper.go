@@ -91,7 +91,7 @@ func isRequestConform(log *zap.Logger, csr certificatesv1.CertificateSigningRequ
 
 	if !reflect.DeepEqual([]string{expectedOrg}, x509cr.Subject.Organization) {
 		log.Warn("X509 Organization does not match",
-			zap.Strings("actual", x509cr.Subject.Organization),
+			zap.Strings("csr.request.organization", x509cr.Subject.Organization),
 			zap.String("expected", expectedOrg))
 
 		return errOrganizationMismatch
@@ -99,7 +99,7 @@ func isRequestConform(log *zap.Logger, csr certificatesv1.CertificateSigningRequ
 
 	if !strings.HasPrefix(x509cr.Subject.CommonName, expectedPrefix) {
 		log.Warn("X509 Common Name does not start with expected prefix",
-			zap.String("actual", x509cr.Subject.CommonName),
+			zap.String("csr.request.cn", x509cr.Subject.CommonName),
 			zap.String("expected", expectedPrefix))
 
 		return errX509CommonNamePrefixMismatch
@@ -107,14 +107,22 @@ func isRequestConform(log *zap.Logger, csr certificatesv1.CertificateSigningRequ
 
 	if csr.Spec.Username != x509cr.Subject.CommonName {
 		log.Warn("X509 Common Name does not match with Certificate Signing Request Username",
-			zap.String("expected", csr.Spec.Username),
-			zap.String("actual", x509cr.Subject.CommonName))
+			zap.String("csr.username", csr.Spec.Username),
+			zap.String("csr.request.cn", x509cr.Subject.CommonName))
 
 		return errX509CommonNameMismatch
 	}
 
 	if (len(x509cr.EmailAddresses) != 0) || (len(x509cr.URIs) != 0) {
-		log.Warn("Forbidden EmailAddress and URI subjectAltName extensions are found")
+		uris := make([]string, 0, len(x509cr.URIs))
+
+		for _, uri := range x509cr.URIs {
+			uris = append(uris, uri.String())
+		}
+
+		log.Warn("Forbidden EmailAddress or URI subjectAltName extensions are found",
+			zap.Strings("csr.request.emails", x509cr.EmailAddresses),
+			zap.Strings("csr.request.uris", uris))
 
 		return errExtraExtensionsPresent
 	}
@@ -127,7 +135,7 @@ func isRequestConform(log *zap.Logger, csr certificatesv1.CertificateSigningRequ
 
 	if !hasExactUsages(log, csr) {
 		log.Warn("Certificate Signing Request Usages do not match",
-			zap.Any("usages", csr.Spec.Usages),
+			zap.Any("csr.usages", csr.Spec.Usages),
 		)
 
 		return errKeyUsageMismatch

@@ -52,7 +52,7 @@ type SigningReconciler struct {
 //
 //nolint:gocyclo
 func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	reqLogger := r.Logger.With(zap.String("csr", req.Name))
+	reqLogger := r.Logger.With(zap.String("csr.name", req.Name))
 
 	var csr certificatesv1.CertificateSigningRequest
 
@@ -68,28 +68,28 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		if ce := reqLogger.Check(zap.DebugLevel,
 			"Certificate Signing Request is not Kubelet serving Certificate"); ce != nil {
 			ce.Write(
-				zap.String("signer", csr.Spec.SignerName),
+				zap.String("csr.signer", csr.Spec.SignerName),
 			)
 		}
 	case !csr.DeletionTimestamp.IsZero():
 		if ce := reqLogger.Check(zap.DebugLevel,
 			"Certificate Signing Request has been deleted"); ce != nil {
 			ce.Write(
-				zap.Time("deleted", csr.DeletionTimestamp.Time),
+				zap.Time("csr.deleted", csr.DeletionTimestamp.Time),
 			)
 		}
 	case csr.Status.Certificate != nil:
 		if ce := reqLogger.Check(zap.DebugLevel,
 			"Certificate Signing Request is already signed"); ce != nil {
 			ce.Write(
-				zap.String("signer", csr.Spec.SignerName),
+				zap.String("csr.signer", csr.Spec.SignerName),
 			)
 		}
 	case len(csr.Status.Conditions) != 0:
 		if ce := reqLogger.Check(zap.DebugLevel,
 			"Certificate Signing Request already has approval condition"); ce != nil {
 			ce.Write(
-				zap.Any("conditions", csr.Status.Conditions),
+				zap.Any("csr.conditions", csr.Status.Conditions),
 			)
 		}
 	default:
@@ -146,8 +146,8 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 			}
 
 			reqLogger.Info("The Certificate Signing Request has been approved",
-				zap.Strings("dns", x509cr.DNSNames),
-				zap.Any("ip", x509cr.IPAddresses))
+				zap.Strings("csr.request.dns", x509cr.DNSNames),
+				zap.Any("csr.request.ip", x509cr.IPAddresses))
 
 			metrics.NumberOfApprovedCertificateRequests.Inc()
 
@@ -170,7 +170,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 
 // Validate that the given node has authorization to actually create CSRs.
 func (r *SigningReconciler) authorize(csr *certificatesv1.CertificateSigningRequest) (bool, error) {
-	log := r.Logger.With(zap.String("csr", csr.Name))
+	log := r.Logger.With(zap.String("csr.name", csr.Name))
 
 	extra := make(map[string]authorizationv1.ExtraValue, len(csr.Spec.Extra))
 
