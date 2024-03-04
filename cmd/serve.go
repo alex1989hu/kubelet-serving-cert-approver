@@ -48,7 +48,7 @@ var (
 		Use:   "serve",
 		Short: "Starts operator for Kubelet Serving Certificate Approver",
 		Long:  "",
-		Run: func(cmd *cobra.Command, args []string) {
+		Run: func(_ *cobra.Command, _ []string) {
 			startServer()
 		},
 	}

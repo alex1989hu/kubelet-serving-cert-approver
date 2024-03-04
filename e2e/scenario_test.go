@@ -71,7 +71,7 @@ type ApproverInstance struct {
 func InitializeScenario(s *godog.ScenarioContext) {
 	var instance ApproverInstance
 
-	s.Before(func(ctx context.Context, sc *godog.Scenario) (context.Context, error) {
+	s.Before(func(ctx context.Context, _ *godog.Scenario) (context.Context, error) {
 		clientset, restConfig, err := createNewClientSet()
 		if err != nil {
 			return ctx, err

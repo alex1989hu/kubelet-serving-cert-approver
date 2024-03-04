@@ -386,7 +386,7 @@ func TestReconcileValidCSR(t *testing.T) {
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
-		func(action clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
+		func(_ clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
 			sar := &authorizationv1.SubjectAccessReview{
 				Status: authorizationv1.SubjectAccessReviewStatus{
 					Allowed: true,
@@ -441,7 +441,7 @@ func TestReconcileParseCSRError(t *testing.T) {
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
-		func(action clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
+		func(_ clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
 			sar := &authorizationv1.SubjectAccessReview{
 				Status: authorizationv1.SubjectAccessReviewStatus{
 					Allowed: true,
@@ -498,7 +498,7 @@ func TestReconcileRecognizeError(t *testing.T) {
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
-		func(action clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
+		func(_ clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
 			return true, &authorizationv1.SubjectAccessReview{}, nil
 		})
 
@@ -548,7 +548,7 @@ func TestReconcileAuthorizationError(t *testing.T) {
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
-		func(action clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
+		func(_ clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
 			return true, &authorizationv1.SubjectAccessReview{}, errAuthorization
 		})
 
@@ -598,7 +598,7 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
-		func(action clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
+		func(_ clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
 			sar := &authorizationv1.SubjectAccessReview{
 				Status: authorizationv1.SubjectAccessReviewStatus{
 					Allowed: false,
@@ -656,7 +656,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
-		func(action clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
+		func(_ clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
 			sar := &authorizationv1.SubjectAccessReview{
 				Status: authorizationv1.SubjectAccessReviewStatus{
 					Allowed: true,
@@ -670,7 +670,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 	fakeClientset.Fake.PrependReactor(
 		"update",
 		"certificatesigningrequests",
-		func(action clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
+		func(_ clientgotesting.Action) (handled bool, ret runtime.Object, err error) {
 			return true, &certificatesv1.CertificateSigningRequest{}, errApprovalUpdate
 		})
 

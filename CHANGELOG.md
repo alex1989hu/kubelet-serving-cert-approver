@@ -1,4 +1,37 @@
 
+<a name="v0.8.1"></a>
+## [v0.8.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.0...v0.8.1) (2024-03-04)
+
+### Chore
+
+* upgrade golangci-lint v1.56.2
+* use meaningful log field names
+* bump aquasecurity/trivy-action from 0.17.0 to 0.18.0
+* bump docker/setup-buildx-action from 3.0.0 to 3.1.0
+* upgrade controller-runtime v0.17.2
+* upgrade controller-runtime v0.17.1
+* upgrade golangci-lint v1.56.1
+* upgrade go 1.21.7
+* bump golangci/golangci-lint-action from 3 to 4
+* bump aquasecurity/trivy-action from 0.16.1 to 0.17.0
+* upgrade godog v0.14.0
+* upgrade controller-runtime v0.17.0
+* bump codecov/codecov-action from 3 to 4
+* upgrade go 1.21.6
+* bump sigstore/cosign-installer from 3.3.0 to 3.4.0
+* bump docker/metadata-action from 5.5.0 to 5.5.1
+
+### Ci
+
+* get digest from docker_build step
+* specify CODECOV_TOKEN due to codecov-action[@4](https://github.com/4) change
+* call cosign to sign multiple tags
+
+### Fix
+
+* set v1.29.0 image for 2nd kind worker node as well
+
+
 <a name="v0.8.0"></a>
 ## [v0.8.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.7.7...v0.8.0) (2024-01-05)
 
