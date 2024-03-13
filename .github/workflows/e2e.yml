@@ -31,7 +31,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Set up kubectl
-      uses: azure/setup-kubectl@v3.2
+      uses: azure/setup-kubectl@v4
       with:
         version: ${{ matrix.node }}
     - name: Set up QEMU
