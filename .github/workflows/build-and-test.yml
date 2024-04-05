@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-go@v5
       with:
         cache: true
-        go-version: 1.21.8
+        go-version: 1.22.2
     - name: Check project dependencies
       run: |
         rm go.sum
@@ -26,6 +26,8 @@ jobs:
         git -c color.ui=always diff --exit-code go.mod go.sum
     - name: Test
       run: go test -race ./... -v -coverprofile=coverage.out
+      env:
+        GOEXPERIMENT: nocoverageredesign
     - name: Set up kubectl
       uses: azure/setup-kubectl@v4
       with:
