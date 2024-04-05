@@ -1,4 +1,26 @@
 
+<a name="v0.8.2"></a>
+## [v0.8.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.1...v0.8.2) (2024-04-05)
+
+### Chore
+
+* upgrade go 1.22.2
+* upgrade golang.org/x/net v0.24.0
+* bump aquasecurity/trivy-action from 0.18.0 to 0.19.0
+* bump docker/build-push-action from 5.2.0 to 5.3.0
+* bump docker/setup-buildx-action from 3.1.0 to 3.2.0
+* upgrade google.golang.org/protobuf v1.33.0
+* bump docker/build-push-action from 5.1.0 to 5.2.0
+* bump docker/login-action from 3.0.0 to 3.1.0
+* upgrade golang.org/x/net v0.17.0
+* upgrade go 1.21.8
+
+### Ci
+
+* upgrade azure/setup-kubectl to 4
+* update nancy ignore
+
+
 <a name="v0.8.1"></a>
 ## [v0.8.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.0...v0.8.1) (2024-03-04)
 

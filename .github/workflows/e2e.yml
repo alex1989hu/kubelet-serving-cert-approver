@@ -31,15 +31,15 @@ jobs:
       with:
         fetch-depth: 0
     - name: Set up kubectl
-      uses: azure/setup-kubectl@v3.2
+      uses: azure/setup-kubectl@v4
       with:
         version: ${{ matrix.node }}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3.0.0
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3.1.0
+      uses: docker/setup-buildx-action@v3.2.0
     - name: Build Container Image
-      uses: docker/build-push-action@v5.1.0
+      uses: docker/build-push-action@v5.3.0
       with:
         context: .
         file: ./Dockerfile
@@ -88,7 +88,7 @@ jobs:
       uses: actions/setup-go@v5
       with:
         cache: true
-        go-version: 1.21.7
+        go-version: 1.22.2
     - name: Test Approved Certificate Signing Requests
       run: go test -tags=e2e -v ./e2e
     - name: Get Application logs
