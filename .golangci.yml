@@ -113,6 +113,8 @@ linters-settings:
     simple: true
     range-loops: true
     for-loops: true
+  testifylint:
+    enable-all: true
   thelper:
     test:
       first: true
@@ -163,6 +165,7 @@ linters:
     - revive
     - staticcheck
     - stylecheck
+    - testifylint
     - testpackage
     - thelper
     - tparallel

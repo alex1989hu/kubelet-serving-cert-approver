@@ -30,6 +30,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/require"
 	authorizationv1 "k8s.io/api/authorization/v1"
 	certificatesv1 "k8s.io/api/certificates/v1"
 	k8serrors "k8s.io/apimachinery/pkg/api/errors"
@@ -202,7 +203,7 @@ func TestReconcileClientGetError(t *testing.T) {
 	req := reconcile.Request{NamespacedName: types.NamespacedName{}}
 	res, err := signingReconciler.Reconcile(context.TODO(), req)
 
-	assert.NotNil(t, err)
+	require.Error(t, err)
 	assert.Contains(t, err.Error(), errMockGet.Error())
 	assert.Equal(t, reconcile.Result{}, res)
 
@@ -222,7 +223,7 @@ func TestReconcileClientGetNotFoundError(t *testing.T) {
 	req := reconcile.Request{NamespacedName: types.NamespacedName{}}
 	res, err := signingReconciler.Reconcile(context.TODO(), req)
 
-	assert.Nil(t, err)
+	require.NoError(t, err)
 	assert.Equal(t, reconcile.Result{}, res)
 
 	mockClient.AssertExpectations(t)
@@ -354,7 +355,7 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 
 			res, err := r.Reconcile(context.TODO(), req)
 
-			assert.Nil(t, err)
+			require.NoError(t, err)
 			assert.Equal(t, reconcile.Result{}, res)
 		})
 	}
@@ -414,7 +415,7 @@ func TestReconcileValidCSR(t *testing.T) {
 
 	res, err := r.Reconcile(context.TODO(), req)
 
-	assert.Nil(t, err)
+	require.NoError(t, err)
 	assert.Equal(t, reconcile.Result{}, res)
 	assert.Len(t, fakeEventRecorder.Events, 1)
 }
@@ -470,7 +471,7 @@ func TestReconcileParseCSRError(t *testing.T) {
 
 	res, err := r.Reconcile(context.TODO(), req)
 
-	assert.NotNil(t, err)
+	require.Error(t, err)
 	assert.Contains(t, err.Error(), "PEM Block")
 	assert.Equal(t, reconcile.Result{}, res)
 	assert.Len(t, fakeEventRecorder.Events, 1)
@@ -520,7 +521,7 @@ func TestReconcileRecognizeError(t *testing.T) {
 
 	res, err := r.Reconcile(context.TODO(), req)
 
-	assert.NotNil(t, err)
+	require.Error(t, err)
 	assert.Contains(t, err.Error(), "x509 Common Name")
 	assert.Equal(t, reconcile.Result{}, res)
 	assert.Len(t, fakeEventRecorder.Events, 1)
@@ -570,7 +571,7 @@ func TestReconcileAuthorizationError(t *testing.T) {
 
 	res, err := r.Reconcile(context.TODO(), req)
 
-	assert.NotNil(t, err)
+	require.Error(t, err)
 	assert.Contains(t, err.Error(), errAuthorization.Error())
 	assert.Equal(t, reconcile.Result{}, res)
 	assert.Len(t, fakeEventRecorder.Events, 1)
@@ -627,7 +628,7 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 
 	res, err := r.Reconcile(context.TODO(), req)
 
-	assert.NotNil(t, err)
+	require.Error(t, err)
 	assert.Contains(t, err.Error(), "Subject Access Review")
 	assert.Equal(t, reconcile.Result{}, res)
 	assert.Len(t, fakeEventRecorder.Events, 1)
@@ -692,7 +693,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 
 	res, err := r.Reconcile(context.TODO(), req)
 
-	assert.NotNil(t, err)
+	require.Error(t, err)
 	assert.Contains(t, err.Error(), errApprovalUpdate.Error())
 	assert.Equal(t, reconcile.Result{}, res)
 	assert.Len(t, fakeEventRecorder.Events, 1)
