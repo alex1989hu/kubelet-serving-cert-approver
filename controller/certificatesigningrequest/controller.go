@@ -100,7 +100,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 			reqLogger.Error(message, zap.Error(err))
 			metrics.NumberOfInvalidCertificateSigningRequests.Inc()
 			r.EventRecorder.Event(&csr, corev1.EventTypeWarning, eventWarningReason,
-				message+": "+csr.Name+"): "+err.Error()) //nolint: goconst // Keep for readability.
+				message+": "+csr.Name+"): "+err.Error())
 
 			return ctrl.Result{}, err
 		}
