@@ -8,7 +8,8 @@ run:
     - e2e
 
 output:
-  format: line-number
+  formats:
+  - format: line-number
 
 linters-settings:
   depguard:
@@ -17,14 +18,13 @@ linters-settings:
         deny:
           - pkg: "io/ioutil"
             desc: ioutil is deprecated in Go 1.16"
-    include-go-root: true
   errcheck:
     check-type-assertions: true
     check-blank: true
   govet:
-    check-shadowing: true
     enable:
       - fieldalignment
+      - shadow
   gofmt:
     simplify: true
   gocyclo:
@@ -47,7 +47,6 @@ linters-settings:
     locale: US
   nolintlint:
     allow-unused: false
-    allow-leading-space: false
     allow-no-explanation: []
     require-explanation: false
     require-specific: true
@@ -105,7 +104,7 @@ linters-settings:
       - name: var-naming
       - name: waitgroup-by-value
   unused:
-    check-exported: false
+    exported-fields-are-used: false
   unparam:
     check-exported: false
   nakedret:
@@ -114,6 +113,8 @@ linters-settings:
     simple: true
     range-loops: true
     for-loops: true
+  testifylint:
+    enable-all: true
   thelper:
     test:
       first: true
@@ -139,12 +140,11 @@ linters:
     - gocyclo
     - godot
     - godox
-    - goerr113
+    - err113
     - gofmt
     - gofumpt
     - goheader
     - goimports
-    - gomnd
     - goprintffuncname
     - gosec
     - gosimple
@@ -152,8 +152,8 @@ linters:
     - ineffassign
     - lll
     - makezero
-    - megacheck
     - misspell
+    - mnd
     - nakedret
     - nestif
     - nlreturn
@@ -165,6 +165,7 @@ linters:
     - revive
     - staticcheck
     - stylecheck
+    - testifylint
     - testpackage
     - thelper
     - tparallel
@@ -187,6 +188,6 @@ linters:
   fast: false
 
 issues:
-  max-per-linter: 0
-  max-same: 0
+  max-issues-per-linter: 0
+  max-same-issues: 0
   new: false

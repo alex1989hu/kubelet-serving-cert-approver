@@ -22,7 +22,7 @@ jobs:
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3.0.0
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3.2.0
+      uses: docker/setup-buildx-action@v3.3.0
     - name: Build Container Image
       uses: docker/build-push-action@v5.3.0
       with:
@@ -34,7 +34,7 @@ jobs:
         push: false
         tags: ghcr.io/${{ github.repository }}:trivy
     - name: Run Trivy Vulnerability Scanner
-      uses: aquasecurity/trivy-action@0.19.0
+      uses: aquasecurity/trivy-action@0.20.0
       with:
         image-ref: ghcr.io/${{ github.repository }}:trivy
         format: sarif

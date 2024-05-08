@@ -1,4 +1,24 @@
 
+<a name="v0.8.3"></a>
+## [v0.8.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.2...v0.8.3) (2024-05-08)
+
+### Chore
+
+* enable testifylint golangci-lint linter
+* bump golangci/golangci-lint-action from 5 to 6
+* bump aquasecurity/trivy-action from 0.19.0 to 0.20.0
+* upgrade golangci-lint v1.58.0
+* upgrade go 1.22.3
+* bump golangci/golangci-lint-action from 4 to 5
+* bump sigstore/cosign-installer from 3.4.0 to 3.5.0
+* upgrade controller-runtime v0.17.3
+* bump docker/setup-buildx-action from 3.2.0 to 3.3.0
+
+### Ci
+
+* use verbose flag of govulncheck
+
+
 <a name="v0.8.2"></a>
 ## [v0.8.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.1...v0.8.2) (2024-04-05)
 

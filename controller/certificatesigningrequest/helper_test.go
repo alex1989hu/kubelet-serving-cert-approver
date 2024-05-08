@@ -19,13 +19,13 @@ package certificatesigningrequest
 import (
 	"crypto/x509"
 	"crypto/x509/pkix"
-	"errors"
 	"fmt"
 	"net"
 	"net/url"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	certificatesv1 "k8s.io/api/certificates/v1"
 )
 
@@ -50,9 +50,9 @@ func TestParseCSR(t *testing.T) {
 
 	csr, err := parseCSR(nil)
 
-	assert.NotNil(t, err)
+	require.Error(t, err)
 	assert.Nil(t, csr)
-	assert.True(t, errors.Is(err, errNotCertificateRequest))
+	assert.ErrorIs(t, err, errNotCertificateRequest)
 }
 
 func TestParseCSRMissingBlock(t *testing.T) {
@@ -64,7 +64,7 @@ func TestParseCSRMissingBlock(t *testing.T) {
 `)
 	csr, err := parseCSR(pemCSR)
 
-	assert.NotNil(t, err)
+	require.Error(t, err)
 	assert.Nil(t, csr)
 	assert.Contains(t, err.Error(), "during parsing of Certificate Signing Request")
 }
@@ -74,7 +74,7 @@ func TestParseCSRValidInput(t *testing.T) {
 
 	csr, err := parseCSR(generatePEMEncodedCSR(t))
 
-	assert.Nil(t, err)
+	require.NoError(t, err)
 	assert.NotNil(t, csr)
 }
 
@@ -260,7 +260,7 @@ func TestIsRequestConformInvalidSigningRequest(t *testing.T) {
 
 		t.Run(fmt.Sprint(table.expectedError), func(t *testing.T) {
 			t.Parallel()
-			assert.True(t, errors.Is(isRequestConform(TestLogger, table.csr, &table.x509cr), table.expectedError))
+			assert.ErrorIs(t, isRequestConform(TestLogger, table.csr, &table.x509cr), table.expectedError)
 		})
 	}
 }
