@@ -13,15 +13,45 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node:
-        - v1.22.17
-        - v1.23.17
-        - v1.24.15
-        - v1.25.11
-        - v1.26.6
-        - v1.27.3
-        - v1.28.0
-        - v1.29.0
+        arrays:
+          [
+            {
+              node: "v1.22.17",
+              digest: "f5b2e5698c6c9d6d0adc419c0deae21a425c07d81bbf3b6a6834042f25d4fba2",
+            },
+            {
+              node: "v1.23.17",
+              digest: "14d0a9a892b943866d7e6be119a06871291c517d279aedb816a4b4bc0ec0a5b3",
+            },
+            {
+              node: "v1.24.17",
+              digest: "bad10f9b98d54586cba05a7eaa1b61c6b90bfc4ee174fdc43a7b75ca75c95e51",
+            },
+            {
+              node: "v1.25.16",
+              digest: "5da57dfc290ac3599e775e63b8b6c49c0c85d3fec771cd7d55b45fae14b38d3b",
+            },
+            {
+              node: "v1.26.15",
+              digest: "84333e26cae1d70361bb7339efb568df1871419f2019c80f9a12b7e2d485fe19",
+            },
+            {
+              node: "v1.27.13",
+              digest: "17439fa5b32290e3ead39ead1250dca1d822d94a10d26f1981756cd51b24b9d8",
+            },
+            {
+              node: "v1.28.9",
+              digest: "dca54bc6a6079dd34699d53d7d4ffa2e853e46a20cd12d619a09207e35300bd0",
+            },
+            {
+              node: "v1.29.4",
+              digest: "3abb816a5b1061fb15c6e9e60856ec40d56b7b52bcea5f5f1350bc6e2320b6f8",
+            },
+            {
+              node: "v1.30.0",
+              digest: "047357ac0cfea04663786a612ba1eaba9702bef25227a794b52890dd8bcd692e",
+            },
+        ]
         install-mode:
         - ha
         - standalone
@@ -33,7 +63,7 @@ jobs:
     - name: Set up kubectl
       uses: azure/setup-kubectl@v4
       with:
-        version: ${{ matrix.node }}
+        version: ${{ matrix.arrays.node }}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3.0.0
     - name: Set up Docker Buildx
@@ -52,8 +82,8 @@ jobs:
       uses: engineerd/setup-kind@v0.5.0
       with:
         config: ./hack/e2e-kind-config.yaml
-        image: kindest/node:${{ matrix.node }}
-        version: "v0.20.0"
+        image: docker.io/kindest/node@sha256:${{ matrix.arrays.digest }}
+        version: "v0.23.0"
     - name: Wait for KiND readiness
       run: |
           kubectl --namespace kube-system wait --for=condition=ready pod -l tier=control-plane --timeout=300s
@@ -88,7 +118,7 @@ jobs:
       uses: actions/setup-go@v5
       with:
         cache: true
-        go-version: 1.22.3
+        go-version: 1.22.4
     - name: Test Approved Certificate Signing Requests
       run: go test -tags=e2e -v ./e2e
     - name: Get Application logs
