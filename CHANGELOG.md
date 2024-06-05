@@ -1,4 +1,19 @@
 
+<a name="v0.8.4"></a>
+## [v0.8.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.3...v0.8.4) (2024-06-05)
+
+### Chore
+
+* upgrade go 1.22.4
+* upgrade kubernetes v1.30.0
+* bump docker/login-action from 3.1.0 to 3.2.0
+* bump aquasecurity/trivy-action from 0.20.0 to 0.21.0
+
+### Ci
+
+* use digest of kind images
+
+
 <a name="v0.8.3"></a>
 ## [v0.8.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.2...v0.8.3) (2024-05-08)
 
