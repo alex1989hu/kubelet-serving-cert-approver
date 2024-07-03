@@ -1,4 +1,20 @@
 
+<a name="v0.8.5"></a>
+## [v0.8.5](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.4...v0.8.5) (2024-07-03)
+
+### Chore
+
+* bump docker/build-push-action from 6.1.0 to 6.3.0
+* bump docker/setup-qemu-action from 3.0.0 to 3.1.0
+* upgrade go 1.22.5
+* bump docker/build-push-action from 6.0.2 to 6.1.0
+* bump docker/build-push-action from 6.0.1 to 6.0.2
+* bump docker/build-push-action from 5.4.0 to 6.0.1
+* bump aquasecurity/trivy-action from 0.22.0 to 0.23.0
+* bump docker/build-push-action from 5.3.0 to 5.4.0
+* bump aquasecurity/trivy-action from 0.21.0 to 0.22.0
+
+
 <a name="v0.8.4"></a>
 ## [v0.8.4](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.3...v0.8.4) (2024-06-05)
 

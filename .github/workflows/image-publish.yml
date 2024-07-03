@@ -33,7 +33,7 @@ jobs:
     - name: Install Cosign
       uses: sigstore/cosign-installer@v3.5.0
     - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3.0.0
+      uses: docker/setup-qemu-action@v3.1.0
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3.3.0
     - name: Login to Registry
@@ -44,7 +44,7 @@ jobs:
         password: ${{ secrets.GHCR_TOKEN }}
     - name: Build and push
       id: docker_build
-      uses: docker/build-push-action@v5.3.0
+      uses: docker/build-push-action@v6.3.0
       with:
         context: .
         file: ./Dockerfile
