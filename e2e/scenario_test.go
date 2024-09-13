@@ -227,8 +227,6 @@ func (c *ApproverInstance) thereAreEventsRelatedToCertificateSigningRequests() e
 // feature: eventrecorder
 func (c *ApproverInstance) approvalEventsShallContainReason(reason string) error {
 	for _, event := range c.Events {
-		event := event
-
 		if err := assertExpectedAndActual(assert.Contains, event.Reason, reason); err != nil {
 			return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
 		}
@@ -241,8 +239,6 @@ func (c *ApproverInstance) approvalEventsShallContainReason(reason string) error
 // feature: eventrecorder
 func (c *ApproverInstance) approvalEventsShallHaveMessage(message string) error {
 	for _, event := range c.Events {
-		event := event
-
 		if err := assertExpectedAndActual(assert.Contains, event.Note, message); err != nil {
 			return fmt.Errorf("%s: %w", expectationDoesNotMeetMessage, err)
 		}
