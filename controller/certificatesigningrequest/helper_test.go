@@ -256,8 +256,6 @@ func TestIsRequestConformInvalidSigningRequest(t *testing.T) {
 	}
 
 	for _, table := range tables {
-		table := table // pin!
-
 		t.Run(fmt.Sprint(table.expectedError), func(t *testing.T) {
 			t.Parallel()
 			assert.ErrorIs(t, isRequestConform(TestLogger, table.csr, &table.x509cr), table.expectedError)
@@ -352,8 +350,6 @@ func TestConformantKubeletServingCertificateSigningRequest(t *testing.T) {
 	}
 
 	for _, table := range tables {
-		table := table // pin!
-
 		t.Run(fmt.Sprint(table.goal), func(t *testing.T) {
 			t.Parallel()
 			assert.NoError(t, isRequestConform(TestLogger, table.csr, &table.x509cr))

@@ -335,8 +335,6 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 	}
 
 	for _, table := range tables {
-		table := table // pin!
-
 		t.Run(fmt.Sprint(table.goal), func(t *testing.T) {
 			t.Parallel()
 
