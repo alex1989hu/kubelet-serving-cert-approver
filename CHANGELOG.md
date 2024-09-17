@@ -1,4 +1,34 @@
 
+<a name="v0.8.6"></a>
+## [v0.8.6](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.5...v0.8.6) (2024-09-17)
+
+### Chore
+
+* upgrade godog v0.14.1
+* upgrade viper v1.19.0
+* upgrade zap v1.27.0
+* upgrade golangci-lint v1.61.0
+* upgrade controller-runtime v0.19.0
+* upgrade go 1.23.1
+* bump docker/build-push-action from 6.6.1 to 6.7.0
+* bump docker/build-push-action from 6.5.0 to 6.6.1
+* bump sigstore/cosign-installer from 3.5.0 to 3.6.0
+* bump docker/setup-buildx-action from 3.5.0 to 3.6.1
+* bump docker/login-action from 3.2.0 to 3.3.0
+* bump docker/build-push-action from 6.4.1 to 6.5.0
+* bump docker/setup-buildx-action from 3.4.0 to 3.5.0
+* bump docker/setup-qemu-action from 3.1.0 to 3.2.0
+* bump docker/build-push-action from 6.4.0 to 6.4.1
+* bump anchore/scan-action from 3 to 4
+* bump docker/build-push-action from 6.3.0 to 6.4.0
+* bump aquasecurity/trivy-action from 0.23.0 to 0.24.0
+* bump docker/setup-buildx-action from 3.3.0 to 3.4.0
+
+### Ci
+
+* update nancy ignore
+
+
 <a name="v0.8.5"></a>
 ## [v0.8.5](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.4...v0.8.5) (2024-07-03)
 
