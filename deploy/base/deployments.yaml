@@ -44,7 +44,7 @@ spec:
         effect: NoSchedule
       containers:
         - name: cert-approver
-          image: ghcr.io/alex1989hu/kubelet-serving-cert-approver:0.8.6
+          image: ghcr.io/alex1989hu/kubelet-serving-cert-approver:0.8.7
           imagePullPolicy: Always
           args:
           - serve
