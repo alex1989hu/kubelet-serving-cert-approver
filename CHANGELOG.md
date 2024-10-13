@@ -1,4 +1,23 @@
 
+<a name="v0.8.7"></a>
+## [v0.8.7](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.6...v0.8.7) (2024-10-13)
+
+### Chore
+
+* bump aquasecurity/trivy-action from 0.26.0 to 0.27.0
+* bump aquasecurity/trivy-action from 0.25.0 to 0.26.0
+* bump aquasecurity/trivy-action from 0.24.0 to 0.25.0
+* as keyword should match the case of the from keyword in Dockerfile
+* bump sigstore/cosign-installer from 3.6.0 to 3.7.0
+* bump docker/setup-buildx-action from 3.7.0 to 3.7.1
+* bump docker/setup-buildx-action from 3.6.1 to 3.7.0
+* bump docker/build-push-action from 6.7.0 to 6.9.0
+
+### Fix
+
+* set logger to controller-runtime
+
+
 <a name="v0.8.6"></a>
 ## [v0.8.6](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.5...v0.8.6) (2024-09-17)
 
