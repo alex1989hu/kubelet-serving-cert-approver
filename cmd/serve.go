@@ -16,7 +16,6 @@
 package cmd
 
 import (
-	"github.com/go-logr/logr"
 	"github.com/go-logr/zapr"
 	"github.com/spf13/cobra"
 	uberzap "go.uber.org/zap"
@@ -72,7 +71,7 @@ func startServer() {
 		uberzap.Bool("debug", isDebug))
 
 	// Forward client-go klog calls to zap
-	klog.SetLogger(zapr.NewLogger(&setupLog))
+	klog.SetLogger(zapr.NewLogger(logger.CreateLogger().Named("client-go")))
 
 	setupLog.Info("Try to talk to Kubernetes API Server, will exit in case of failure")
 
@@ -83,6 +82,10 @@ func startServer() {
 
 		setupLog.Info("pprof will be enabled", uberzap.String("port", pProfBindAddress))
 	}
+
+	// Set zap logger to all deferred loggers of controller-runtime to prevent it from complaining
+	// about log.SetLogger never being called
+	ctrllog.SetLogger(zapr.NewLogger(logger.CreateLogger().Named("ctrllog")))
 
 	mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
 		Client: ctrlclient.Options{
@@ -99,9 +102,7 @@ func startServer() {
 		LeaderElectionNamespace:    namespace,
 		LeaderElectionResourceLock: "leases",
 		LeaderElectionID:           "kubelet-serving-certificate-approver",
-		// Set NullLogger: https://github.com/kubernetes-sigs/controller-runtime/issues/1122
-		Logger:           logr.New(ctrllog.NullLogSink{}),
-		PprofBindAddress: pProfBindAddress,
+		PprofBindAddress:           pProfBindAddress,
 	})
 	if err != nil {
 		setupLog.Fatal("Unable to start manager", uberzap.Error(err))
