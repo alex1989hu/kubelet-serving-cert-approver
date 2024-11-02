@@ -87,6 +87,7 @@ jobs:
       with:
         config: ./hack/e2e-kind-config.yaml
         image: docker.io/kindest/node@sha256:${{ matrix.arrays.digest }}
+        skipClusterLogsExport: true
         version: "v0.24.0"
     - name: Wait for KiND readiness
       run: |
