@@ -11,4 +11,5 @@ coverage:
         if_ci_failed: success
     patch: off
 
-comment: enable
+comment:
+  layout: "condensed_header, condensed_files, condensed_footer"
