@@ -5,7 +5,7 @@ go 1.23
 toolchain go1.23.1
 
 require (
-	github.com/cucumber/godog v0.14.1
+	github.com/cucumber/godog v0.15.0
 	github.com/go-logr/zapr v1.3.0
 	github.com/prometheus/client_golang v1.19.1
 	github.com/prometheus/common v0.55.0
