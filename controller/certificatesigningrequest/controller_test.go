@@ -78,19 +78,19 @@ type Client struct {
 func (c *Client) IsObjectNamespaced(obj runtime.Object) (bool, error) {
 	args := c.Called(obj)
 
-	return args.Get(0).(bool), args.Error(1)
+	return args.Get(0).(bool), args.Error(1) //nolint:errcheck
 }
 
 func (c *Client) GroupVersionKindFor(obj runtime.Object) (schema.GroupVersionKind, error) {
 	args := c.Called(obj)
 
-	return args.Get(0).(schema.GroupVersionKind), args.Error(1)
+	return args.Get(0).(schema.GroupVersionKind), args.Error(1) //nolint:errcheck
 }
 
 func (c *Client) SubResource(subResource string) client.SubResourceClient {
 	args := c.Called(subResource)
 
-	return args.Get(0).(client.SubResourceClient)
+	return args.Get(0).(client.SubResourceClient) //nolint:errcheck
 }
 
 // NewMockClient creates a new mock controller-runtime client.
