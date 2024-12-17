@@ -33,27 +33,27 @@ jobs:
             },
             {
               node: "v1.26.15",
-              digest: "1cc15d7b1edd2126ef051e359bf864f37bbcf1568e61be4d2ed1df7a3e87b354",
+              digest: "c79602a44b4056d7e48dc20f7504350f1e87530fe953428b792def00bc1076dd",
             },
             {
               node: "v1.27.16",
-              digest: "3fd82731af34efe19cd54ea5c25e882985bafa2c9baefe14f8deab1737d9fabe",
+              digest: "2d21a61643eafc439905e18705b8186f3296384750a835ad7a005dceb9546d20",
             },
             {
-              node: "v1.28.13",
-              digest: "45d319897776e11167e4698f6b14938eb4d52eb381d9e3d7a9086c16c69a8110",
+              node: "v1.28.15",
+              digest: "a7c05c7ae043a0b8c818f5a06188bc2c4098f6cb59ca7d1856df00375d839251",
             },
             {
-              node: "v1.29.8",
-              digest: "d46b7aa29567e93b27f7531d258c372e829d7224b25e3fc6ffdefed12476d3aa",
+              node: "v1.29.12",
+              digest: "62c0672ba99a4afd7396512848d6fc382906b8f33349ae68fb1dbfe549f70dec",
             },
             {
-              node: "v1.30.4",
-              digest: "976ea815844d5fa93be213437e3ff5754cd599b040946b5cca43ca45c2047114",
+              node: "v1.30.8",
+              digest: "17cd608b3971338d9180b00776cb766c50d0a0b6b904ab4ff52fd3fc5c6369bf",
             },
             {
-              node: "v1.31.1",
-              digest: "cd224d8da58d50907d1dd41d476587643dad2ffd9f6a4d96caf530fb3b9a5956",
+              node: "v1.31.4",
+              digest: "2cb39f7295fe7eafee0842b1052a599a4fb0f8bcf3f83d96c7f4864c357c6c30",
             },
         ]
         install-mode:
@@ -88,7 +88,7 @@ jobs:
         config: ./hack/e2e-kind-config.yaml
         image: docker.io/kindest/node@sha256:${{ matrix.arrays.digest }}
         skipClusterLogsExport: true
-        version: "v0.24.0"
+        version: "v0.26.0"
     - name: Wait for KiND readiness
       run: |
           kubectl --namespace kube-system wait --for=condition=ready pod -l tier=control-plane --timeout=300s
