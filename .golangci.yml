@@ -109,6 +109,14 @@ linters-settings:
     exported-fields-are-used: false
   unparam:
     check-exported: false
+  usetesting:
+    os-create-temp: true
+    os-mkdir-temp: true
+    os-setenv: true
+    os-temp-dir: true
+    os-chdir: true
+    context-background: true
+    context-todo: true
   nakedret:
     max-func-lines: 30
   prealloc:
@@ -135,6 +143,8 @@ linters:
     - errorlint
     - errname
     - exhaustive
+    - exptostd
+    - fatcontext
     - gci
     - gochecknoglobals
     - goconst
@@ -158,6 +168,8 @@ linters:
     - mnd
     - nakedret
     - nestif
+    - nilerr
+    - nilnesserr
     - nlreturn
     - noctx
     - nolintlint
@@ -175,6 +187,7 @@ linters:
     - unconvert
     - unparam
     - unused
+    - usetesting
     - whitespace
     - wrapcheck
     - wsl
