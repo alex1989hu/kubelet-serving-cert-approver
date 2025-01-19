@@ -1,4 +1,46 @@
 
+<a name="v0.9.0"></a>
+## [v0.9.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.7...v0.9.0) (2025-01-19)
+
+### Chore
+
+* upgrade controller-runtime v0.20.0
+* set go patch version in go.mod
+* bump docker/build-push-action from 6.11.0 to 6.12.0
+* upgrade go 1.23.5
+* bump docker/setup-qemu-action from 3.2.0 to 3.3.0
+* bump docker/build-push-action from 6.10.0 to 6.11.0
+* upgrade golangci-lint v1.63.4
+* upgrade golangci-lint v1.63.3
+* upgrade golangci-lint v1.63.0
+* upgrade golang.org/x/net v0.33.0
+* bump docker/setup-buildx-action from 3.7.1 to 3.8.0
+* bump anchore/scan-action from 5 to 6
+* upgrade golangci-lint v1.62.2
+* upgrade go 1.23.4
+* upgrade controller-runtime v0.19.3
+* upgrade stretchr/testify v1.10.0
+* bump docker/build-push-action from 6.9.0 to 6.10.0
+* upgrade controller-runtime v0.19.2
+* bump codecov/codecov-action from 4 to 5
+* bump aquasecurity/trivy-action from 0.28.0 to 0.29.0
+* bump docker/metadata-action from 5.5.1 to 5.6.1
+* bump engineerd/setup-kind from 0.5.0 to 0.6.2
+* upgrade go 1.23.2
+* upgrade controller-runtime v0.19.1
+* upgrade godog v0.15.0
+* bump aquasecurity/trivy-action from 0.27.0 to 0.28.0
+* bump anchore/scan-action from 4 to 5
+
+### Ci
+
+* upgrade kind v0.26.0
+* update nancy ignore
+* replace invalid comment opiton of codecov
+* disable kind cluster log export
+* upgrade kind v0.24.0
+
+
 <a name="v0.8.7"></a>
 ## [v0.8.7](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.6...v0.8.7) (2024-10-13)
 
