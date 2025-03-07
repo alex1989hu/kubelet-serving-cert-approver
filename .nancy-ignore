@@ -5,8 +5,5 @@ CVE-2024-51744
 CVE-2022-29153
 CVE-2024-10086
 
-# Skip for indirect dependency golang.org/x/crypto@v0.31.0
-CVE-2025-22869
-
 # Skip for indirect dependency k8s.io/apiserver@v0.31.0
 CVE-2020-8561
