@@ -1,5 +1,6 @@
 # Skip for indirect dependency github.com/golang-jwt/jwt/v4@v4.5.0
 CVE-2024-51744
+CVE-2025-30204
 
 # Skip for indirect dependency github.com/hashicorp/consul/api@v1.28.2
 CVE-2022-29153
