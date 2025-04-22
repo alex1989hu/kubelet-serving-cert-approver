@@ -1,4 +1,34 @@
 
+<a name="v0.9.1"></a>
+## [v0.9.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.9.0...v0.9.1) (2025-04-22)
+
+### Chore
+
+* upgrade golangci-lint v2.1.2
+* upgrade golang.org/x/net v0.39.0
+* upgrade go 1.24.2
+* bump docker/login-action from 3.3.0 to 3.4.0
+* bump aquasecurity/trivy-action from 0.29.0 to 0.30.0
+* upgrade golangci-lint v1.64.6
+* upgrade golang.org/x/net v0.37.0
+* upgrade go 1.24.1
+* bump docker/setup-qemu-action from 3.5.0 to 3.6.0
+* bump docker/build-push-action from 6.13.0 to 6.15.0
+* bump docker/setup-buildx-action from 3.8.0 to 3.10.0
+* bump docker/setup-qemu-action from 3.4.0 to 3.5.0
+* bump sigstore/cosign-installer from 3.7.0 to 3.8.1
+* bump docker/metadata-action from 5.6.1 to 5.7.0
+* upgrade go 1.23.6
+* bump docker/setup-qemu-action from 3.3.0 to 3.4.0
+* upgrade controller-runtime v0.20.1
+* bump docker/build-push-action from 6.12.0 to 6.13.0
+
+### Ci
+
+* update nancy ignore
+* update nancy ignore
+
+
 <a name="v0.9.0"></a>
 ## [v0.9.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.8.7...v0.9.0) (2025-01-19)
 
