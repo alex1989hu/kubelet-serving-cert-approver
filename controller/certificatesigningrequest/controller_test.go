@@ -201,7 +201,7 @@ func TestReconcileClientGetError(t *testing.T) {
 
 	signingReconciler := &SigningReconciler{Client: mockClient, Scheme: runtime.NewScheme(), Logger: TestLogger}
 	req := reconcile.Request{NamespacedName: types.NamespacedName{}}
-	res, err := signingReconciler.Reconcile(context.TODO(), req)
+	res, err := signingReconciler.Reconcile(t.Context(), req)
 
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), errMockGet.Error())
@@ -221,7 +221,7 @@ func TestReconcileClientGetNotFoundError(t *testing.T) {
 
 	signingReconciler := &SigningReconciler{Client: mockClient, Scheme: runtime.NewScheme(), Logger: TestLogger}
 	req := reconcile.Request{NamespacedName: types.NamespacedName{}}
-	res, err := signingReconciler.Reconcile(context.TODO(), req)
+	res, err := signingReconciler.Reconcile(t.Context(), req)
 
 	require.NoError(t, err)
 	assert.Equal(t, reconcile.Result{}, res)
@@ -351,7 +351,7 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 				},
 			}
 
-			res, err := r.Reconcile(context.TODO(), req)
+			res, err := r.Reconcile(t.Context(), req)
 
 			require.NoError(t, err)
 			assert.Equal(t, reconcile.Result{}, res)
@@ -382,6 +382,7 @@ func TestReconcileValidCSR(t *testing.T) {
 	fakeClientset := fake.Clientset{}
 
 	// Provide authorization by fake k8s clientset
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -411,7 +412,7 @@ func TestReconcileValidCSR(t *testing.T) {
 		},
 	}
 
-	res, err := r.Reconcile(context.TODO(), req)
+	res, err := r.Reconcile(t.Context(), req)
 
 	require.NoError(t, err)
 	assert.Equal(t, reconcile.Result{}, res)
@@ -437,6 +438,7 @@ func TestReconcileParseCSRError(t *testing.T) {
 	fakeEventRecorder := record.NewFakeRecorder(1)
 	fakeClientset := fake.Clientset{}
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -467,7 +469,7 @@ func TestReconcileParseCSRError(t *testing.T) {
 		},
 	}
 
-	res, err := r.Reconcile(context.TODO(), req)
+	res, err := r.Reconcile(t.Context(), req)
 
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "PEM Block")
@@ -494,6 +496,7 @@ func TestReconcileRecognizeError(t *testing.T) {
 	fakeEventRecorder := record.NewFakeRecorder(1)
 	fakeClientset := fake.Clientset{}
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -517,7 +520,7 @@ func TestReconcileRecognizeError(t *testing.T) {
 		},
 	}
 
-	res, err := r.Reconcile(context.TODO(), req)
+	res, err := r.Reconcile(t.Context(), req)
 
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "x509 Common Name")
@@ -544,6 +547,7 @@ func TestReconcileAuthorizationError(t *testing.T) {
 	fakeEventRecorder := record.NewFakeRecorder(1)
 	fakeClientset := fake.Clientset{}
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -567,7 +571,7 @@ func TestReconcileAuthorizationError(t *testing.T) {
 		},
 	}
 
-	res, err := r.Reconcile(context.TODO(), req)
+	res, err := r.Reconcile(t.Context(), req)
 
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), errAuthorization.Error())
@@ -594,6 +598,7 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 	fakeEventRecorder := record.NewFakeRecorder(1)
 	fakeClientset := fake.Clientset{}
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -624,7 +629,7 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 		},
 	}
 
-	res, err := r.Reconcile(context.TODO(), req)
+	res, err := r.Reconcile(t.Context(), req)
 
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), "Subject Access Review")
@@ -652,6 +657,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 	fakeClientset := fake.Clientset{}
 
 	// Provide authorization by fake k8s clientset
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -666,6 +672,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 			return true, sar, nil
 		})
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"update",
 		"certificatesigningrequests",
@@ -689,7 +696,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 		},
 	}
 
-	res, err := r.Reconcile(context.TODO(), req)
+	res, err := r.Reconcile(t.Context(), req)
 
 	require.Error(t, err)
 	assert.Contains(t, err.Error(), errApprovalUpdate.Error())

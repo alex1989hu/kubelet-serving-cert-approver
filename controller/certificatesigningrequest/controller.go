@@ -108,7 +108,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 		if errIsKubeletServingCert := isRequestConform(reqLogger, csr, x509cr); errIsKubeletServingCert != nil {
 			message := "Unable to recognize the Certificate Signing Request"
 
-			reqLogger.Error(message, zap.Error(err))
+			reqLogger.Error(message, zap.Error(errIsKubeletServingCert))
 			metrics.NumberOfInvalidCertificateSigningRequests.Inc()
 			r.EventRecorder.Event(&csr, corev1.EventTypeWarning, eventWarningReason,
 				message+": "+csr.Name+"): "+errIsKubeletServingCert.Error())

@@ -71,7 +71,7 @@ type asserter struct {
 
 // Errorf is used by the called assertion to report an error.
 //
-//nolint:goerr113
+//nolint:err113
 func (a *asserter) Errorf(format string, args ...interface{}) {
 	a.err = fmt.Errorf(format, args...)
 }
