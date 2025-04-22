@@ -479,7 +479,7 @@ func proxyRequestToPod(config *rest.Config, namespace, podname, scheme, path str
 		return nil, fmt.Errorf("can not send request: %w", err)
 	}
 
-	defer resp.Body.Close()
+	defer resp.Body.Close() //nolint:errcheck
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {

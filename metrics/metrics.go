@@ -21,11 +21,13 @@ import (
 
 //nolint:gochecknoglobals
 var (
+	// NumberOfApprovedCertificateRequests represents a number of approved certificate signing requests.
 	NumberOfApprovedCertificateRequests = prom.NewCounter(prom.CounterOpts{
 		Name: "kubelet_serving_cert_approver_approved_certificate_signing_request_count",
 		Help: "The number of approved Certificate Signing Request",
 	})
 
+	// NumberOfInvalidCertificateSigningRequests represents a number of invalid certificate signing requests.
 	NumberOfInvalidCertificateSigningRequests = prom.NewCounter(prom.CounterOpts{
 		Name: "kubelet_serving_cert_approver_invalid_certificate_signing_request_count",
 		Help: "The number of invalid Certificate Signing Request",

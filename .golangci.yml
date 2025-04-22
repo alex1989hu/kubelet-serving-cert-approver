@@ -7,131 +7,15 @@ run:
   build-tags:
     - e2e
 
+version: "2"
+
 output:
   formats:
-  - format: line-number
-
-linters-settings:
-  copyloopvar:
-    check-alias: true
-  depguard:
-    rules:
-      ioutil:
-        deny:
-          - pkg: "io/ioutil"
-            desc: ioutil is deprecated in Go 1.16"
-  errcheck:
-    check-type-assertions: true
-    check-blank: true
-  govet:
-    enable:
-      - fieldalignment
-      - shadow
-  gofmt:
-    simplify: true
-  gocyclo:
-    min-complexity: 10
-  dupl:
-    threshold: 100
-  gci:
-    sections:
-      - standard
-      - default
-      - prefix(github.com/alex1989hu/kubelet-serving-cert-approver)
-  goconst:
-    min-len: 3
-    min-occurrences: 3
-  goheader:
-    template-path: ./hack/LICENSE.header
-  makezero:
-    always: true
-  misspell:
-    locale: US
-  nolintlint:
-    allow-unused: false
-    allow-no-explanation: []
-    require-explanation: false
-    require-specific: true
-  lll:
-    line-length: 120
-    tab-width: 1
-  promlinter:
-    strict: true
-  revive:
-    rules:
-      - name: atomic
-      - name: bare-return
-      - name: blank-imports
-      - name: bool-literal-in-expr
-      - name: call-to-gc
-      - name: confusing-naming
-      - name: constant-logical-expr
-      - name: context-as-argument
-      - name: context-keys-type
-      - name: deep-exit
-      - name: dot-imports
-      - name: duplicated-imports
-      - name: empty-block
-      - name: error-naming
-      - name: error-return
-      - name: error-strings
-      - name: errorf
-      - name: exported
-      - name: flag-parameter
-      - name: get-return
-      - name: identical-branches
-      - name: if-return
-      - name: increment-decrement
-      - name: indent-error-flow
-      - name: modifies-parameter
-      - name: modifies-value-receiver
-      - name: package-comments
-      - name: range
-      - name: range-val-address
-      - name: range-val-in-closure
-      - name: receiver-naming
-      - name: redefines-builtin-id
-      - name: string-of-int
-      - name: struct-tag
-      - name: superfluous-else
-      - name: time-naming
-      - name: unconditional-recursion
-      - name: unexported-naming
-      - name: unexported-return
-      - name: unnecessary-stmt
-      - name: unreachable-code
-      - name: unused-parameter
-      - name: unused-receiver
-      - name: var-declaration
-      - name: var-naming
-      - name: waitgroup-by-value
-  unused:
-    exported-fields-are-used: false
-  unparam:
-    check-exported: false
-  usetesting:
-    os-create-temp: true
-    os-mkdir-temp: true
-    os-setenv: true
-    os-temp-dir: true
-    os-chdir: true
-    context-background: true
-    context-todo: true
-  nakedret:
-    max-func-lines: 30
-  prealloc:
-    simple: true
-    range-loops: true
-    for-loops: true
-  testifylint:
-    enable-all: true
-  thelper:
-    test:
-      first: true
-      name: true
-      begin: true
+    text:
+      path: stdout
 
 linters:
+  # settings:
   enable:
     - asciicheck
     - bodyclose
@@ -145,7 +29,6 @@ linters:
     - exhaustive
     - exptostd
     - fatcontext
-    - gci
     - gochecknoglobals
     - goconst
     - gocritic
@@ -153,13 +36,9 @@ linters:
     - godot
     - godox
     - err113
-    - gofmt
-    - gofumpt
     - goheader
-    - goimports
     - goprintffuncname
     - gosec
-    - gosimple
     - govet
     - ineffassign
     - lll
@@ -178,12 +57,10 @@ linters:
     - predeclared
     - revive
     - staticcheck
-    - stylecheck
     - testifylint
     - testpackage
     - thelper
     - tparallel
-    - typecheck
     - unconvert
     - unparam
     - unused
@@ -198,8 +75,119 @@ linters:
     - gomodguard
     - rowserrcheck
     - sqlclosecheck
-  disable-all: false
-  fast: false
+  settings:
+    copyloopvar:
+      check-alias: true
+    depguard:
+      rules:
+        ioutil:
+          deny:
+            - pkg: "io/ioutil"
+              desc: ioutil is deprecated in Go 1.16"
+    dupl:
+      threshold: 100
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+    govet:
+      enable:
+        - fieldalignment
+        - shadow
+    gocyclo:
+      min-complexity: 10
+    goconst:
+      min-len: 3
+      min-occurrences: 3
+    goheader:
+      template-path: ./hack/LICENSE.header
+    makezero:
+      always: true
+    misspell:
+      locale: US
+    nolintlint:
+      allow-unused: false
+      allow-no-explanation: []
+      require-explanation: false
+      require-specific: true
+    lll:
+      line-length: 120
+      tab-width: 1
+    promlinter:
+      strict: true
+    revive:
+      rules:
+        - name: atomic
+        - name: bare-return
+        - name: blank-imports
+        - name: bool-literal-in-expr
+        - name: call-to-gc
+        - name: confusing-naming
+        - name: constant-logical-expr
+        - name: context-as-argument
+        - name: context-keys-type
+        - name: deep-exit
+        - name: dot-imports
+        - name: duplicated-imports
+        - name: empty-block
+        - name: error-naming
+        - name: error-return
+        - name: error-strings
+        - name: errorf
+        - name: exported
+        - name: flag-parameter
+        - name: get-return
+        - name: identical-branches
+        - name: if-return
+        - name: increment-decrement
+        - name: indent-error-flow
+        - name: modifies-parameter
+        - name: modifies-value-receiver
+        - name: package-comments
+          disabled: true
+        - name: range
+        - name: range-val-address
+        - name: range-val-in-closure
+        - name: receiver-naming
+        - name: redefines-builtin-id
+        - name: string-of-int
+        - name: struct-tag
+        - name: superfluous-else
+        - name: time-naming
+        - name: unconditional-recursion
+        - name: unexported-naming
+        - name: unexported-return
+        - name: unnecessary-stmt
+        - name: unreachable-code
+        - name: unused-parameter
+        - name: unused-receiver
+        - name: var-declaration
+        - name: var-naming
+        - name: waitgroup-by-value
+    unused:
+      exported-fields-are-used: false
+    unparam:
+      check-exported: false
+    usetesting:
+      os-create-temp: true
+      os-mkdir-temp: true
+      os-setenv: true
+      os-temp-dir: true
+      os-chdir: true
+      context-background: true
+      context-todo: true
+    nakedret:
+      max-func-lines: 30
+    prealloc:
+      simple: true
+      range-loops: true
+      for-loops: true
+    testifylint:
+      enable-all: true
+    thelper:
+      test:
+        first: true
+        name: true
+        begin: true
 
 issues:
   max-issues-per-linter: 0

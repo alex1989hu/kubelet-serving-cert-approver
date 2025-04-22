@@ -382,6 +382,7 @@ func TestReconcileValidCSR(t *testing.T) {
 	fakeClientset := fake.Clientset{}
 
 	// Provide authorization by fake k8s clientset
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -437,6 +438,7 @@ func TestReconcileParseCSRError(t *testing.T) {
 	fakeEventRecorder := record.NewFakeRecorder(1)
 	fakeClientset := fake.Clientset{}
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -494,6 +496,7 @@ func TestReconcileRecognizeError(t *testing.T) {
 	fakeEventRecorder := record.NewFakeRecorder(1)
 	fakeClientset := fake.Clientset{}
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -544,6 +547,7 @@ func TestReconcileAuthorizationError(t *testing.T) {
 	fakeEventRecorder := record.NewFakeRecorder(1)
 	fakeClientset := fake.Clientset{}
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -594,6 +598,7 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 	fakeEventRecorder := record.NewFakeRecorder(1)
 	fakeClientset := fake.Clientset{}
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -652,6 +657,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 	fakeClientset := fake.Clientset{}
 
 	// Provide authorization by fake k8s clientset
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"create",
 		"subjectaccessreviews",
@@ -666,6 +672,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 			return true, sar, nil
 		})
 
+	//nolint:staticcheck
 	fakeClientset.Fake.PrependReactor(
 		"update",
 		"certificatesigningrequests",
