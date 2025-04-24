@@ -44,7 +44,7 @@ jobs:
         password: ${{ secrets.GHCR_TOKEN }}
     - name: Build and push
       id: docker_build
-      uses: docker/build-push-action@v6.15.0
+      uses: docker/build-push-action@v6.16.0
       with:
         context: .
         file: ./Dockerfile
