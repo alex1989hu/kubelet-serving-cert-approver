@@ -14,8 +14,15 @@ output:
     text:
       path: stdout
 
+formatters:
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(github.com/alex1989hu/kubelet-serving-cert-approver)
+
 linters:
-  # settings:
   enable:
     - asciicheck
     - bodyclose
