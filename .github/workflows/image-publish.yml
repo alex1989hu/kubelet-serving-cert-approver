@@ -31,7 +31,7 @@ jobs:
           type=ref,event=branch
           type=semver,pattern={{version}}
     - name: Install Cosign
-      uses: sigstore/cosign-installer@v3.8.1
+      uses: sigstore/cosign-installer@v3.8.2
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3.6.0
     - name: Set up Docker Buildx
@@ -44,7 +44,7 @@ jobs:
         password: ${{ secrets.GHCR_TOKEN }}
     - name: Build and push
       id: docker_build
-      uses: docker/build-push-action@v6.15.0
+      uses: docker/build-push-action@v6.17.0
       with:
         context: .
         file: ./Dockerfile

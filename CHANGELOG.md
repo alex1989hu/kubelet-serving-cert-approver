@@ -1,4 +1,19 @@
 
+<a name="v0.9.2"></a>
+## [v0.9.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.9.1...v0.9.2) (2025-05-17)
+
+### Chore
+
+* upgrade go 1.24.3
+* add node.cloudprovider.kubernetes.io/uninitialized toleration
+* bump docker/build-push-action from 6.16.0 to 6.17.0
+* restore gci formatter configuration
+* upgrade golangci-lint v2.1.6
+* bump golangci/golangci-lint-action from 7 to 8
+* bump docker/build-push-action from 6.15.0 to 6.16.0
+* bump sigstore/cosign-installer from 3.8.1 to 3.8.2
+
+
 <a name="v0.9.1"></a>
 ## [v0.9.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.9.0...v0.9.1) (2025-04-22)
 
