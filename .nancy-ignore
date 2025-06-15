@@ -1,10 +1,6 @@
-# Skip for indirect dependency github.com/golang-jwt/jwt/v4@v4.5.0
-CVE-2024-51744
-CVE-2025-30204
-
 # Skip for indirect dependency github.com/hashicorp/consul/api@v1.28.2
 CVE-2022-29153
 CVE-2024-10086
 
-# Skip for indirect dependency k8s.io/apiserver@v0.31.0
-CVE-2020-8561
+# Skip for indirect dependency golang.org/x/net@v0.41.0
+CVE-2025-4673
