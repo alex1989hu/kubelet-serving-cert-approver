@@ -44,20 +44,20 @@ jobs:
               digest: "a7c05c7ae043a0b8c818f5a06188bc2c4098f6cb59ca7d1856df00375d839251",
             },
             {
-              node: "v1.29.12",
-              digest: "62c0672ba99a4afd7396512848d6fc382906b8f33349ae68fb1dbfe549f70dec",
+              node: "v1.29.14",
+              digest: "8703bd94ee24e51b778d5556ae310c6c0fa67d761fae6379c8e0bb480e6fea29",
             },
             {
-              node: "v1.30.8",
-              digest: "17cd608b3971338d9180b00776cb766c50d0a0b6b904ab4ff52fd3fc5c6369bf",
+              node: "v1.30.13",
+              digest: "397209b3d947d154f6641f2d0ce8d473732bd91c87d9575ade99049aa33cd648",
             },
             {
-              node: "v1.31.4",
-              digest: "2cb39f7295fe7eafee0842b1052a599a4fb0f8bcf3f83d96c7f4864c357c6c30",
+              node: "v1.31.9",
+              digest: "b94a3a6c06198d17f59cca8c6f486236fa05e2fb359cbd75dabbfc348a10b211",
             },
             {
-              node: "v1.32.0",
-              digest: "c48c62eac5da28cdadcf560d1d8616cfa6783b58f0d94cf63ad1bf49600cb027",
+              node: "v1.32.5",
+              digest: "e3b2327e3a5ab8c76f5ece68936e4cafaa82edf58486b769727ab0b3b97a5b0d",
             },
             {
               node: "v1.33.1",
