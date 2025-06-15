@@ -96,7 +96,7 @@ jobs:
         config: ./hack/e2e-kind-config.yaml
         image: docker.io/kindest/node@sha256:${{ matrix.arrays.digest }}
         skipClusterLogsExport: true
-        version: "v0.26.0"
+        version: "v0.29.0"
     - name: Wait for KiND readiness
       run: |
           kubectl --namespace kube-system wait --for=condition=ready pod -l tier=control-plane --timeout=300s
