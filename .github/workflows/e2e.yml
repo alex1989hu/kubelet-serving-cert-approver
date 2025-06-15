@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   e2e-test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -44,20 +44,24 @@ jobs:
               digest: "a7c05c7ae043a0b8c818f5a06188bc2c4098f6cb59ca7d1856df00375d839251",
             },
             {
-              node: "v1.29.12",
-              digest: "62c0672ba99a4afd7396512848d6fc382906b8f33349ae68fb1dbfe549f70dec",
+              node: "v1.29.14",
+              digest: "8703bd94ee24e51b778d5556ae310c6c0fa67d761fae6379c8e0bb480e6fea29",
             },
             {
-              node: "v1.30.8",
-              digest: "17cd608b3971338d9180b00776cb766c50d0a0b6b904ab4ff52fd3fc5c6369bf",
+              node: "v1.30.13",
+              digest: "397209b3d947d154f6641f2d0ce8d473732bd91c87d9575ade99049aa33cd648",
             },
             {
-              node: "v1.31.4",
-              digest: "2cb39f7295fe7eafee0842b1052a599a4fb0f8bcf3f83d96c7f4864c357c6c30",
+              node: "v1.31.9",
+              digest: "b94a3a6c06198d17f59cca8c6f486236fa05e2fb359cbd75dabbfc348a10b211",
             },
             {
-              node: "v1.32.0",
-              digest: "c48c62eac5da28cdadcf560d1d8616cfa6783b58f0d94cf63ad1bf49600cb027",
+              node: "v1.32.5",
+              digest: "e3b2327e3a5ab8c76f5ece68936e4cafaa82edf58486b769727ab0b3b97a5b0d",
+            },
+            {
+              node: "v1.33.1",
+              digest: "050072256b9a903bd914c0b2866828150cb229cea0efe5892e2b644d5dd3b34f",
             },
         ]
         install-mode:
@@ -77,7 +81,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3.10.0
     - name: Build Container Image
-      uses: docker/build-push-action@v6.17.0
+      uses: docker/build-push-action@v6.18.0
       with:
         context: .
         file: ./Dockerfile
@@ -92,7 +96,7 @@ jobs:
         config: ./hack/e2e-kind-config.yaml
         image: docker.io/kindest/node@sha256:${{ matrix.arrays.digest }}
         skipClusterLogsExport: true
-        version: "v0.26.0"
+        version: "v0.29.0"
     - name: Wait for KiND readiness
       run: |
           kubectl --namespace kube-system wait --for=condition=ready pod -l tier=control-plane --timeout=300s
@@ -127,7 +131,7 @@ jobs:
       uses: actions/setup-go@v5
       with:
         cache: true
-        go-version: 1.24.3
+        go-version: 1.24.4
     - name: Test Approved Certificate Signing Requests
       run: go test -tags=e2e -v ./e2e
     - name: Get Application logs

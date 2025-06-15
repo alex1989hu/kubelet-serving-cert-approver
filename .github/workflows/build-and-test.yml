@@ -8,7 +8,7 @@ permissions:
   contents: read
 jobs:
   build-and-test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v4
@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-go@v5
       with:
         cache: true
-        go-version: 1.24.3
+        go-version: 1.24.4
     - name: Check project dependencies
       run: |
         rm go.sum
@@ -31,7 +31,7 @@ jobs:
     - name: Set up kubectl
       uses: azure/setup-kubectl@v4
       with:
-        version: v1.31.0
+        version: v1.33.0
     - name: Generate Install Manifests
       run: |
         hack/generate-manifests.sh
@@ -39,7 +39,7 @@ jobs:
     - name: Upload Coverage Report
       uses: codecov/codecov-action@v5
       with:
-        file: ./coverage.out
+        files: ./coverage.out
         flags: unittests
         name: codecov-umbrella
       env:
