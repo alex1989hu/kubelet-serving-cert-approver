@@ -1,4 +1,23 @@
 
+<a name="v0.9.3"></a>
+## [v0.9.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.9.2...v0.9.3) (2025-06-15)
+
+### Chore
+
+* upgrade golang.org/x/net v0.41.0
+* upgrade controller-runtime v0.21.0
+* upgrade go 1.24.4
+* bump aquasecurity/trivy-action from 0.30.0 to 0.31.0
+* bump docker/build-push-action from 6.17.0 to 6.18.0
+
+### Ci
+
+* upgrade kind v0.29.0
+* fix codecov-action file warning
+* upgrade e2e kind images
+* upgrade github runner to ubuntu-24.04
+
+
 <a name="v0.9.2"></a>
 ## [v0.9.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.9.1...v0.9.2) (2025-05-17)
 
