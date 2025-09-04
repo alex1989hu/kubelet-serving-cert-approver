@@ -128,7 +128,7 @@ jobs:
         kubectl --namespace kubelet-serving-cert-approver get events
         kubectl --namespace kubelet-serving-cert-approver describe deployments kubelet-serving-cert-approver
     - name: Set up Go
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@v6
       with:
         cache: true
         go-version: 1.24.6
