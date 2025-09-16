@@ -34,7 +34,7 @@ jobs:
         push: false
         tags: ghcr.io/${{ github.repository }}:grype
     - name: Run Grype Vulnerability Scanner
-      uses: anchore/scan-action@v6
+      uses: anchore/scan-action@v7
       id: scan
       with:
         image: ghcr.io/${{ github.repository }}:grype
