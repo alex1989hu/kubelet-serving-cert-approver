@@ -532,6 +532,7 @@ func setupForwarding(config *rest.Config, namespace string, port int,
 			panic(err)
 		}
 	}()
+
 	<-readyCh
 
 	return func() {

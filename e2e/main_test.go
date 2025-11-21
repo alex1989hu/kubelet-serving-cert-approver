@@ -42,6 +42,7 @@ func init() {
 
 func TestMain(*testing.M) {
 	pflag.Parse()
+
 	opts.Paths = pflag.Args()
 
 	status := godog.TestSuite{
