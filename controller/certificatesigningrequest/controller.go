@@ -52,7 +52,7 @@ type SigningReconciler struct {
 //
 //nolint:gocyclo
 func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	reqLogger := r.Logger.With(zap.String("csr.name", req.Name))
+	reqLogger := r.Logger.With(zap.String("csr.name", req.Name), zap.String("csr.namespace", req.Namespace))
 
 	var csr certificatesv1.CertificateSigningRequest
 
@@ -170,7 +170,7 @@ func (r *SigningReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 
 // Validate that the given node has authorization to actually create CSRs.
 func (r *SigningReconciler) authorize(csr *certificatesv1.CertificateSigningRequest) (bool, error) {
-	log := r.Logger.With(zap.String("csr.name", csr.Name))
+	log := r.Logger.With(zap.String("csr.name", csr.Name), zap.String("csr.namespace", csr.Namespace))
 
 	extra := make(map[string]authorizationv1.ExtraValue, len(csr.Spec.Extra))
 
