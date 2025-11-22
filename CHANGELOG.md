@@ -1,4 +1,46 @@
 
+<a name="v0.10.0"></a>
+## [v0.10.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.9.3...v0.10.0) (2025-11-22)
+
+### Chore
+
+* upgrade controller-runtime v0.22.4
+* use same kubernetes version for worker nodes
+* add namespace of the csr as a log field
+* bump actions/checkout from 5 to 6
+* bump sigstore/cosign-installer from 3.10.0 to 4.0.0
+* bump github/codeql-action from 3 to 4
+* bump docker/metadata-action from 5.8.0 to 5.9.0
+* bump docker/setup-qemu-action from 3.6.0 to 3.7.0
+* bump golangci/golangci-lint-action from 8 to 9
+* upgrade golangci-lint v2.6.2
+* upgrade golang.org/x/net v0.47.0
+* upgrade go 1.25.4
+* bump docker/login-action from 3.5.0 to 3.6.0
+* bump anchore/scan-action from 6 to 7
+* bump sigstore/cosign-installer from 3.9.2 to 3.10.0
+* bump actions/setup-go from 5 to 6
+* bump aquasecurity/trivy-action from 0.32.0 to 0.33.1
+* bump actions/checkout from 4 to 5
+* upgrade go 1.24.6
+* bump docker/metadata-action from 5.7.0 to 5.8.0
+* bump docker/login-action from 3.4.0 to 3.5.0
+* bump sigstore/cosign-installer from 3.9.1 to 3.9.2
+* upgrade go 1.24.5
+* bump aquasecurity/trivy-action from 0.31.0 to 0.32.0
+* bump sigstore/cosign-installer from 3.9.0 to 3.9.1
+* bump docker/setup-buildx-action from 3.11.0 to 3.11.1
+* bump sigstore/cosign-installer from 3.8.2 to 3.9.0
+* bump docker/setup-buildx-action from 3.10.0 to 3.11.0
+
+### Ci
+
+* use lower codecov target due to atomic coverage change
+* do not run nancy on pull requests
+* authenticate against oss index
+* remove obsolete GOEXPERIMENT
+
+
 <a name="v0.9.3"></a>
 ## [v0.9.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.9.2...v0.9.3) (2025-06-15)
 
