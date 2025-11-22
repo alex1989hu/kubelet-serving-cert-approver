@@ -63,6 +63,10 @@ jobs:
               node: "v1.33.1",
               digest: "050072256b9a903bd914c0b2866828150cb229cea0efe5892e2b644d5dd3b34f",
             },
+            {
+              node: "v1.34.0",
+              digest: "ede5bb6984830375d264e41b7169d03643f586d3e35316bf5229eaeb12bb18e0",
+            },
         ]
         install-mode:
         - ha

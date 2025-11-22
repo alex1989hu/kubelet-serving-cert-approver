@@ -75,6 +75,12 @@ type Client struct {
 	mock.Mock
 }
 
+func (c *Client) Apply(ctx context.Context, obj runtime.ApplyConfiguration, opts ...client.ApplyOption) error {
+	args := c.Called(ctx, obj, opts)
+
+	return args.Error(0)
+}
+
 func (c *Client) IsObjectNamespaced(obj runtime.Object) (bool, error) {
 	args := c.Called(obj)
 

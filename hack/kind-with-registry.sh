@@ -56,7 +56,7 @@ containerdConfigPatches:
     endpoint = ["http://${reg_host}:5000"]
 nodes:
 - role: control-plane
-  image: kindest/node:v1.33.1
+  image: kindest/node:v1.34.0
   kubeadmConfigPatches:
   - |-
     kind: InitConfiguration
@@ -64,7 +64,7 @@ nodes:
       kubeletExtraArgs:
         "rotate-server-certificates": "true"
 - role: worker
-  image: kindest/node:v1.33.1
+  image: kindest/node:v1.34.0
   kubeadmConfigPatches:
   - |-
     kind: JoinConfiguration
@@ -72,7 +72,7 @@ nodes:
       kubeletExtraArgs:
         "rotate-server-certificates": "true"
 - role: worker
-  image: kindest/node:v1.33.1
+  image: kindest/node:v1.34.0
   kubeadmConfigPatches:
   - |-
     kind: JoinConfiguration
