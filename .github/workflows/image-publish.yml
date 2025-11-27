@@ -22,7 +22,7 @@ jobs:
         fetch-depth: 0
     - name: Docker meta
       id: docker_meta
-      uses: docker/metadata-action@v5.9.0
+      uses: docker/metadata-action@v5.10.0
       with:
         images: ghcr.io/${{ github.repository }}
         flavor: |
