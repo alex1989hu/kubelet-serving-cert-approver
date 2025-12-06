@@ -1,4 +1,14 @@
 
+<a name="v0.10.1"></a>
+## [v0.10.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.10.0...v0.10.1) (2025-12-06)
+
+### Chore
+
+* bump docker/metadata-action from 5.9.0 to 5.10.0
+* upgrade cobra v1.10.2
+* upgrade go 1.25.5
+
+
 <a name="v0.10.0"></a>
 ## [v0.10.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.9.3...v0.10.0) (2025-11-22)
 
