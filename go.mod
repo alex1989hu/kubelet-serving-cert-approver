@@ -2,7 +2,7 @@ module github.com/alex1989hu/kubelet-serving-cert-approver
 
 go 1.25.0
 
-toolchain go1.25.4
+toolchain go1.25.5
 
 require (
 	github.com/cucumber/godog v0.15.0

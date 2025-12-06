@@ -135,7 +135,7 @@ jobs:
       uses: actions/setup-go@v6
       with:
         cache: true
-        go-version: 1.25.4
+        go-version: 1.25.5
     - name: Test Approved Certificate Signing Requests
       run: go test -tags=e2e -v ./e2e
     - name: Get Application logs
