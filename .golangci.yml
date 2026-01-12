@@ -52,6 +52,7 @@ linters:
     - makezero
     - misspell
     - mnd
+    - modernize
     - nakedret
     - nestif
     - nilerr
@@ -111,6 +112,10 @@ linters:
       always: true
     misspell:
       locale: US
+    modernize:
+      disable:
+        # to avoid conflict with `--fix`
+        - omitzero
     nolintlint:
       allow-unused: false
       allow-no-explanation: []
