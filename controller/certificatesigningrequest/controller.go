@@ -30,6 +30,7 @@ import (
 	k8sclient "k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/record"
 	ctrl "sigs.k8s.io/controller-runtime"
+	"sigs.k8s.io/controller-runtime/pkg/builder"
 	ctrlclient "sigs.k8s.io/controller-runtime/pkg/client"
 
 	"github.com/alex1989hu/kubelet-serving-cert-approver/metrics"
@@ -205,8 +206,9 @@ func (r *SigningReconciler) authorize(csr *certificatesv1.CertificateSigningRequ
 // SetupWithManager configures controller for manager to handle CertificateSigningRequest.
 func (r *SigningReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr). //nolint:wrapcheck
-							For(&certificatesv1.CertificateSigningRequest{}).
-							Complete(r)
+		// watch PartialObjectMetadata to reduce memory consumption
+		For(&certificatesv1.CertificateSigningRequest{}, builder.OnlyMetadata).
+		Complete(r)
 }
 
 // appendApprovalCondition sets fields for audit purpose.

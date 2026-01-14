@@ -26,6 +26,7 @@ import (
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/klog/v2"
 	ctrl "sigs.k8s.io/controller-runtime"
+	"sigs.k8s.io/controller-runtime/pkg/cache"
 	ctrlclient "sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	ctrllog "sigs.k8s.io/controller-runtime/pkg/log"
@@ -88,8 +89,14 @@ func startServer() {
 	ctrllog.SetLogger(zapr.NewLogger(logger.CreateLogger().Named("ctrllog")))
 
 	mgr, err := ctrl.NewManager(ctrl.GetConfigOrDie(), ctrl.Options{
+		Cache: cache.Options{
+			// drop managed fields to reduce memory consumption
+			DefaultTransform: cache.TransformStripManagedFields(),
+		},
 		Client: ctrlclient.Options{
 			Cache: &ctrlclient.CacheOptions{
+				// this does not mean "do not cache", it means "bypass the cache for reads"
+				// a watch on these resources will still maintain a local cache
 				DisableFor: []ctrlclient.Object{
 					&certificatesv1.CertificateSigningRequest{},
 				},
