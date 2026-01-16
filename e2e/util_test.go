@@ -26,7 +26,7 @@ import (
 // assertExpectedAndActual is a helper function to allow the step function to call
 // assertion functions where you want to compare an expected and an actual value.
 func assertExpectedAndActual(a expectedAndActualAssertion,
-	expected, actual interface{}, msgAndArgs ...interface{},
+	expected, actual any, msgAndArgs ...any,
 ) error {
 	var t asserter
 
@@ -36,12 +36,12 @@ func assertExpectedAndActual(a expectedAndActualAssertion,
 }
 
 type expectedAndActualAssertion func(t assert.TestingT,
-	expected, actual interface{}, msgAndArgs ...interface{}) bool
+	expected, actual any, msgAndArgs ...any) bool
 
 // assertActual is a helper function to allow the step function to call
 // assertion functions where you want to compare an actual value to a
 // predefined state like nil, empty or true/false.
-func assertActual(a actualAssertion, actual interface{}) error {
+func assertActual(a actualAssertion, actual any) error {
 	var t asserter
 
 	a(&t, actual)
@@ -52,8 +52,8 @@ func assertActual(a actualAssertion, actual interface{}) error {
 // assertExpectedLenAndActual is a helper function to allow the step function to call
 // assertion functions where you want to compare an actual value to a
 // has specific length.
-func assertExpectedLenAndActual(a func(t assert.TestingT, object interface{},
-	length int, msgAndArgs ...interface{}) bool, actual interface{}, length int, msgAndArgs ...interface{},
+func assertExpectedLenAndActual(a func(t assert.TestingT, object any,
+	length int, msgAndArgs ...any) bool, actual any, length int, msgAndArgs ...any,
 ) error {
 	var t asserter
 
@@ -62,7 +62,7 @@ func assertExpectedLenAndActual(a func(t assert.TestingT, object interface{},
 	return t.err
 }
 
-type actualAssertion func(t assert.TestingT, actual interface{}, msgAndArgs ...interface{}) bool
+type actualAssertion func(t assert.TestingT, actual any, msgAndArgs ...any) bool
 
 // asserter is used to be able to retrieve the error reported by the called assertion.
 type asserter struct {
@@ -72,6 +72,6 @@ type asserter struct {
 // Errorf is used by the called assertion to report an error.
 //
 //nolint:err113
-func (a *asserter) Errorf(format string, args ...interface{}) {
+func (a *asserter) Errorf(format string, args ...any) {
 	a.err = fmt.Errorf(format, args...)
 }

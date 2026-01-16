@@ -1,4 +1,24 @@
 
+<a name="v0.10.2"></a>
+## [v0.10.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.10.1...v0.10.2) (2026-01-16)
+
+### Chore
+
+* upgrade golangci-lint v2.8.0
+* upgrade go 1.25.6
+* enable modernize golangci-lint linter
+* bump docker/setup-buildx-action from 3.11.1 to 3.12.0
+
+### Ci
+
+* add kubernetes 1.35.0 e2e image
+* upgrade e2e kind images
+
+### Feat
+
+* reduce memory usage
+
+
 <a name="v0.10.1"></a>
 ## [v0.10.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.10.0...v0.10.1) (2025-12-06)
 
