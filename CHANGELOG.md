@@ -1,4 +1,13 @@
 
+<a name="v0.10.3"></a>
+## [v0.10.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.10.2...v0.10.3) (2026-02-08)
+
+### Chore
+
+* upgrade go 1.25.7
+* bump docker/login-action from 3.6.0 to 3.7.0
+
+
 <a name="v0.10.2"></a>
 ## [v0.10.2](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.10.1...v0.10.2) (2026-01-16)
 
