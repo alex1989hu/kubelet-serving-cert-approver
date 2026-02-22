@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-package metrics
+package metrics //nolint:revive
 
 import (
 	prom "github.com/prometheus/client_golang/prometheus"

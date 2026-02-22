@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-package build
+package build //nolint:revive
 
 //nolint:gochecknoglobals
 var (

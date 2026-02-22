@@ -561,7 +561,7 @@ func sendRequest(config *rest.Config, url string) (*http.Response, error) {
 		return nil, fmt.Errorf("can not create new transport: %w", err)
 	}
 
-	return client.Do(request)
+	return client.Do(request) //nolint:gosec
 }
 
 // execute executes command in given container of a Pod.
