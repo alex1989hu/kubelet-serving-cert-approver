@@ -16,14 +16,6 @@ jobs:
         arrays:
           [
             {
-              node: "v1.22.17",
-              digest: "f5b2e5698c6c9d6d0adc419c0deae21a425c07d81bbf3b6a6834042f25d4fba2",
-            },
-            {
-              node: "v1.23.17",
-              digest: "14d0a9a892b943866d7e6be119a06871291c517d279aedb816a4b4bc0ec0a5b3",
-            },
-            {
               node: "v1.24.17",
               digest: "bad10f9b98d54586cba05a7eaa1b61c6b90bfc4ee174fdc43a7b75ca75c95e51",
             },

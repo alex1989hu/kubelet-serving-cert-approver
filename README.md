@@ -28,10 +28,11 @@ To install into your Kubernetes cluster, please navigate to [deploy](deploy) dir
 
 For older Kubernetes versions (`v1.19`, `v1.20`, `v1.21`) please see [older releases](https://github.com/alex1989hu/kubelet-serving-cert-approver/releases).
 
+The consumed API has been stable since `v1.22`. However, E2E tests have been removed from the CI pipeline following the removal of the `node-role.kubernetes.io/master` toleration from the deployment. For more information, refer to [KEP-2067](https://github.com/kubernetes/enhancements/tree/master/keps/sig-cluster-lifecycle/kubeadm/2067-rename-master-label-taint).
+
+
 | Version        | Compatible |
 | -------------- | ---------- |
-| `v1.22`        | &check;    |
-| `v1.23`        | &check;    |
 | `v1.24`        | &check;    |
 | `v1.25`        | &check;    |
 | `v1.26`        | &check;    |

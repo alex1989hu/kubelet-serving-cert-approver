@@ -23,8 +23,6 @@ spec:
           - weight: 100
             preference:
               matchExpressions:
-              - key: node-role.kubernetes.io/master
-                operator: DoesNotExist
               - key: node-role.kubernetes.io/control-plane
                 operator: DoesNotExist
       serviceAccountName: kubelet-serving-cert-approver
