@@ -4,3 +4,6 @@ CVE-2025-58181
 
 # Skip for indirect dependency go.opentelemetry.io/otel/sdk@v1.34.0
 CVE-2026-24051
+
+# Skip for indirect dependency google.golang.org/grpc@v1.72.1
+CVE-2026-33186
