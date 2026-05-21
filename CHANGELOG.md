@@ -1,4 +1,49 @@
 
+<a name="v0.11.0"></a>
+## [v0.11.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.10.3...v0.11.0) (2026-05-21)
+
+### Chore
+
+* bump docker/build-push-action from 7.1.0 to 7.2.0
+* upgrade golang.org/x/net v0.54.0
+* bump sigstore/cosign-installer from 4.1.1 to 4.1.2
+* upgrade go 1.26.3
+* upgrade golang.org/x/net v0.52.0
+* upgrade spdystream v0.5.1
+* bump aquasecurity/trivy-action from 0.35.0 to 0.36.0
+* bump docker/build-push-action from 7.0.0 to 7.1.0
+* upgrade go 1.26.2
+* bump docker/login-action from 4.0.0 to 4.1.0
+* bump azure/setup-kubectl from 4 to 5
+* bump codecov/codecov-action from 5 to 6
+* bump sigstore/cosign-installer from 4.1.0 to 4.1.1
+* bump sigstore/cosign-installer from 4.0.0 to 4.1.0
+* bump aquasecurity/trivy-action from 0.34.2 to 0.35.0
+* bump docker/metadata-action from 5.10.0 to 6.0.0
+* upgrade go 1.26.1
+* bump docker/setup-buildx-action from 3.12.0 to 4.0.0
+* bump docker/build-push-action from 6.19.2 to 7.0.0
+* bump docker/login-action from 3.7.0 to 4.0.0
+* bump docker/setup-qemu-action from 3.7.0 to 4.0.0
+* bump aquasecurity/trivy-action from 0.34.1 to 0.34.2
+* bump aquasecurity/trivy-action from 0.34.0 to 0.34.1
+* upgrade go 1.26.0
+* bump aquasecurity/trivy-action from 0.33.1 to 0.34.0
+* bump docker/build-push-action from 6.19.1 to 6.19.2
+* bump docker/build-push-action from 6.18.0 to 6.19.1
+
+### Ci
+
+* update nancy ignore
+* update nancy ignore
+* update nancy ignore
+* update nancy ignore
+
+### Feat
+
+* removal of legacy taint
+
+
 <a name="v0.10.3"></a>
 ## [v0.10.3](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.10.2...v0.10.3) (2026-02-08)
 
