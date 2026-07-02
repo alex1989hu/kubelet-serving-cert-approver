@@ -17,31 +17,31 @@ jobs:
           [
             {
               node: "v1.24.17",
-              digest: "bad10f9b98d54586cba05a7eaa1b61c6b90bfc4ee174fdc43a7b75ca75c95e51",
+              digest: "cdc9decabd92a947a82117e03ed26c4cde03753f42c3ff7ca56bab39b6ec5200",
             },
             {
               node: "v1.25.16",
-              digest: "6110314339b3b44d10da7d27881849a87e092124afab5956f2e10ecdb463b025",
+              digest: "fedeb7ebef9794b3acbe656901f87231fb33381e0f586033ed18d2587bd9b73d",
             },
             {
               node: "v1.26.15",
-              digest: "c79602a44b4056d7e48dc20f7504350f1e87530fe953428b792def00bc1076dd",
+              digest: "70c6ccbd3ed58116ad489691148e0437d390ae4349d6990b9aa3863b5c5cc508",
             },
             {
               node: "v1.27.16",
-              digest: "2d21a61643eafc439905e18705b8186f3296384750a835ad7a005dceb9546d20",
+              digest: "9a08bfb799b90527eb58f0c3ac54252c3578d93758bae768e975f1bd7ba3bca0",
             },
             {
               node: "v1.28.15",
-              digest: "a7c05c7ae043a0b8c818f5a06188bc2c4098f6cb59ca7d1856df00375d839251",
+              digest: "af665d70820b816eb1384b9f715f608dca9c625014ebbfa59415dcf703860e93",
             },
             {
               node: "v1.29.14",
-              digest: "8703bd94ee24e51b778d5556ae310c6c0fa67d761fae6379c8e0bb480e6fea29",
+              digest: "e7858e6394f5e834802ce573ab340a0584d8314f909cb0717e14b57f2dd97257",
             },
             {
               node: "v1.30.13",
-              digest: "397209b3d947d154f6641f2d0ce8d473732bd91c87d9575ade99049aa33cd648",
+              digest: "cf819926d6f5ba996f7489fa18a38156f952f5dd172395da7d83f734190e95da",
             },
             {
               node: "v1.31.14",
@@ -52,16 +52,16 @@ jobs:
               digest: "831a3aa45e399a20b3aef41d6d8572cc6ff07b1f76cac1242ce26be0ccf86402",
             },
             {
-              node: "v1.33.1",
-              digest: "eb929cd8aca88dd03836180c65f3892ba8ccc79d80de1cc6666bcb9a35c1334e",
+              node: "v1.33.12",
+              digest: "c899edd3a9766ac69d5cccc9c8ee342e1920434a2d8eab0e02f461d36df96b41",
             },
             {
-              node: "v1.34.3",
-              digest: "babda82416d417f720a4d6dbd35deec5263af2a6c164c81c08cde0044c2b9f78",
+              node: "v1.34.8",
+              digest: "e9f9fd553828988bcae9c852223fb99f83380f251722a9313aa99f370bde7bfd",
             },
             {
-              node: "v1.35.0",
-              digest: "986401fce0e567a9860075ba9df8c8459bd99a35f79024d8a682773fb40f0753",
+              node: "v1.35.5",
+              digest: "397bcc4ab091b9632fb3639d5cf020943ca40e90fe7bcc38409738a4a0d056ee",
             },
         ]
         install-mode:
