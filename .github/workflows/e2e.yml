@@ -91,12 +91,13 @@ jobs:
         push: false
         tags: ghcr.io/${{ github.repository }}:ci
     - name: Set up KinD
-      uses: engineerd/setup-kind@v0.6.2
+      id: kind
+      uses: helm/kind-action@v1.14.0
       with:
         config: ./hack/e2e-kind-config.yaml
-        image: docker.io/kindest/node@sha256:${{ matrix.arrays.digest }}
-        skipClusterLogsExport: true
-        version: "v0.29.0"
+        node_image: docker.io/kindest/node@sha256:${{ matrix.arrays.digest }}
+        version: "v0.32.0"
+        cluster_name: kind
     - name: Wait for KiND readiness
       run: |
           kubectl --namespace kube-system wait --for=condition=ready pod -l tier=control-plane --timeout=300s
@@ -123,7 +124,7 @@ jobs:
         done
         kubectl --namespace kubelet-serving-cert-approver wait --for=condition=ready pod --selector app.kubernetes.io/name=kubelet-serving-cert-approver --timeout=300s
     - name: Get deployment failure logs
-      if: ${{ failure() && steps.deployment.outputs.exit_code != 0 }}
+      if: ${{ failure() && steps.kind.outcome == 'success' && steps.deployment.outputs.exit_code != 0 }}
       run: |
         kubectl --namespace kubelet-serving-cert-approver get events
         kubectl --namespace kubelet-serving-cert-approver describe deployments kubelet-serving-cert-approver
@@ -135,6 +136,6 @@ jobs:
     - name: Test Approved Certificate Signing Requests
       run: go test -tags=e2e -v ./e2e
     - name: Get Application logs
-      if: ${{ always() }}
+      if: ${{ always() && steps.kind.outcome == 'success' }}
       run: |
         kubectl --namespace kubelet-serving-cert-approver logs --selector app.kubernetes.io/name=kubelet-serving-cert-approver --prefix
