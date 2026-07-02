@@ -1,6 +1,7 @@
 # Skip for indirect dependency go.opentelemetry.io/otel/sdk@v1.34.0
 CVE-2026-24051
 CVE-2026-39883
+CVE-2026-41178
 
 # Skip for indirect dependency google.golang.org/grpc@v1.72.1
 CVE-2026-33186
@@ -14,6 +15,7 @@ CVE-2026-39831
 CVE-2026-39832
 CVE-2026-39833
 CVE-2026-39834
+CVE-2026-39835
 CVE-2026-42508
 CVE-2026-46595
 CVE-2026-46597
