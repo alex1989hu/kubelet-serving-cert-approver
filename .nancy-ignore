@@ -1,3 +1,6 @@
+# Skip for indirect dependency github.com/klauspost/compress@v1.18.0
+CVE-2026-63209
+
 # Skip for indirect dependency go.opentelemetry.io/otel/sdk@v1.34.0
 CVE-2026-24051
 CVE-2026-39883
