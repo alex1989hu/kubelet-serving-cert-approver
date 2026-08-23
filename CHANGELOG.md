@@ -1,4 +1,47 @@
 
+<a name="v0.11.1"></a>
+## [v0.11.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.11.0...v0.11.1) (2026-08-22)
+
+### Chore
+
+* bump github/codeql-action from 4.37.6 to 4.37.7
+* upgrade go 1.26.7
+* bump docker/setup-buildx-action from 4.2.0 to 4.3.0
+* upgrade golang.org/x/net v0.58.0
+* upgrade go 1.26.6
+* bump github/codeql-action from 4.37.4 to 4.37.6
+* bump github/codeql-action from 4 to 4.37.4
+* bump docker/login-action from 4.5.2 to 4.6.0
+* upgrade golang.org/x/net v0.57.0
+* update golang.org/x/text v0.40.0
+* bump docker/login-action from 4.4.0 to 4.5.2
+* bump actions/setup-go from 6 to 7
+* upgrade go 1.26.5
+* bump docker/login-action from 4.3.0 to 4.4.0
+* bump docker/metadata-action from 6.1.0 to 6.2.0
+* bump docker/login-action from 4.2.0 to 4.3.0
+* bump docker/setup-buildx-action from 4.1.0 to 4.2.0
+* bump docker/setup-qemu-action from 4.1.0 to 4.2.0
+* bump docker/build-push-action from 7.2.0 to 7.3.0
+* bump actions/checkout from 6 to 7
+* bump codecov/codecov-action from 6 to 7
+* upgrade controller-runtime v0.22.5
+* upgrade go 1.26.4
+* bump docker/login-action from 4.1.0 to 4.2.0
+* bump docker/setup-buildx-action from 4.0.0 to 4.1.0
+* bump docker/metadata-action from 6.0.0 to 6.1.0
+* bump docker/setup-qemu-action from 4.0.0 to 4.1.0
+* upgrade golang.org/x/net v0.55.0
+
+### Ci
+
+* update nancy ignore
+* update nancy ignore
+* migrate to helm/kind-action
+* update nancy ignore
+* update nancy ignore
+
+
 <a name="v0.11.0"></a>
 ## [v0.11.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.10.3...v0.11.0) (2026-05-21)
 

@@ -1,9 +1,18 @@
+# Skip for indirect dependency github.com/klauspost/compress@v1.18.0 x
+CVE-2026-63209
+
+# Skip for indirect dependency github.com/yuin/goldmark@v1.2.1 x
+CVE-2026-5160
+
+# Skip for indirect dependency go.opentelemetry.io/otel@v1.35.0
+CVE-2026-41178
+
 # Skip for indirect dependency go.opentelemetry.io/otel/sdk@v1.34.0
 CVE-2026-24051
 CVE-2026-39883
 
+# Skip for indirect dependency golang.org/x/mod@v0.38.0
+CVE-2026-56864
+
 # Skip for indirect dependency google.golang.org/grpc@v1.72.1
 CVE-2026-33186
-
-# Skip for indirect dependency github.com/yuin/goldmark@v1.2.1
-CVE-2026-5160
