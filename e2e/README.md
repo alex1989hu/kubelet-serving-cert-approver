@@ -8,7 +8,7 @@ The application [requirements](features) are being tested with [godog](https://g
 
 ## How do I execute End-to-End tests?
 
-The are multiple options avaialable for test execution.
+There are multiple options avaialable for test execution.
 
 ```bash
 # in Git Repository root directory

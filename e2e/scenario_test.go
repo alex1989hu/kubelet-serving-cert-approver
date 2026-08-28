@@ -32,6 +32,7 @@ import (
 
 	"github.com/cucumber/godog"
 	"github.com/prometheus/common/expfmt"
+	"github.com/prometheus/common/model"
 	"github.com/stretchr/testify/assert"
 	certificatesv1 "k8s.io/api/certificates/v1"
 	corev1 "k8s.io/api/core/v1"
@@ -433,7 +434,7 @@ func (c *ApproverInstance) commandExecutionErrorMessageShallContain(expected *go
 }
 
 func parseMetricNames(data []byte) ([]string, error) {
-	parser := expfmt.TextParser{}
+	parser := expfmt.NewTextParser(model.UTF8Validation)
 
 	mfs, err := parser.TextToMetricFamilies(bytes.NewReader(data))
 	if err != nil {
