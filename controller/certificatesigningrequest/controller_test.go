@@ -173,6 +173,14 @@ type StatusClient struct {
 }
 
 // Create fulfills SubResourceWriter interface.
+func (c *StatusClient) Apply(ctx context.Context, obj runtime.ApplyConfiguration,
+	opts ...client.SubResourceApplyOption) error {
+	args := c.Called(ctx, obj, opts)
+
+	return args.Error(0)
+}
+
+// Create fulfills SubResourceWriter interface.
 func (c *StatusClient) Create(ctx context.Context, obj client.Object, subResource client.Object,
 	opts ...client.SubResourceCreateOption,
 ) error {

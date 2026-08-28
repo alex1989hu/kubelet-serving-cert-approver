@@ -45,6 +45,7 @@ The consumed API has been stable since `v1.22`. However, E2E tests have been rem
 | `v1.33`        | &check;    |
 | `v1.34`        | &check;    |
 | `v1.35`        | &check;    |
+| `v1.36`        | &check;    |
 
 ## Prometheus Metrics
 

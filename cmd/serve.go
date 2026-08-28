@@ -131,7 +131,7 @@ func startServer() {
 		Client:        mgr.GetClient(),
 		ClientSet:     clientgokubernetes.NewForConfigOrDie(mgr.GetConfig()),
 		Scheme:        mgr.GetScheme(),
-		EventRecorder: mgr.GetEventRecorderFor("kubelet-serving-cert-aprover"),
+		EventRecorder: mgr.GetEventRecorderFor("kubelet-serving-cert-aprover"), //nolint:staticcheck // Will be removed.
 		Logger:        logger.CreateLogger().With(uberzap.String("controller", "certificatesigningrequest")),
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Fatal("Unable to create controller", uberzap.Error(err))
