@@ -52,16 +52,20 @@ jobs:
               digest: "831a3aa45e399a20b3aef41d6d8572cc6ff07b1f76cac1242ce26be0ccf86402",
             },
             {
-              node: "v1.33.1",
-              digest: "eb929cd8aca88dd03836180c65f3892ba8ccc79d80de1cc6666bcb9a35c1334e",
+              node: "v1.33.12",
+              digest: "3f5c8443c620245e4d355cfe09e96a91ead32ceaa569d3f1ca9edf0cb2fe2ff4",
             },
             {
               node: "v1.34.3",
               digest: "babda82416d417f720a4d6dbd35deec5263af2a6c164c81c08cde0044c2b9f78",
             },
             {
-              node: "v1.35.0",
-              digest: "986401fce0e567a9860075ba9df8c8459bd99a35f79024d8a682773fb40f0753",
+              node: "v1.35.8",
+              digest: "07b2536e30b803ed61d1677a79df6115f798ce64c80f9e22f6ed45afd09323c0",
+            },
+            {
+              node: "v1.36.4",
+              digest: "099e049362a1526b2db71494e1947aae99bd16290d7c895f2b7ea312e3cbfaed",
             },
         ]
         install-mode:
