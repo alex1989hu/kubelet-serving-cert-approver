@@ -1,4 +1,25 @@
 
+<a name="v0.12.0"></a>
+## [v0.12.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.11.1...v0.12.0) (2026-08-28)
+
+### Chore
+
+* upgrade golangci-lint v2.13.2
+* upgrade controller-runtime v0.24.1
+* upgrade testify v1.12.1
+* upgrade zap v1.28.0
+* bump github/codeql-action from 4.37.7 to 4.37.8
+
+### Ci
+
+* add kubernetes 1.36.4 e2e image
+* update nancy ignore
+
+### Fix
+
+* set prometheus validation scheme in e2e tests
+
+
 <a name="v0.11.1"></a>
 ## [v0.11.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.11.0...v0.11.1) (2026-08-22)
 
