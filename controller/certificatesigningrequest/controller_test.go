@@ -50,6 +50,7 @@ import (
 const (
 	name      = "csr-e7dbe"
 	namespace = "test-namespace"
+	reason    = "test-reason"
 )
 
 //nolint:gochecknoglobals
@@ -404,7 +405,7 @@ func TestReconcileValidCSR(t *testing.T) {
 			sar := &authorizationv1.SubjectAccessReview{
 				Status: authorizationv1.SubjectAccessReviewStatus{
 					Allowed: true,
-					Reason:  "test",
+					Reason:  reason,
 				},
 			}
 
@@ -460,7 +461,7 @@ func TestReconcileParseCSRError(t *testing.T) {
 			sar := &authorizationv1.SubjectAccessReview{
 				Status: authorizationv1.SubjectAccessReviewStatus{
 					Allowed: true,
-					Reason:  "test",
+					Reason:  reason,
 				},
 			}
 
@@ -620,7 +621,7 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 			sar := &authorizationv1.SubjectAccessReview{
 				Status: authorizationv1.SubjectAccessReviewStatus{
 					Allowed: false,
-					Reason:  "test",
+					Reason:  reason,
 				},
 			}
 
@@ -679,7 +680,7 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 			sar := &authorizationv1.SubjectAccessReview{
 				Status: authorizationv1.SubjectAccessReviewStatus{
 					Allowed: true,
-					Reason:  "test",
+					Reason:  reason,
 				},
 			}
 
