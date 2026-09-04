@@ -96,7 +96,7 @@ jobs:
         tags: ghcr.io/${{ github.repository }}:ci
     - name: Set up KinD
       id: kind
-      uses: helm/kind-action@v1.14.0
+      uses: helm/kind-action@v1.15.0
       with:
         config: ./hack/e2e-kind-config.yaml
         node_image: docker.io/kindest/node@sha256:${{ matrix.arrays.digest }}
