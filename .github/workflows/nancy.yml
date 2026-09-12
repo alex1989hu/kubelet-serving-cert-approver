@@ -28,4 +28,4 @@ jobs:
         uses: sonatype-nexus-community/nancy-github-action@v1.0.3
         with:
          githubToken: ${{ secrets.GITHUB_TOKEN }}
-         nancyCommand: sleuth --username ${{ secrets.OSSI_USERNAME }} --token ${{ secrets.OSSI_TOKEN }}
+         nancyCommand: sleuth --guide-token ${{ secrets.GUIDE_TOKEN }}
