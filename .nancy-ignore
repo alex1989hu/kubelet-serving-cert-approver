@@ -1,6 +1,9 @@
 # Skip for indirect dependency github.com/klauspost/compress@v1.18.0 x
 CVE-2026-63209
 
+# Skip for indirect dependency github.com/grpc-ecosystem/grpc-gateway/v2@v2.27.7
+CVE-2026-37236
+
 # Skip for indirect dependency github.com/yuin/goldmark@v1.2.1 x
 CVE-2026-5160
 
@@ -10,10 +13,17 @@ CVE-2026-41178
 # Skip for indirect dependency go.opentelemetry.io/otel/sdk@v1.34.0
 CVE-2026-24051
 CVE-2026-39883
+CVE-2026-81870
 
 # Skip for indirect dependency golang.org/x/mod@v0.38.0
 CVE-2026-56864
 CVE-2026-56865
 
-# Skip for indirect dependency google.golang.org/grpc@v1.72.1
-CVE-2026-33186
+# Skip for indirect dependency golang.org/x/crypto@v0.55.0
+CVE-2026-56855
+CVE-2026-78662
+
+# Skip for indirect dependency google.golang.org/grpc@v1.79.3
+CVE-2026-84303
+CVE-2026-84304
+CVE-2026-84445

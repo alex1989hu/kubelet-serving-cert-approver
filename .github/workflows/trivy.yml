@@ -20,7 +20,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Set up QEMU
-      uses: docker/setup-qemu-action@v4.2.0
+      uses: docker/setup-qemu-action@v4.3.0
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v4.3.0
     - name: Build Container Image
@@ -40,6 +40,6 @@ jobs:
         format: sarif
         output: ./trivy-results.sarif
     - name: Upload Trivy Scan Results
-      uses: github/codeql-action/upload-sarif@v4.37.8
+      uses: github/codeql-action/upload-sarif@v4.37.9
       with:
         sarif_file: ./trivy-results.sarif

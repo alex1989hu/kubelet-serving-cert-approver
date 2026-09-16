@@ -1,4 +1,23 @@
 
+<a name="v0.12.1"></a>
+## [v0.12.1](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.12.0...v0.12.1) (2026-09-16)
+
+### Chore
+
+* bump docker/setup-qemu-action from 4.2.0 to 4.3.0
+* bump helm/kind-action from 1.14.0 to 1.15.0
+* bump github/codeql-action from 4.37.8 to 4.37.9
+
+### Ci
+
+* authenticate against guide
+* update nancy ignore
+
+### Fix
+
+* add startup probe for slow API server handshakes at start-up
+
+
 <a name="v0.12.0"></a>
 ## [v0.12.0](https://github.com/alex1989hu/kubelet-serving-cert-approver/compare/v0.11.1...v0.12.0) (2026-08-28)
 
