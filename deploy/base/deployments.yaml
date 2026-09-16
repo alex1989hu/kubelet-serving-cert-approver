@@ -66,6 +66,12 @@ spec:
             containerPort: 8080
           - name: metrics
             containerPort: 9090
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: health
+            periodSeconds: 10
+            failureThreshold: 30
           livenessProbe:
             httpGet:
               path: /healthz
