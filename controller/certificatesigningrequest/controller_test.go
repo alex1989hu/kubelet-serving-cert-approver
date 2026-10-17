@@ -360,10 +360,8 @@ func TestReconcileSwitchCasesNegativePath(t *testing.T) {
 				Logger: TestLogger,
 			}
 			req := reconcile.Request{
-				NamespacedName: types.NamespacedName{
-					Name:      table.csr.GetName(),
-					Namespace: table.csr.GetNamespace(),
-				},
+				Name:      table.csr.GetName(),
+				Namespace: table.csr.GetNamespace(),
 			}
 
 			res, err := r.Reconcile(t.Context(), req)
@@ -378,10 +376,8 @@ func TestReconcileValidCSR(t *testing.T) {
 	t.Parallel()
 
 	csr := certificatesv1.CertificateSigningRequest{
-		ObjectMeta: metav1.ObjectMeta{
-			Name:      name,
-			Namespace: namespace,
-		},
+		Name:      name,
+		Namespace: namespace,
 		Spec: certificatesv1.CertificateSigningRequestSpec{
 			Extra: map[string]certificatesv1.ExtraValue{
 				"Kubernetes Tiers": []string{"control-plane", "worker"},
@@ -421,10 +417,8 @@ func TestReconcileValidCSR(t *testing.T) {
 		Logger:        TestLogger,
 	}
 	req := reconcile.Request{
-		NamespacedName: types.NamespacedName{
-			Name:      csr.GetName(),
-			Namespace: csr.GetNamespace(),
-		},
+		Name:      csr.GetName(),
+		Namespace: csr.GetNamespace(),
 	}
 
 	res, err := r.Reconcile(t.Context(), req)
@@ -438,10 +432,8 @@ func TestReconcileParseCSRError(t *testing.T) {
 	t.Parallel()
 
 	csr := certificatesv1.CertificateSigningRequest{
-		ObjectMeta: metav1.ObjectMeta{
-			Name:      name,
-			Namespace: namespace,
-		},
+		Name:      name,
+		Namespace: namespace,
 		Spec: certificatesv1.CertificateSigningRequestSpec{
 			Usages:     validUsages,
 			Username:   validUsername,
@@ -478,10 +470,8 @@ func TestReconcileParseCSRError(t *testing.T) {
 	}
 
 	req := reconcile.Request{
-		NamespacedName: types.NamespacedName{
-			Name:      csr.GetName(),
-			Namespace: csr.GetNamespace(),
-		},
+		Name:      csr.GetName(),
+		Namespace: csr.GetNamespace(),
 	}
 
 	res, err := r.Reconcile(t.Context(), req)
@@ -496,10 +486,8 @@ func TestReconcileRecognizeError(t *testing.T) {
 	t.Parallel()
 
 	csr := certificatesv1.CertificateSigningRequest{
-		ObjectMeta: metav1.ObjectMeta{
-			Name:      name,
-			Namespace: namespace,
-		},
+		Name:      name,
+		Namespace: namespace,
 		Spec: certificatesv1.CertificateSigningRequestSpec{
 			Usages:     validUsages,
 			Username:   "foo-system",
@@ -529,10 +517,8 @@ func TestReconcileRecognizeError(t *testing.T) {
 	}
 
 	req := reconcile.Request{
-		NamespacedName: types.NamespacedName{
-			Name:      csr.GetName(),
-			Namespace: csr.GetNamespace(),
-		},
+		Name:      csr.GetName(),
+		Namespace: csr.GetNamespace(),
 	}
 
 	res, err := r.Reconcile(t.Context(), req)
@@ -547,10 +533,8 @@ func TestReconcileAuthorizationError(t *testing.T) {
 	t.Parallel()
 
 	csr := certificatesv1.CertificateSigningRequest{
-		ObjectMeta: metav1.ObjectMeta{
-			Name:      name,
-			Namespace: namespace,
-		},
+		Name:      name,
+		Namespace: namespace,
 		Spec: certificatesv1.CertificateSigningRequestSpec{
 			Usages:     validUsages,
 			Username:   validUsername,
@@ -580,10 +564,8 @@ func TestReconcileAuthorizationError(t *testing.T) {
 	}
 
 	req := reconcile.Request{
-		NamespacedName: types.NamespacedName{
-			Name:      csr.GetName(),
-			Namespace: csr.GetNamespace(),
-		},
+		Name:      csr.GetName(),
+		Namespace: csr.GetNamespace(),
 	}
 
 	res, err := r.Reconcile(t.Context(), req)
@@ -598,10 +580,8 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 	t.Parallel()
 
 	csr := certificatesv1.CertificateSigningRequest{
-		ObjectMeta: metav1.ObjectMeta{
-			Name:      name,
-			Namespace: namespace,
-		},
+		Name:      name,
+		Namespace: namespace,
 		Spec: certificatesv1.CertificateSigningRequestSpec{
 			Usages:     validUsages,
 			Username:   validUsername,
@@ -638,10 +618,8 @@ func TestReconcileAuthorizationDenied(t *testing.T) {
 	}
 
 	req := reconcile.Request{
-		NamespacedName: types.NamespacedName{
-			Name:      csr.GetName(),
-			Namespace: csr.GetNamespace(),
-		},
+		Name:      csr.GetName(),
+		Namespace: csr.GetNamespace(),
 	}
 
 	res, err := r.Reconcile(t.Context(), req)
@@ -656,10 +634,8 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 	t.Parallel()
 
 	csr := certificatesv1.CertificateSigningRequest{
-		ObjectMeta: metav1.ObjectMeta{
-			Name:      name,
-			Namespace: namespace,
-		},
+		Name:      name,
+		Namespace: namespace,
 		Spec: certificatesv1.CertificateSigningRequestSpec{
 			Usages:     validUsages,
 			Username:   validUsername,
@@ -705,10 +681,8 @@ func TestReconcileUpdateApprovalError(t *testing.T) {
 	}
 
 	req := reconcile.Request{
-		NamespacedName: types.NamespacedName{
-			Name:      csr.GetName(),
-			Namespace: csr.GetNamespace(),
-		},
+		Name:      csr.GetName(),
+		Namespace: csr.GetNamespace(),
 	}
 
 	res, err := r.Reconcile(t.Context(), req)
